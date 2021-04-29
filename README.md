@@ -34,4 +34,4 @@ PDCAサイクルを促すことで、目標を達成できるように促す。
 ## 画面遷移図URL
 (https://www.figma.com/file/GpHHeZkwlWdEKigXnkhF9i/%E3%83%9D%E3%83%BC%E3%83%88%E3%83%95%E3%82%A9%E3%83%AA%E3%82%AA%E7%94%BB%E9%9D%A2%E9%81%B7%E7%A7%BB?node-id=0%3A1)
 ## ER図URL
-(https://i.gyazo.com/f56eff84d92bf47de1a579231b5e9f67.png)
+(https://i.gyazo.com/4f1981a185b9d77e8d235c1d8638fad3.png)
