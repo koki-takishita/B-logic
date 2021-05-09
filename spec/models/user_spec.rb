@@ -32,7 +32,7 @@ RSpec.describe User, type: :model do
     expect(user.errors[:password_confirmation]).to include("doesn't match Password")
   end
 
-  it 'パスワードが6文字以下の場合無効な状態であること' do
+  it 'パスワードが6文字未満の場合無効な状態であること' do
     user = build(:user, password: 'test', password_confirmation: 'test')
     user.valid?
     expect(user.errors[:password]).to include("is too short (minimum is 6 characters)")
