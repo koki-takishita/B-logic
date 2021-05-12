@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_05_12_130204) do
+ActiveRecord::Schema.define(version: 2021_05_12_133513) do
 
   create_table "goals", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "embodiment"
@@ -21,6 +21,8 @@ ActiveRecord::Schema.define(version: 2021_05_12_130204) do
     t.datetime "deadline_on"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "user_id", null: false
+    t.index ["user_id"], name: "index_goals_on_user_id"
   end
 
   create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -32,4 +34,5 @@ ActiveRecord::Schema.define(version: 2021_05_12_130204) do
     t.index ["email"], name: "index_users_on_email", unique: true
   end
 
+  add_foreign_key "goals", "users"
 end
