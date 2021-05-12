@@ -1,0 +1,10 @@
+ja:
+  users:
+    index:
+      title: 'ユーザ一覧'
+    show:
+      title: 'ユーザ情報'
+    edit:
+      title: 'ユーザ情報編集'
+    new:
+      title: 'ユーザ作成'
