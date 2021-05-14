@@ -152,7 +152,7 @@ RSpec.describe "Users", type: :system do
           visit users_path
           click_link 'Logout'
           expect(page).to have_content 'Logged out!'
-          expect(current_path).to eq users_path
+          expect(current_path).to eq login_path
         end
       end
       context 'editページ' do
@@ -160,7 +160,7 @@ RSpec.describe "Users", type: :system do
           visit edit_user_path(user)
           click_link 'Logout'
           expect(page).to have_content 'Logged out!'
-          expect(current_path).to eq users_path
+          expect(current_path).to eq login_path
         end
       end
       context 'showページ' do
@@ -168,7 +168,7 @@ RSpec.describe "Users", type: :system do
           visit user_path(user)
           click_link 'Logout'
           expect(page).to have_content 'Logged out!'
-          expect(current_path).to eq users_path
+          expect(current_path).to eq login_path
         end
       end
     end
