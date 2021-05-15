@@ -1,0 +1,4 @@
+ja:
+  flash:
+    success: "%{message}%の作成に成功しました." 
+    danger: "%{message}%の作成に失敗しました."

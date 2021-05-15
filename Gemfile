@@ -60,5 +60,7 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 gem 'robocop', '~> 0.1.1'
 gem 'better_errors', '~> 2.9', '>= 2.9.1'
 gem 'binding_of_caller', '~> 1.0'
+gem 'bootstrap'
+gem 'jquery-rails'
 gem 'sorcery', '~> 0.16.1'
 gem 'enum_help'
