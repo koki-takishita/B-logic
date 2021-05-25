@@ -1,0 +1,30 @@
+<div class='container mt-5'>
+  <div class='goal-list'>
+    <div class='row'>
+      <div class='col-7 box box-2'>
+        <a class='btn btn-primary' data-bs-toggle="collapse" href='#collapse' role='button' aria-expanded='false' aria-controls='collapseExample'>
+           目標一覧 
+        </a>
+        <div class='collapse' id='collapse'>
+          <ul>
+            <% current_user.goals.each do |goal|%>
+              <li><%=link_to goal.what_to_do, goal_path(goal) %></li>
+            <%end%>
+          </ul>
+        </div>
+      </div>
+      <div class='col-2 box box-1'>
+        <%= link_to new_goal_path do%>
+          <%= fa_icon 'plus', class: 'fa-2x plus-button mt-1'%>
+        <% end %>
+      </div>
+    </div>
+  </div>
+
+  <div class='menu mt-5'>
+    <ul>
+      <li><%= link_to 'ログアウト', logout_path, method: :delete%></li>
+      <li><%= link_to 'チュートリアル', '#'%></li>
+    </ul>
+  </div>
+</div>

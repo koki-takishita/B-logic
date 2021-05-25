@@ -10,22 +10,25 @@
   </head>
 
   <body>
-    <div id="nav">
-      <% if current_user %>
-        <%= link_to "Edit Profile", edit_user_path(current_user.id) %>
-        <%= link_to "Logout", :logout, method: :post %>
-      <% else %>
-        <%= link_to "Register", new_user_path %> |
-        <%= link_to "Login", :login %>
-      <% end %>
-    </div>
-    <div>
-      <p id="notice"><%= flash[:notice] %></p>
-      <p id="alert"><%= flash[:alert] %></p>
-    </div>
 
-    <div class = "container">
-      <%= yield %>
+    <%= render 'layouts/header' %>
+    <div class='row column-control'>
+      <div class='col-2 sidebar'>
+        <%= render 'layouts/sidebar' %>
+      </div>
+      <!--main content -->
+      <div class='col column-control'>
+        <div class="row column-control">
+          <div class='main-content'>
+            <%= yield %>
+          </div>
+          <div class='padding-control sub-content-control'>
+            <div class='column-control'>
+              <%= render 'layouts/footer' %>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
 
   </body>

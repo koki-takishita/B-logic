@@ -21,6 +21,7 @@ RSpec.describe Goal, type: :model do
     it '具体化がなければ無効な状態であること' do
       goal_active.embodiment = nil
       goal_active.valid?
+      pending 'バリテーション無効にしたため、保留、後で使うかもしれないため残しておく'
       expect(goal_active.errors[:embodiment]).to include(I18n.t('errors.messages.blank'))
     end
     it '単位にがなければ無効な状態であること' do
