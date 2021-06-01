@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>TentativeTitlePdca</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag    'start', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'start', 'data-turbolinks-track': 'reload' %>
+  </head>
+  <body onLoad="dip()">
+    <div class="a" id="a1">
+      <div class='box'>
+      </div>
+      <div class='text'>
+        <p>Mackbook-pro</p>
+        <p>$<strong id='cmd'></strong><strong id='prompt'>_</strong></p>
+      </div>
+    </div>
+    <div class="b" id="b1"></div>
+    <%= hidden_field_tag 'authenticity_token', form_authenticity_token %>
+    <script type="text/javascript">
+      'user strict';
+      {
+        // ドラッグ＆ドロッププログラム
+        function draggable(target) {
+          // ボタンをクリックしたときに発生  
+          target.onmousedown = function(e) {
+            var a1 = document.getElementById('a1');
+            var b1 = document.getElementById('b1');
+            a1.style.zIndex = 1;
+            b1.style.zIndex = 1;
+            target.style.zIndex = 999;
+            // ボタンをクリック、クリックした上で対象をドラッグしたときに
+            // onmousemoveイベントで座標を監視
+            // 取得した座標をスタイルに上書きしていき位置を変化させている.
+            var event = e ? e : window.event;
+            x = event.pageX - target.offsetLeft;
+            y = event.pageY - target.offsetTop;
+            document.onmousemove = mouseMove;
+            function mouseMove(e) {
+              var event = e ? e : window.event;
+              // 座標を代入
+              target.style.top = event.pageY - y + 'px';
+              target.style.left = event.pageX - x + 'px';
+              target.style.zIndex = 999;
+            }
+            // ボタンを離したときに発生
+            document.onmouseup = function() {
+              document.onmousemove = null;
+            }
+          }
+        }
+    
+      // 点滅プログラム
+      var flag = 0;
+      function dip() {
+            var target = document.getElementById('prompt');
+            if(flag==0){
+                target.style.display ='none';
+                flag = 1;
+              }
+            else{
+                target.style.display ='inline';
+                flag = 0;
+              }
+            setTimeout('dip()', 300);
+        }
+        // コマンド入力プログラム
+        var params = { 'email': 0, 'password': 0};
+        var word = [];
+        var login_flag = 0;
+              function new_prompt_add(){
+                // プロンプト部品 mackbook-pro
+                const mackbook_pro = document.createElement('p');
+                mackbook_pro.textContent = 'Mackbook-pro'
+                // $
+                const input_flicker = document.createElement('strong');
+                input_flicker.textContent ='_';
+                input_flicker.setAttribute('id', 'prompt');
+                // コマンド表示部分
+                const coment = document.createElement('strong');
+                coment.setAttribute('id', 'cmd');
+                // プロンプト部品 $ _
+                const input_label = document.createElement('p');
+                // プロンプト部品大枠作成
+                const text = document.createElement('div');
+                text.className=='text';
+                // 部品結合
+                input_label.textContent = '$';
+                input_label.appendChild(coment);
+                input_label.appendChild(input_flicker);
+                text.className ='text'
+                // 部品結合
+                text.appendChild(mackbook_pro);
+                text.appendChild(input_label);
+                // 結合確認用
+                console.log(text);
+                const prompt_box = document.getElementById('a1');
+                prompt_box.appendChild(text);
+              }
+
+              function delete_prompt(){
+                let flicker = document.getElementById('prompt');
+                flicker.remove();
+              }
+              function delete_cmd(){
+                let cmd = document.getElementById('cmd');
+                cmd.remove();
+              } 
+
+              function login_form_email_add(){
+                const target = document.getElementsByClassName('text');
+                const contents_list = Array.from(target);
+                // class='text'の要素を全取得後、最後のtextを取得
+                const content = contents_list[contents_list.length -1];
+                const email_form = document.createElement('p');
+                const input_email = document.createElement('strong');
+                // ピコピコ部品
+                const input_flicker = document.createElement('strong');
+                input_flicker.textContent ='_';
+                input_flicker.setAttribute('id', 'prompt');
+                // コマンド表示部分
+                const coment = document.createElement('strong');
+                coment.setAttribute('id', 'cmd');
+
+                delete_prompt();
+                delete_cmd();
+                input_email.textContent = 'email:'
+                input_email.className = 'response-text';
+                email_form.appendChild(input_email);
+                email_form.appendChild(coment);
+                email_form.appendChild(input_flicker);
+                content.appendChild(email_form);
+              }
+
+              function login_form_password_add(){
+                const target = document.getElementsByClassName('text');
+                const contents_list = Array.from(target);
+                // class='text'の要素を全取得後、最後のtextを取得
+                const content = contents_list[contents_list.length -1];
+                const input_password = document.createElement('strong');
+                // ピコピコ部品
+                const input_flicker = document.createElement('strong');
+                input_flicker.textContent ='_';
+                input_flicker.setAttribute('id', 'prompt');
+                // コマンド表示部分
+                const coment = document.createElement('strong');
+                coment.setAttribute('id', 'cmd');
+
+                delete_prompt();
+                delete_cmd();
+
+                input_password.textContent = 'password:';
+                input_password.className = 'response-text';
+                content.appendChild(input_password);
+                content.appendChild(coment);
+                content.appendChild(input_flicker);
+              }
+          document.addEventListener('keydown', (e) => {
+            console.log('keydown')
+            var target = document.getElementById('cmd');
+                  // コマンド削除
+                  if(e.key==='Backspace'){
+                          console.log('削除')
+                          word.pop();
+                          let word_join = word.join('')
+                          target.textContent = word_join;
+                  }
+                  // enter押した時の挙動
+                  else if(e.key==='Enter'){
+                          console.log('Enter')
+                          const box = document.getElementById('a1');
+                          // enter押した時点での入力情報を読み込む
+                          let word_join = word.join('')
+                          // [login] [user] のような[第一コマンド] [第２コマンド] を別々で条件分岐させるために空白でsplitさせる
+                          let response = word_join.split(' ');
+                          const error_msg = document.createElement('p');
+                          // login userと打った場合の処理
+                          if(response[0]==='login' && response[1]==='user'){
+                                  console.log('login');
+                                  login_flag = 'email';
+                                  login_form_email_add();
+                                  // 初期化
+                                  word = []; 
+                                  target.textContent = ''; 
+
+                                  // pramas初期化
+                                  params['email'] = 0;
+                                  params['password'] = 0;
+                          }
+                          else if(login_flag==='email'){
+                                  console.log('login_email');
+                                  login_flag = 'password'
+                                  params['email'] = word_join
+
+                                  login_form_password_add();
+                                  login_flag='password';
+
+                                  word = []; 
+                                  target.textContent = ''; 
+                                }
+                          else if(login_flag==='password'){
+                                  console.log('password');
+                                  params['password'] = word_join;
+                                  login_flag=0;
+                                  let url = "http://localhost:3000/start/login";
+                                  $.ajax({
+                                          type: 'POST',
+                                          url: url,
+                                          data: {
+                                              email: params['email'],
+                                              password: params['password'],
+                                              'authenticity_token': $('#authenticity_token').val(),
+                                                }
+                                  });
+                                }
+                          else if(login_flag==='ajax_login'){
+                                }
+                          // clearコマンド実装
+                          else if(response[0]==='clear'){
+                                  console.log('clear');
+                                  var contents = document.getElementsByClassName('text');
+                                  var contents_list = Array.from(contents);
+                                  contents_list.forEach(content => content.remove());
+                                  // 初期化
+                                  word = []; 
+                                  target.textContent = '';
+                                  new_prompt_add();
+                                }
+                          // これがないと存在しないコマンドを打ったときの処理に入ってしまうため あえて何しない処理
+                          else if(response[0]===''){
+                                  console.log('空Enter');
+                                  //// クラス名でプロンプトコンテント取得後、末尾に追加
+                                  // 点滅はクラス名を削除すれば消えるはず
+                                  // 入力情報読み込み
+                                  delete_prompt();
+                                  delete_cmd();
+
+
+                                  // 毎回作成することで、上書きを防ぐ
+                                  new_prompt_add();
+                                  //box.appendChild(text);
+                                }
+
+                          // 存在しないコマンドをうった時
+                          else{
+                                  console.log('not found');
+                                  let terminaltext = document.getElementsByClassName('text');
+                                  let terminalcontent = terminaltext[terminaltext.length -1]
+                                  error_msg.textContent = response[0] + ': command not found.'
+                                  error_msg.className = 'response-text'
+                                  terminalcontent.appendChild(error_msg);
+                                  // 初期化
+                                  word = []; 
+                                  target.textContent = ''; 
+                                  delete_prompt();
+                                  delete_cmd();
+                                  new_prompt_add();
+                                  // 点滅はクラス名を削除すれば消えるはず
+                                  // 入力情報読み込み
+                                  // そのまま追加すれば行ける？ 入力情報とかやらなくても
+                          }
+                        }
+                  else {
+                          console.log('入力中');
+                          // キーボード入力情報を配列の末尾に追加
+                          word.push(e.key)
+                          // 配列に格納されている入力情報結合
+                          let word_join = word.join('')
+                          // コマンド表示
+                          target.textContent = word_join;
+                              }
+          });
+      }
+      draggable(document.getElementById('a1'));
+      draggable(document.getElementById('b1'));
+</script>
+    <%= yield%>
+  </body>
+</html>
