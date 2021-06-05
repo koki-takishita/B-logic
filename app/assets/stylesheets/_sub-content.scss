@@ -1,8 +1,8 @@
 .col {
   height: 100%;
 }
-
 .sub-content {
+  color: #33E971;
   background-color: #383947;
   height: 100%;
 }
@@ -13,4 +13,13 @@
 
 .sub-content-control {
   height: 30%;
+}
+.text{
+  border: 2px solid #26B8F6;
+  width: 400px;
+}
+.label{
+  margin-top: 40px;
+  margin-bottom: 0px;
+  text-align: left;
 }

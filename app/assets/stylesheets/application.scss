@@ -1,9 +1,10 @@
 @import 'bootstrap';
+@import 'hexi-flexi-grid';
+@import 'hex-style';
 @import 'sidebar-style';
 @import "font-awesome";
 @import 'main-content';
 @import 'sub-content';
-
 h1 {
   margin: 0px;
 }
@@ -15,7 +16,6 @@ html {
 body {
   height: 100%;
 }
-
 .column-control {
   height: 100%;
 }

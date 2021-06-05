@@ -11,27 +11,37 @@
   <% end %>
 
   <div class='form-group'>
-    <%= form.label :what_to_do%>
-    <%= form.text_field :what_to_do, class: 'form-control'%>
+    <%= form.label :what_to_do, class: 'label'%>
+    <%= form.text_field :what_to_do, class: 'form-control', placeholder: '夏までに腹筋ばきばきになる'%>
   </div>
 
+    <div class='icon'>
+      <%= fa_icon 'arrow-down 4x', class: 'fa-solid'%>
+      <p class='icon_text'><strong>ゴールの定量化</strong><p>
+    </div>
+
+
   <div class='row'>
-  <%unless @goal.persisted?%>
-    <div class="col">
-      <%= form.select :selectbox_parameter, {'１ヶ月後': 1, '２ヶ月後': 2, '３ヶ月後': 3, '４ヶ月後': 4, '５ヶ月後': 5, '半年後': 6 }, { include_blank: '期限を設定してください', selected: @goal.selectbox_parameter }, { class: 'form-control' } %>
-    </div>
-  <%end%>
-    <div class="col">
-      <%= form.number_field :quantification, class: 'form-control', placeholder: '具体的な数字' %>
-    </div>
-    <div class="col">
-      <%= form.text_field :unit, class: 'form-control', placeholder: 'kg, 件, 回, 点(単位)' %>
-    </div>
-    <div class="col">
-      <%= form.text_field :embodiment, class: 'form-control', placeholder: 'やせる, とる, 覚える(何をするのか)' %>
-    </div>
-    <div class = 'actions'>
-      <%= form.submit class: 'btn btn-primary mt-3' %>
-    </div>
+
+      <div class="col">
+        <%= form.select :selectbox_parameter, {'１ヶ月後': 1, '２ヶ月後': 2, '３ヶ月後': 3, '４ヶ月後': 4, '５ヶ月後': 5, '半年後': 6 }, { include_blank: '期限を設定してください', selected: @goal.selectbox_parameter }, { class: 'form-control' } %>
+      </div>
+
+      <div class="col-2">
+        <%= form.number_field :quantification, class: 'form-control', placeholder: '具体的な数字' %>
+      </div>
+
+      <div class="col-2">
+        <%= form.text_field :unit, class: 'form-control', placeholder: 'kg, 件, 回, 点(単位)' %>
+      </div>
+
+      <div class="col">
+        <%= form.text_field :embodiment, class: 'form-control', placeholder: 'やせる, とる, 覚える(何をするのか)' %>
+      </div>
+
   </div>
+      <div class = 'actions'>
+        <%= form.submit class: 'btn btn-primary mt-3' %>
+      </div>
+
 <% end %>
