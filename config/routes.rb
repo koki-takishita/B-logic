@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   resources :goals
   resources :subgoals
   resources :task
-  resources :users, only: [:index, :edit, :update, :destroy, :show] 
+  resources :users, only: [:edit, :update, :destroy, :show]
 
   scope :start do
     get 'login' => 'user_sessions#new', :as => :login
