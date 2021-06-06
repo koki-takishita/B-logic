@@ -21,8 +21,12 @@ class Goal < ApplicationRecord
   end
 
   def when_deadline(month)
-    deadline = Date.today >> month
-    self.deadline_on = deadline.end_of_day
+    if self.persisted?
+      self.deadline_on = self.deadline_on.since(month.month)
+    else
+      deadline = Date.today >> month
+      self.deadline_on = deadline.end_of_day
+    end
   end
 
   def current_status

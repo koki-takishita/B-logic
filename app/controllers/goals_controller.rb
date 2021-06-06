@@ -28,8 +28,12 @@ class GoalsController < ApplicationController
   end
 
   def update
-    if @goal = current_user.goals.update(goal_params)
-      redirect_to goal_path(@gal), notice: '目標を更新しました'
+    #if @goal = current_user.goals.update(goal_params)
+    @goal = current_user.goals.find(params[:id])
+    @goal.assign_attributes(goal_params)
+    @goal.when_deadline(@goal.selectbox_parameter.to_i)
+    if @goal.save
+      redirect_to goal_path(@goal), notice: '目標を更新しました'
     else
       render :edit
     end
