@@ -19,15 +19,14 @@
   $hexSize:     auto;       // 'auto',(px,pt,r/em,vw/h)
   $hexMargin:   1em;      // (px,pt,r/em,vw/h)
   $hexShape:    hexagon;    // 'hexagon','circle'
-  //$hexShape:    circle;    // 'hexagon','circle'
   $hexColor:    silver;    // hexcode,rgb/a,named
-  $images:      none;
+  //$images:      none;
 //--- MIXINS ---------------------------------//
   @include hexWrapper($gridWidth,$gridHeight,
     $gridOrient,$rowCount,$columnCount);
   .hexCrop {@include hexCrop($crop,$cropFactor)}
   .hexContainer {@include hexContainer($gridWidth,$gridHeight,
-    $gridOrient,$columnCount, $images,$rowCount,
+    $gridOrient,$columnCount,$rowCount,
     $hexLayout,$hexContent,$hexShape,$hexColor,
     $hexMargin,$hexCount,$hexSize,)}
 //--- CUSTOM STYLES --------------------------//

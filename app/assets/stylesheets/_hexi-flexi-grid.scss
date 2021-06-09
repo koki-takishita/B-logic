@@ -76,7 +76,8 @@
   @else if $gridOrient == horizontal {margin: $hexMargin (hexRatioInv($hexMargin))}
 }
 
-@mixin hexContainer($gridWidth,$gridHeight,$gridOrient,$columnCount, $images,$rowCount,
+//@mixin hexContainer($gridWidth,$gridHeight,$gridOrient,$columnCount,$images,$rowCount,
+@mixin hexContainer($gridWidth,$gridHeight,$gridOrient,$columnCount,$rowCount,
 $hexLayout,$hexContent,$hexShape,$hexColor,$hexMargin,$hexCount,$hexSize) {
   display: grid;
   justify-items: $hexContent;
@@ -100,7 +101,7 @@ $hexLayout,$hexContent,$hexShape,$hexColor,$hexMargin,$hexCount,$hexSize) {
   width: $gridWidth;
   @include gridTemplate($gridOrient, $columnCount, $rowCount, $gridWidth, $hexCount);
   @include layout($columnCount, $rowCount, $hexLayout, $gridOrient, $hexCount);
-  @include imageAssigner($images, $hexCount, $hexLayout);
+  //@include imageAssigner($images, $hexCount, $hexLayout);
   .hex {@include hexStyle($hexShape, $gridOrient, $hexContent, $hexColor, $hexMargin, $hexSize);}
 }
 
@@ -191,10 +192,11 @@ $hexLayout,$hexContent,$hexShape,$hexColor,$hexMargin,$hexCount,$hexSize) {
   }
 }
 
-@mixin imageAssigner($images, $hexCount, $hexLayout){
-  @if $hexLayout != strict {
-    @for $i from 1 through length($images) {
-      .hex:nth-child(#{$i}) {background-image: url(nth($images, $i));}
-    }
-  }
-}
+//@mixin imageAssigner($images, $hexCount, $hexLayout){
+//@mixin imageAssigner($hexCount, $hexLayout){
+//  @if $hexLayout != strict {
+//    @for $i from 1 through length($images) {
+//      .hex:nth-child(#{$i}) {background-image: url(nth($images, $i));}
+//    }
+//  }
+//}
