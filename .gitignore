@@ -28,6 +28,7 @@
 
 # liblary
 vendor/bundle
+AdminLTE/
 
 # database
 config/database.yml

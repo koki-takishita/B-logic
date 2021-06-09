@@ -1,0 +1,10 @@
+ja:
+  goals:
+    index:
+      title: '目標一覧'
+    show:
+      title: '目標詳細'
+    edit:
+      title: '目標編集'
+    new:
+      title: '目標作成'

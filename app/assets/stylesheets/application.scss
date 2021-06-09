@@ -1,0 +1,30 @@
+@import 'bootstrap';
+@import 'hexi-flexi-grid';
+@import 'hex-style';
+@import 'sidebar-style';
+@import "font-awesome";
+@import 'main-content';
+@import 'sub-content';
+h1 {
+  margin: 0px;
+}
+
+html {
+  height: 100%;
+}
+
+body {
+  height: 100%;
+}
+.column-control {
+  height: 100%;
+}
+
+.sidebar {
+  height: 100%;
+}
+
+.plus_button {
+  width: 50px;
+  height: 50px;
+}

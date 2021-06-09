@@ -1,0 +1,40 @@
+.main-content {
+  height: 70%;
+  background-color: #4A4c6D;
+  color: #33E971;
+}
+.hex-contents {
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.title {
+  margin-top: 10px;
+  margin-bottom: 30px;
+}
+.form-control{
+  margin: 0 auto;
+}
+.label {
+  display: block;
+  text-align: center;
+}
+.icon{
+  color: red;
+  text-align: center;
+  margin-top: 20px;
+  margin-bottom: 40px;
+}
+.icon_text strong{
+  color: white;
+  border: 2px solid red;
+  background-color: red;
+  padding: 10px;
+}
+.icon_text{
+  margin-top: 20px;
+}
+.actions{
+  text-align: center;
+}
