@@ -1,5 +1,6 @@
 class Goal < ApplicationRecord
   belongs_to :user
+  has_many :subgoals
   attr_accessor :selectbox_parameter
 
   # カスタムバリテーション(input_attributes_nil?)実装のために作成
