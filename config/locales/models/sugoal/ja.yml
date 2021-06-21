@@ -1,0 +1,21 @@
+ja:
+  activerecord:
+    models:
+      subgoal: 'サブ目標'
+    attributes:
+      subgoal:
+        id: 'ID'
+        status: 'ステータス'
+        embodiment: '具体化'
+        quantification: '定量化' 
+        unit: '単位'
+        subgoal: '最終目標'
+        deadline_on: '期限'
+        input_all_attributes: '入力項目'
+        created_at: '登録日時'
+        updated_at: '更新日時'
+  errors:
+    format: "%{attribute}%{message}"
+    messages:
+      input_attributes_blank: 'がなにも入力されていません.'
+

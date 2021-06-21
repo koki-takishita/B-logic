@@ -9,6 +9,7 @@ class GoalsController < ApplicationController
 
   def show
     @goal = current_user.goals.find(params[:id])
+    session[:goal_id] = @goal.id.to_s
   end
 
   def create
@@ -28,7 +29,6 @@ class GoalsController < ApplicationController
   end
 
   def update
-    #if @goal = current_user.goals.update(goal_params)
     @goal = current_user.goals.find(params[:id])
     @goal.assign_attributes(goal_params)
     @goal.when_deadline(@goal.selectbox_parameter.to_i)

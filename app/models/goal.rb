@@ -21,15 +21,6 @@ class Goal < ApplicationRecord
     end
   end
 
-  def when_deadline(month)
-    if self.persisted?
-      self.deadline_on = self.deadline_on.since(month.month)
-    else
-      deadline = Date.today >> month
-      self.deadline_on = deadline.end_of_day
-    end
-  end
-
   def current_status
     self.status = deadline_on ? :active : :inactive
   end

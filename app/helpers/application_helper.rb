@@ -8,6 +8,20 @@ module ApplicationHelper
     today = Date.today
     sa = day.to_date - today
     int = sa.to_i
-    return int.to_s + '日'
+    int.to_s
+  end
+
+  def selected_goal
+    @selected_goal ||= current_user.goals.find_by_id(session[:goal_id]) if session[:goal_id]
+  end
+
+  def selected_subgoal
+    @selected_subgoal ||= selected_goal.subgoals.find_by_id(session[:subgoal_id]) if session[:subgoal_id]
+  end
+
+  def subgoal_deadline(object)
+    select = {'1ヶ月後'=> 1, '2ヶ月後'=> 2, '3ヶ月後'=> 3, '4ヶ月後'=> 4, '5ヶ月後'=> 5, '半年後'=> 6, 'これ以上期限を延ばす場合は目標の期限を延ばしてください' => 0 }
+    deadline = @subgoal.delivery_time_to_month(object)
+    select_form = select.reject{|key, value| deadline.to_i < value.to_i}
   end
 end
