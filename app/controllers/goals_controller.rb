@@ -17,9 +17,9 @@ class GoalsController < ApplicationController
     @goal.when_deadline(@goal.selectbox_parameter.to_i)
     @goal.current_status
     if @goal.save
-      redirect_to goals_path, notice: '目標を作成しました.'
+      redirect_to goals_path, success: '目標を作成しました.'
     else
-      flash.now[:alert] = '目標を作成できませんでした.'
+      flash.now[:danger] = '目標を作成できませんでした.'
       render :new
     end
   end
@@ -33,7 +33,7 @@ class GoalsController < ApplicationController
     @goal.assign_attributes(goal_params)
     @goal.when_deadline(@goal.selectbox_parameter.to_i)
     if @goal.save
-      redirect_to goal_path(@goal), notice: '目標を更新しました'
+      redirect_to goal_path(@goal), success: '目標を更新しました'
     else
       render :edit
     end

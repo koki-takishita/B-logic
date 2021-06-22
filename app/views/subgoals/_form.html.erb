@@ -1,7 +1,6 @@
 <%= form_with(model: subgoal, local: true) do |form| %>
   <% if subgoal.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(subgoal.errors.count, "error") %> prohibited this user from being saved:</h2>
       <ul>
       <% subgoal.errors.full_messages.each do |message| %>
         <li><%= message %></li>

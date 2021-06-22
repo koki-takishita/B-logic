@@ -13,9 +13,10 @@ class SubgoalsController < ApplicationController
     @subgoal.when_deadline(@subgoal.selectbox_parameter.to_i)
     @subgoal.remainder(@subgoal.division_remainder, view_context.selected_goal)
     if @subgoal.save
-      redirect_to goal_path(view_context.selected_goal), notice: 'サブ目標を作成しました.'
+      redirect_to goal_path(view_context.selected_goal)
+      flash[:success] = 'サブ目標を作成しました.'
     else
-      flash.now[:alert] = 'サブ目標を作成できませんでした.'
+      flash.now[:danger] = 'サブ目標を作成できませんでした.'
       render :new
     end
   end
@@ -29,17 +30,18 @@ class SubgoalsController < ApplicationController
     @subgoal.assign_attributes(subgoal_params)
     @subgoal.when_deadline(@subgoal.selectbox_parameter.to_i)
     if @subgoal.save
-      redirect_to subgoal_path(view_context.selected_subgoal), notice: 'サブ目標を更新しました.'
+      redirect_to subgoal_path(view_context.selected_subgoal), success: 'サブ目標を更新しました.'
     else
-      flash.now[:alert] = 'サブ目標を更新できませんでした.'
-      render :eidt
+      flash.now[:danger] = 'サブ目標を更新できませんでした.'
+      render :edit
     end
   end
 
   def destroy
     @subgoal = view_context.selected_goal.subgoals.find_by_id(params[:id])
     if @subgoal.destroy
-      redirect_to goal_path(view_context.selected_goal), notice: 'サブゴールを削除しました.'
+      redirect_to goal_path(view_context.selected_goal)
+      flash[:danger] = 'サブ目標を削除しました.'
     end
   end
 
