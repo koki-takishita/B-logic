@@ -7,10 +7,10 @@ class Goal < ApplicationRecord
   attr_accessor :input_all_attributes
 
   enum status: { inactive: 0, active: 1 }
-  validates :embodiment, presence: true, if: :active?
-  validates :unit, presence: true, if: :active?
-  validates :what_to_do, presence: true, if: :active?
-  validates :quantification, presence: true, if: :active?
+  validates :embodiment, presence: true
+  validates :unit, presence: true
+  validates :what_to_do, presence: true
+  validates :quantification, presence: true
   validate  :input_attributes_nil?
 
 
