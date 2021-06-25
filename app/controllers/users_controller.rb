@@ -26,7 +26,7 @@ class UsersController < ApplicationController
     if @user.save
       redirect_to login_path, notice: "User was successfully created."
     else
-      render :new, status: :unprocessable_entity
+      redirect_to request.referer
     end
   end
 
@@ -54,7 +54,6 @@ class UsersController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def user_params
-      #params.require(:user).permit(:email, :password, :password_confirmation)
-      params.permit(:email, :password, :password_confirmation)
+      params.require(:user).permit(:email, :password, :password_confirmation)
     end
 end

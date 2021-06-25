@@ -43,6 +43,7 @@ group :development, :test do
   gem 'capybara', '~> 3.35', '>= 3.35.3'
   gem 'factory_bot_rails', '~> 6.2'
   gem 'webdrivers'
+  gem 'launchy'
 end
 
 group :development do
