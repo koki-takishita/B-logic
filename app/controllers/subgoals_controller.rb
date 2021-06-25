@@ -40,8 +40,8 @@ class SubgoalsController < ApplicationController
   def destroy
     @subgoal = view_context.selected_goal.subgoals.find_by_id(params[:id])
     if @subgoal.destroy
-      redirect_to goal_path(view_context.selected_goal)
       flash[:danger] = 'サブ目標を削除しました.'
+      redirect_to goal_path(view_context.selected_goal)
     end
   end
 
