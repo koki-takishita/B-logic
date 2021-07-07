@@ -16,8 +16,9 @@ class Subgoal < ApplicationRecord
       dec_day = ApplicationController.helpers.days_left(object.deadline_on)
       day = day.to_i - dec_day.to_i
     end
-    month = if day.to_i > 30
-      month = day.to_i.divmod(30)
+    month = if day.to_i >= (Date.today.next_month - Date.today).to_i
+      one_month = (Date.today.next_month - Date.today).to_i
+      month = day.to_i.divmod(one_month)
       # 余り格納 save時に使用する
       # hiddenfieldで保持
       self.division_remainder = month[1]

@@ -18,9 +18,9 @@ class GoalsController < ApplicationController
     @goal.current_status
     if @goal.save
       flash[:success] = t 'goals.flash.create'
-      redirect_to goals_path
+      redirect_to goal_path(@goal)
     else
-      flash[:success] = t 'goals.flash.destroy'
+      flash[:success] = t 'goals.flash.danger'
       render :new
     end
   end

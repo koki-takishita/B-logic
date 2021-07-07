@@ -10,6 +10,6 @@ ja:
       title: '目標作成'
     flash:
       create: "目標を作成しました"
-      destroy:  "目標を作成できませんでした"
+      danger:  "目標を作成できませんでした"
       update: '目標を更新しました'
       destroy: '目標を削除しました'

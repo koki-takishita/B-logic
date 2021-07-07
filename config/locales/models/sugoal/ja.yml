@@ -9,7 +9,7 @@ ja:
         embodiment: '具体化'
         quantification: '定量化' 
         unit: '単位'
-        subgoal: '最終目標'
+        subgoal: 'サブ目標'
         deadline_on: '期限'
         input_all_attributes: '入力項目'
         created_at: '登録日時'

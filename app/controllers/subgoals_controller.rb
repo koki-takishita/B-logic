@@ -10,8 +10,8 @@ class SubgoalsController < ApplicationController
 
   def create
     @subgoal = view_context.selected_goal.subgoals.build(subgoal_params)
-    @subgoal.when_deadline(@subgoal.selectbox_parameter.to_i)
-    @subgoal.remainder(@subgoal.division_remainder, view_context.selected_goal)
+    @subgoal.when_deadline(@subgoal.selectbox_parameter.to_i) if @subgoal.selectbox_parameter.present?
+    @subgoal.remainder(@subgoal.division_remainder, view_context.selected_goal) if @subgoal.selectbox_parameter.present?
     if @subgoal.save
       redirect_to goal_path(view_context.selected_goal)
       flash[:success] = 'サブ目標を作成しました.'

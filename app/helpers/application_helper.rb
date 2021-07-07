@@ -20,8 +20,8 @@ module ApplicationHelper
   end
 
   def subgoal_deadline(object)
-    select = {'1ヶ月後'=> 1, '2ヶ月後'=> 2, '3ヶ月後'=> 3, '4ヶ月後'=> 4, '5ヶ月後'=> 5, '半年後'=> 6, 'これ以上期限を延ばす場合は目標の期限を延ばしてください' => 0 }
+    select = {'１ヶ月後'=> 1, '２ヶ月後'=> 2, '３ヶ月後'=> 3, '４ヶ月後'=> 4, '５ヶ月後'=> 5, '半年後'=> 6, 'これ以上期限を延ばす場合は目標の期限を延ばしてください' => 0 }
     deadline = @subgoal.delivery_time_to_month(object)
-    select_form = select.reject{|key, value| deadline.to_i < value.to_i}
+    select_form = select.select{|key, value| deadline.to_i >= value.to_i}
   end
 end
