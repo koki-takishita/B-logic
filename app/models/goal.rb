@@ -3,15 +3,24 @@ class Goal < ApplicationRecord
   has_many :subgoals
   attr_accessor :selectbox_parameter
 
-  enum status: { inactive: 0, active: 1 }
+  enum status: { run: 0, done: 1, expired: 2 }
   validates :embodiment, presence: true
   validates :deadline_on, presence: true
   validates :unit, presence: true
   validates :what_to_do, presence: true
   validates :quantification, presence: true
 
-  def current_status
-    self.status = deadline_on ? :active : :inactive
+  def done
+    # 属性ではなく、ローカル変数になってしまう
+    # status = :done
+    self.status = :done
   end
 
+  def expired
+    self.status = :expired
+  end
+
+  def run
+    self.status = :run
+  end
 end

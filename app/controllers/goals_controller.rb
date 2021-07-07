@@ -15,7 +15,6 @@ class GoalsController < ApplicationController
   def create
     @goal = current_user.goals.build(goal_params)
     @goal.when_deadline(@goal.selectbox_parameter.to_i) if @goal.selectbox_parameter.present?
-    @goal.current_status
     if @goal.save
       flash[:success] = t 'goals.flash.create'
       redirect_to goal_path(@goal)
