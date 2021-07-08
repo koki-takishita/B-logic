@@ -3,6 +3,7 @@ class Subgoal < ApplicationRecord
   attr_accessor :selectbox_parameter
   attr_accessor :division_remainder
 
+  enum status: { run: 0, done: 1, expired: 2 }
   validates :embodiment, presence: true, length: { maximum: 255 }
   validates :unit, presence: true, length: { maximum: 10 }
   validates :subgoal, presence: true, length: { maximum: 100 }
