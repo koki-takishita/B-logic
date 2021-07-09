@@ -1,14 +1,11 @@
 class Subgoal < ApplicationRecord
+  include Attr_accssor
+  include Status
+  include Validators
+  include Enum_status
   belongs_to :goal
-  attr_accessor :selectbox_parameter
   attr_accessor :division_remainder
-
-  enum status: { run: 0, done: 1, expired: 2 }
-  validates :embodiment, presence: true, length: { maximum: 255 }
-  validates :unit, presence: true, length: { maximum: 10 }
   validates :subgoal, presence: true, length: { maximum: 100 }
-  validates :quantification, presence: true
-  validates :deadline_on, presence: true
 
   def delivery_time_to_month(object)
     day = ApplicationController.helpers.days_left(object.deadline_on)

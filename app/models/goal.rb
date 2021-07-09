@@ -8,5 +8,6 @@ class Goal < ApplicationRecord
   # 属性 selectbox_parameter
   include Attr_accssor
   belongs_to :user
-  has_many :subgoals
+  has_many :subgoals, dependent: :destroy
+  validates :what_to_do, presence: true
 end
