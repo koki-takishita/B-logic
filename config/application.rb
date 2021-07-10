@@ -37,7 +37,6 @@ module TentativeTitlePdca
 
     config.generators do |g|
       g.assets false
-      g.test_framework false
       g.skip_routes true
     end
   end

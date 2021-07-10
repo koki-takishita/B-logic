@@ -18,7 +18,7 @@
     </div>
   <div class='row'>
       <div class="col">
-        <%= form.select :selectbox_parameter, subgoal_deadline(subgoal.persisted? ? selected_subgoal : selected_goal), { include_blank: '期限設定', selected: subgoal.selectbox_parameter }, { class: 'form-control' } %>
+        <%= form.select :selectbox_parameter, subgoal.subgoal_deadline(subgoal.persisted? ? selected_subgoal : selected_goal), { include_blank: '期限設定', selected: subgoal.selectbox_parameter }, { class: 'form-control' } %>
         <%= form.hidden_field :division_remainder, value: subgoal.division_remainder %>
       </div>
       <div class="col-2">
