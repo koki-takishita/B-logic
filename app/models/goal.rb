@@ -10,4 +10,8 @@ class Goal < ApplicationRecord
   belongs_to :user
   has_many :subgoals, dependent: :destroy
   validates :what_to_do, presence: true
+
+  def deadline_overdue?
+    deadline_on <= Time.current
+  end
 end

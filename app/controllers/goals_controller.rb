@@ -58,7 +58,8 @@ class GoalsController < ApplicationController
     def deadline_inquiry
       # 期限が過ぎていたらexpiredメソッド実行
       @goals.map {|goal|
-        goal.expired if !goal.done? && goal.deadline_on <= Date.today
+        goal.expired if !goal.done? && goal.deadline_overdue?
       }
     end
+
 end
