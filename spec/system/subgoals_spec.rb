@@ -10,7 +10,7 @@ RSpec.describe "Subgoals", type: :system do
       it '登録成功する' do
         visit new_subgoal_path
         fill_in Subgoal.human_attribute_name(:subgoal), with: 'たくさん学習する'
-        select '１ヶ月後', from: "subgoal[selectbox_parameter]"
+        select '1ヶ月後', from: "subgoal[deadline_on]"
         fill_in 'subgoal_quantification', with: 8
         fill_in 'subgoal_unit', with: '時間'
         fill_in 'subgoal_embodiment', with: '学習'
@@ -34,7 +34,7 @@ RSpec.describe "Subgoals", type: :system do
       it '登録失敗する' do
         visit new_subgoal_path
         fill_in Subgoal.human_attribute_name(:subgoal), with: 'たくさん学習する'
-        select '１ヶ月後', from: "subgoal[selectbox_parameter]"
+        select '1ヶ月後', from: "subgoal[deadline_on]"
         fill_in 'subgoal_unit', with: '時間'
         fill_in 'subgoal_embodiment', with: '学習'
         click_button '登録する'
@@ -45,7 +45,7 @@ RSpec.describe "Subgoals", type: :system do
       it '登録失敗する' do
         visit new_subgoal_path
         fill_in Subgoal.human_attribute_name(:subgoal), with: 'たくさん学習する'
-        select '１ヶ月後', from: "subgoal[selectbox_parameter]"
+        select '1ヶ月後', from: "subgoal[deadline_on]"
         fill_in 'subgoal_quantification', with: 8
         fill_in 'subgoal_embodiment', with: '学習'
         click_button '登録する'
@@ -56,7 +56,7 @@ RSpec.describe "Subgoals", type: :system do
       it '登録失敗する' do
         visit new_subgoal_path
         fill_in Subgoal.human_attribute_name(:subgoal), with: 'たくさん学習する'
-        select '１ヶ月後', from: "subgoal[selectbox_parameter]"
+        select '1ヶ月後', from: "subgoal[deadline_on]"
         fill_in 'subgoal_quantification', with: 8
         fill_in 'subgoal_unit', with: '時間'
         click_button '登録する'
@@ -66,7 +66,7 @@ RSpec.describe "Subgoals", type: :system do
     context 'サブ目標をnilの状態で登録する' do
       it '登録失敗する' do
         visit new_subgoal_path
-        select '１ヶ月後', from: "subgoal[selectbox_parameter]"
+        select '1ヶ月後', from: "subgoal[deadline_on]"
         fill_in 'subgoal_quantification', with: 8
         fill_in 'subgoal_unit', with: '時間'
         fill_in 'subgoal_embodiment', with: '学習'
@@ -85,7 +85,7 @@ RSpec.describe "Subgoals", type: :system do
     context '期限を１か月延ばす' do
       it '期限が１か月伸びて保存される' do
         visit edit_subgoal_path(@user.goals.first.subgoals.first)
-        select '１ヶ月後'
+        select '1ヶ月後'
         click_button('更新する')
         expect(page).to have_content ((Date.tomorrow >> 1) - (Date.today)).to_i.to_s
       end

@@ -13,11 +13,7 @@
   <div class='row'>
 
       <div class="col">
-        <%if @goal.persisted?%>
-          <%= form.select :selectbox_parameter, {'１ヶ月延ばす': 1, '２ヶ月延ばす': 2, '３ヶ月延ばす': 3, '４ヶ月延ばす': 4, '５ヶ月延ばす': 5, '半年延ばす': 6 }, { include_blank: '期限を延ばすのは最終手段!', selected: @goal.selectbox_parameter }, { class: 'form-control' } %>
-        <%else%>
-          <%= form.select :selectbox_parameter, {'１ヶ月後': 1, '２ヶ月後': 2, '３ヶ月後': 3, '４ヶ月後': 4, '５ヶ月後': 5, '半年後': 6 }, { include_blank: '期限を設定してください', selected: @goal.selectbox_parameter }, { class: 'form-control' } %>
-        <%end%>
+        <%= form.select :deadline_on, @goal.select_deadline, { include_blank: '期限を延ばすのは最終手段!'}, {class: 'form-control' } %>
       </div>
 
       <div class="col-2">

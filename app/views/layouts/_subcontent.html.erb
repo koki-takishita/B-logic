@@ -7,7 +7,7 @@
       </div>
       <div class='col content col-sm-2'>
         <h2 class='label'><%=Goal.human_attribute_name('deadline_on')%></h2>
-        <h2 class='short_text'><%=days_left(selected_goal.deadline_on) + '日'%>
+        <h2 class='short_text'><%=selected_goal.days_left(selected_goal.deadline_on) + '日'%>
         </h2>
       </div>
       <div class='col content'>
@@ -23,7 +23,7 @@
         </div>
         <div class='col content'>
           <h2 class='label'><%=Subgoal.human_attribute_name('deadline_on')%></h2>
-          <h2 class='short_text'><%=days_left(selected_subgoal.deadline_on) + '日'%></h2>
+          <h2 class='short_text'><%= selected_subgoal.days_left(selected_subgoal.deadline_on) + '日'%></h2>
         </div>
         <div class='col content'>
           <%= link_to '編集', edit_subgoal_path(selected_subgoal.id), class: 'btn btn-warning btn_control' %>
