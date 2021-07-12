@@ -11,7 +11,7 @@ RSpec.describe "Goals", type: :system do
           it '登録成功する' do
             visit new_goal_path
             fill_in Goal.human_attribute_name(:what_to_do), with: 'webエンジニアになる'
-            select '１ヶ月後', from: "goal[selectbox_parameter]" 
+            select '1ヶ月後', from: "goal[deadline_on]" 
             fill_in 'goal_quantification', with: 1
             fill_in 'goal_unit', with: '社'
             fill_in 'goal_embodiment', with: '内定'
@@ -25,7 +25,7 @@ RSpec.describe "Goals", type: :system do
         context '最終目標をnilの状態で登録する' do
           it '登録失敗する' do
             visit new_goal_path
-            select '１ヶ月後', from: "goal[selectbox_parameter]" 
+            select '1ヶ月後', from: "goal[deadline_on]" 
             fill_in 'goal_quantification', with: 1
             fill_in 'goal_unit', with: '社'
             fill_in 'goal_embodiment', with: '内定'
@@ -48,7 +48,7 @@ RSpec.describe "Goals", type: :system do
           it '登録失敗する' do
             visit new_goal_path
             fill_in Goal.human_attribute_name(:what_to_do), with: 'webエンジニアになる'
-            select '１ヶ月後', from: "goal[selectbox_parameter]" 
+            select '1ヶ月後', from: "goal[deadline_on]" 
             fill_in 'goal_unit', with: '社'
             fill_in 'goal_embodiment', with: '内定'
             click_button('登録する')
@@ -59,7 +59,7 @@ RSpec.describe "Goals", type: :system do
           it '登録失敗する' do
             visit new_goal_path
             fill_in Goal.human_attribute_name(:what_to_do), with: 'webエンジニアになる'
-            select '１ヶ月後', from: "goal[selectbox_parameter]" 
+            select '1ヶ月後', from: "goal[deadline_on]" 
             fill_in 'goal_quantification', with: 1
             fill_in 'goal_embodiment', with: '内定'
             click_button('登録する')
@@ -70,7 +70,7 @@ RSpec.describe "Goals", type: :system do
           it '登録失敗する' do
             visit new_goal_path
             fill_in Goal.human_attribute_name(:what_to_do), with: 'webエンジニアになる'
-            select '１ヶ月後', from: "goal[selectbox_parameter]" 
+            select '1ヶ月後', from: "goal[deadline_on]" 
             fill_in 'goal_quantification', with: 1
             fill_in 'goal_unit', with: '社'
             click_button('登録する')
@@ -84,12 +84,12 @@ RSpec.describe "Goals", type: :system do
         @user2 = create(:user, :with_goals)
         login_as @user2
       end
-      context '期限を１ヶ月延ばす' do
-        it '期限が１ヶ月伸びて保存される' do
+      context '期限を1ヶ月延ばす' do
+        it '期限が1ヶ月伸びて保存される' do
           visit edit_goal_path(@user2.goals.first) 
-          select '１ヶ月延ばす'
+          select '1ヶ月'
           click_button('更新する')
-          # 登録したデータから、１ヶ月になっているか
+          # 登録したデータから、1ヶ月になっているか
           expect(page).to have_content ((Date.tomorrow >> 2) - (Date.today)).to_i.to_s 
         end
       end
