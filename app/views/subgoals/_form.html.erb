@@ -1,0 +1,37 @@
+<%= form_with(model: subgoal, local: true) do |form| %>
+  <% if subgoal.errors.any? %>
+    <div id="error_explanation">
+      <ul>
+      <% subgoal.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <div class='form-group'>
+    <%= form.label :subgoal, class: 'label'%>
+    <%= form.text_field :subgoal, class: 'form-control', placeholder: '懸垂をらくらくできるようになる'%>
+  </div>
+    <div class='icon'>
+      <%= fa_icon 'arrow-down 4x', class: 'fa-solid'%>
+      <p class='icon_text'><strong>サブゴールの定量化</strong></p>
+    </div>
+  <div class='row'>
+      <div class="col">
+        <%= form.select :deadline_on, subgoal.select_deadline, { include_blank: '期限設定'}, { class: 'form-control' } %>
+        <%= form.hidden_field :division_remainder, value: subgoal.division_remainder %>
+      </div>
+      <div class="col-2">
+        <%= form.number_field :quantification, class: 'form-control', placeholder: '具体的な数字' %>
+      </div>
+      <div class="col-2">
+        <%= form.text_field :unit, class: 'form-control', placeholder: 'kg, 件, 回, 点(単位)' %>
+      </div>
+      <div class="col">
+        <%= form.text_field :embodiment, class: 'form-control', placeholder: 'やせる, とる, 覚える(何をするのか)' %>
+      </div>
+  </div>
+      <div class = 'actions'>
+        <%= form.submit class: 'btn btn-primary mt-3' %>
+      </div>
+    <%end%>

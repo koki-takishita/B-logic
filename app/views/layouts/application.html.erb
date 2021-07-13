@@ -8,9 +8,7 @@
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
-
   <body>
-
     <%#= render 'layouts/header' %>
     <div class='row column-control'>
       <div class='col-3 sidebar'>
@@ -20,6 +18,9 @@
       <div class='col column-control'>
         <div class="row column-control">
           <div class='main-content'>
+            <%flash.each do |message_type, message|%>
+              <div class="alert alert-<%=message_type%>"><%=message%></div>
+            <%end%>
             <%= yield %>
           </div>
           <div class='padding-control sub-content-control'>
@@ -30,6 +31,5 @@
         </div>
       </div>
     </div>
-
   </body>
 </html>

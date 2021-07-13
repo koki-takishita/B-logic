@@ -1,5 +1,4 @@
 <h1><%= t '.title' %></h1>
-
 <% @goals.each do |goal|%>
   <p><%=link_to(goal.what_to_do, goal_path(goal))%></p>
 <%end%>

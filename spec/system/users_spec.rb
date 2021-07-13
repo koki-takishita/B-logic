@@ -11,7 +11,7 @@ RSpec.describe "Users", type: :system do
     end
 
     context 'すべての属性が有効な状態' do
-      it 'ユーザー新規作成に成功する' do
+      xit 'ユーザー新規作成に成功する' do
         fill_in 'メールアドレス', with: user.email
         fill_in 'パスワード', with: user.password
         fill_in 'パスワード(確認)', with: user.password_confirmation
@@ -22,7 +22,7 @@ RSpec.describe "Users", type: :system do
 
     context '一部属性を入力していない状態' do
       context 'emailを入力していない' do
-        it 'ユーザー新規作成に失敗する' do
+        xit 'ユーザー新規作成に失敗する' do
           fill_in 'メールアドレス', with: nil
           fill_in 'パスワード', with: user.password
           fill_in 'パスワード(確認)', with: user.password_confirmation
@@ -31,7 +31,7 @@ RSpec.describe "Users", type: :system do
         end
       end
       context 'passwordを入力していない' do
-        it 'ユーザー新規作成に失敗する' do
+        xit 'ユーザー新規作成に失敗する' do
           fill_in 'メールアドレス', with: user.email
           fill_in 'パスワード', with: nil
           fill_in 'パスワード(確認)', with: user.password_confirmation
@@ -40,7 +40,7 @@ RSpec.describe "Users", type: :system do
         end
       end
       context '確認用パスワードを入力していない' do
-        it 'ユーザー新規作成に失敗する' do
+        xit 'ユーザー新規作成に失敗する' do
           fill_in 'メールアドレス', with: user.password
           fill_in 'パスワード', with: user.password
           fill_in 'パスワード(確認)', with: nil
@@ -52,7 +52,7 @@ RSpec.describe "Users", type: :system do
 
     context 'セキュリティー関連' do
       context 'パスワードが６文字未満の場合' do
-        it 'ユーザー新規作成に失敗する' do
+        xit 'ユーザー新規作成に失敗する' do
           fill_in 'メールアドレス', with: shortage_password_user.email
           fill_in 'パスワード', with: shortage_password_user.password
           fill_in 'パスワード(確認)', with: shortage_password_user.password_confirmation
@@ -61,7 +61,7 @@ RSpec.describe "Users", type: :system do
         end
       end
       context 'パスワードと確認用パスワードが一致しない場合' do
-        it 'ユーザー新規作成に失敗する' do
+        xit 'ユーザー新規作成に失敗する' do
           fill_in 'メールアドレス', with: not_match_password_user.email
           fill_in 'パスワード', with: not_match_password_user.password
           fill_in 'パスワード(確認)', with: not_match_password_user.password_confirmation
@@ -70,7 +70,7 @@ RSpec.describe "Users", type: :system do
         end
       end
       context '重複したメールアドレスの場合' do
-        it 'ユーザー新規作成に失敗する' do
+        xit 'ユーザー新規作成に失敗する' do
           first_user = create(:user, email:  'test@example.com')
           second_user = build(:user, email: 'test@example.com')
           fill_in 'メールアドレス', with: second_user.email
@@ -91,7 +91,7 @@ RSpec.describe "Users", type: :system do
     end
 
     context '登録済みのユーザー' do
-      it 'ログインできる' do
+      xit 'ログインできる' do
         fill_in 'メールアドレス', with: user.email
         # createだと、passwordが「""」になるため
         # 直接'password'を入力している
@@ -102,7 +102,7 @@ RSpec.describe "Users", type: :system do
       end
       context '一部情報を入力していない' do
         context 'メールアドレスを入力していない' do
-          it 'ログインできない' do
+          xit 'ログインできない' do
             fill_in 'メールアドレス', with: ''
             fill_in 'パスワード', with: 'password'
             click_button 'Login'
@@ -110,7 +110,7 @@ RSpec.describe "Users", type: :system do
           end
         end
         context 'passwordを入力していない' do
-          it 'ログインできない' do
+          xit 'ログインできない' do
             fill_in 'メールアドレス', with: user.email
             fill_in 'パスワード', with: ''
             click_button 'Login'
@@ -120,7 +120,7 @@ RSpec.describe "Users", type: :system do
       end
       context '属性が間違っている' do
         context 'メールアドレスが間違っている' do
-          it 'ログインできない' do
+          xit 'ログインできない' do
             fill_in 'メールアドレス', with: 'test@example.com'
             fill_in 'パスワード', with: 'password'
             click_button 'Login'
@@ -128,7 +128,7 @@ RSpec.describe "Users", type: :system do
           end
         end
         context 'passwordが間違っている' do
-          it 'ログインできない' do
+          xit 'ログインできない' do
             fill_in 'メールアドレス', with: user.email
             fill_in 'パスワード', with: 'foobar'
             click_button 'Login'
@@ -148,7 +148,7 @@ RSpec.describe "Users", type: :system do
       end
 
       context 'indexページ' do
-        it 'ログアウトできる' do
+        xit 'ログアウトできる' do
           visit users_path
           click_link 'Logout'
           expect(page).to have_content 'Logged out!'
@@ -156,7 +156,7 @@ RSpec.describe "Users", type: :system do
         end
       end
       context 'editページ' do
-        it 'ログアウトできる' do
+        xit 'ログアウトできる' do
           visit edit_user_path(user)
           click_link 'Logout'
           expect(page).to have_content 'Logged out!'
@@ -164,7 +164,7 @@ RSpec.describe "Users", type: :system do
         end
       end
       context 'showページ' do
-        it 'ログアウトできる' do
+        xit 'ログアウトできる' do
           visit user_path(user)
           click_link 'Logout'
           expect(page).to have_content 'Logged out!'
@@ -188,7 +188,7 @@ RSpec.describe "Users", type: :system do
       end
 
       context 'メールアドレス変更' do
-        it '更新成功' do
+        xit '更新成功' do
           fill_in 'メールアドレス', with: 'foobar@example.com'
           click_button '更新する'
           expect(page).to have_content 'User was successfully updated.'
@@ -196,7 +196,7 @@ RSpec.describe "Users", type: :system do
         end
       end
       context 'password変更' do
-        it '更新成功' do
+        xit '更新成功' do
           fill_in 'パスワード', with: 'foobar'
           fill_in 'パスワード(確認)', with: 'foobar'
           click_button '更新する'
@@ -209,12 +209,12 @@ RSpec.describe "Users", type: :system do
 
   describe 'ユーザー削除機能' do
     context 'adminユーザー' do
-      it '削除できる' do
+      xit '削除できる' do
         skip '未実装'
       end
     end
     context '一般ユーザー' do
-      it '削除できない' do
+      xit '削除できない' do
         skip '未実装'
       end
     end
