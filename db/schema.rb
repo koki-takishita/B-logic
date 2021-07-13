@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_05_13_162913) do
+ActiveRecord::Schema.define(version: 2021_06_11_094507) do
 
   create_table "goals", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "embodiment"
@@ -25,6 +25,19 @@ ActiveRecord::Schema.define(version: 2021_05_13_162913) do
     t.index ["user_id"], name: "index_goals_on_user_id"
   end
 
+  create_table "subgoals", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "embodiment"
+    t.integer "quantification"
+    t.string "unit"
+    t.string "subgoal"
+    t.integer "status", default: 0
+    t.datetime "deadline_on"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.bigint "goal_id"
+    t.index ["goal_id"], name: "index_subgoals_on_goal_id"
+  end
+
   create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "email", null: false
     t.string "crypted_password"
@@ -35,4 +48,5 @@ ActiveRecord::Schema.define(version: 2021_05_13_162913) do
   end
 
   add_foreign_key "goals", "users"
+  add_foreign_key "subgoals", "goals"
 end

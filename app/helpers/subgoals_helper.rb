@@ -1,0 +1,2 @@
+module SubgoalsHelper
+end

@@ -6,7 +6,7 @@
 //--- TEMPLATE -------------------------------//
 #myHexGrid {
 //--- SETTINGS -------------- VALUES ---------//
-  $gridWidth:   55em;       // 'auto',(px,pt,r/em,vw/h)
+  $gridWidth:   60em;       // 'auto',(px,pt,r/em,vw/h)
   $gridHeight:  auto;       // 'auto',(px,pt,r/em,vw/h)
   $columnCount: 5;          // 'auto',(number)
   $rowCount:    2;          // 'auto',(number)
@@ -17,7 +17,7 @@
   $cropFactor:  1;          // (number)
   $hexContent:  auto;       // 'auto','center'
   $hexSize:     auto;       // 'auto',(px,pt,r/em,vw/h)
-  $hexMargin:   1em;      // (px,pt,r/em,vw/h)
+  $hexMargin:   0.5em;      // (px,pt,r/em,vw/h)
   $hexShape:    hexagon;    // 'hexagon','circle'
   $hexColor:    silver;    // hexcode,rgb/a,named
   //$images:      none;

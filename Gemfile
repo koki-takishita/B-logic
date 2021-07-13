@@ -43,6 +43,7 @@ group :development, :test do
   gem 'capybara', '~> 3.35', '>= 3.35.3'
   gem 'factory_bot_rails', '~> 6.2'
   gem 'webdrivers'
+  gem 'launchy'
 end
 
 group :development do
@@ -61,6 +62,7 @@ gem 'robocop', '~> 0.1.1'
 gem 'better_errors', '~> 2.9', '>= 2.9.1'
 gem 'binding_of_caller', '~> 1.0'
 gem 'bootstrap', '~> 5.0', '>= 5.0.1'
+gem 'active_decorator', '~> 1.4'
 gem 'jquery-rails'
 gem 'sorcery', '~> 0.16.1'
 gem 'enum_help'

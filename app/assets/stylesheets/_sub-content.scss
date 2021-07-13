@@ -16,10 +16,18 @@
 }
 .text{
   border: 2px solid #26B8F6;
-  width: 400px;
+  width: 700px;
+}
+.short_text{
+  @extend .text;
+  width: 150px;
 }
 .label{
-  margin-top: 40px;
+  margin-top: 20px;
   margin-bottom: 0px;
   text-align: left;
+}
+.btn_control{
+  margin-top: 60px;
+  margin-right: 10px;
 }
