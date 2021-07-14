@@ -11,10 +11,12 @@ namespace :status_expired do
       ["Goal", "Subgoal"].map{|model| model.constantize}
     end
   task expired!: :environment do
-    enum_run = 1
-    objects = models_hash.map{|model|
+    enum_run = 0
+    relations = models_hash.map{|model|
       model.where("status = ? and deadline_on < ?", enum_run, current_of_the_day)
     }
-    objects.each{ |object| object.expired! if object.present? }
+    objects = []
+    relations.each{|relation| objects << relation[0]}
+    objects.each{|object| object.expired! if object.present? }
   end
 end

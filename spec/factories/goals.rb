@@ -6,14 +6,6 @@ FactoryBot.define do
     what_to_do { 'lose' }
     deadline_on { Date.tomorrow.next_month }
 
-    trait :active do
-      status { :active }
-    end
-
-    trait :inactive do
-      status { :inactive }
-    end
-
     trait :next_month do
       deadline_on { Date.tomorrow.next_month }
     end

@@ -1,5 +1,4 @@
 class GoalsController < ApplicationController
-  after_action :deadline_inquiry, only: [:index]
   def new
     @goal = Goal.new
   end
@@ -51,13 +50,6 @@ class GoalsController < ApplicationController
 
     def goal_params
       params.require(:goal).permit(:embodiment, :quantification, :unit, :what_to_do, :deadline_on)
-    end
-
-    def deadline_inquiry
-      # 期限が過ぎていたらexpiredメソッド実行
-      @goals.map {|goal|
-        goal.expired if !goal.done? && goal.deadline_overdue?
-      }
     end
 
 end
