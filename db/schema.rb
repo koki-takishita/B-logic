@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_07_15_175942) do
+ActiveRecord::Schema.define(version: 2021_07_15_180827) do
 
   create_table "goals", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "embodiment"
@@ -39,7 +39,7 @@ ActiveRecord::Schema.define(version: 2021_07_15_175942) do
   end
 
   create_table "tasks", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.integer "type", default: 0
+    t.integer "task_type", default: 0
     t.string "task"
     t.datetime "deadline_on"
     t.datetime "created_at", null: false
