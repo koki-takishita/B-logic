@@ -1,6 +1,4 @@
 class Subgoal < ApplicationRecord
-  include Attr_accssor
-  include Status
   include Validators
   include Enum_status
   belongs_to :goal
