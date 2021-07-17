@@ -9,7 +9,9 @@ class TasksController < ApplicationController
   end
 
   def create
-    @task = view_context.selected_subgoals.build(task_params)
+    @task = view_context.selected_subgoal.tasks.build(task_params)
+    @task.task_type_check
+=begin
     if @task.save
       flash[:success] = t 'task.flash.create'
       redirect_to task_path(@task)
@@ -17,6 +19,7 @@ class TasksController < ApplicationController
       flash[:success] = t 'task.flash.danger'
       render :new
     end
+=end
   end
 
   def edit
@@ -45,7 +48,21 @@ class TasksController < ApplicationController
   private
 
     def task_params
-      params.require(:task).permit(:task_type, :task, :deadline_on)
+      params_int(params.require(:task).permit(:task_type, :task, :deadline_on, :time_limit))
     end
 
+    def params_int(model_params)
+      model_params.each do |key, value|
+        if integer_string?(value)
+          model_params[key] = value.to_i
+        end
+      end
+    end
+
+    def integer_string?(str)
+      Integer(str)
+        true
+      rescue ArgumentError
+        false
+    end
 end

@@ -1,1 +1,71 @@
-<%= @subgoal.subgoal%>
+<!-- Button trigger modal -->
+<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+  new_task
+</button>
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <%= form_with scope: :task, url: tasks_path, local: true do |f| %>
+      <div class="modal-header">
+        <ul class="nav nav-pills" id="pills-tab" role="tablist">
+          <li class="nav-item" role="presentation">
+            <a class="nav-link active" id="pills-home-tab" data-bs-toggle="pill" href="#pills-home" role="tab" aria-controls="pills-home" aria-selected="true">ルーティン型タスク</a>
+          </li>
+          <li class="nav-item" role="presentation">
+            <a class="nav-link" id="pills-profile-tab" data-bs-toggle="pill" href="#pills-profile" role="tab" aria-controls="pills-profile" aria-selected="false">単発型タスク</a>
+          </li>
+        </ul>
+      </div>
+      <div class="modal-body">
+        <div class="tab-content" id="pills-tabContent">
+
+          <div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">
+            <div class='mb-3'>
+              <%= f.label :task, class: 'form-label'%>
+              <%= f.text_field :task, class: 'form-control', id: 'js-task-text-routen' %>
+            </div>
+            <div class='mb-3'>
+              <%= f.label :deadline_on, class: 'form-label'%>
+              <%= f.time_field :time_limit, class: 'form-control' %>
+            </div>
+          </div>
+
+          <div class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab">
+            <div class='mb-3'>
+              <%= f.label :task, class: 'form-label'%>
+              <%= f.text_field :task, class: 'form-control', id: 'js-task-text-active' %>
+            </div>
+            <div class='mb-3'>
+              <%= f.label :deadline_on, class: 'form-label'%>
+              <%= f.date_field :deadline_on, class: 'form-control'%>
+            </div>
+          </div>
+
+        </div>
+        <%= f.hidden_field :task_type, id: 'js-task-type-select' %>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <%= f.submit class: 'btn btn-primary', id: 'js-submit-button', onclick: "buttonClick()"%>
+      </div>
+      <%end%>
+    </div>
+  </div>
+</div>
+    <script>
+      function buttonClick(){
+              let hidden = document.getElementById('js-task-type-select')
+              let task_type_routine = document.getElementById('pills-home-tab');
+              let task_text_active = document.getElementById('js-task-text-active');
+              let task_text = document.getElementById('js-task-text-routen');
+              if (task_type_routine.className == "nav-link active") {
+                      hidden.value = 1;
+                      task_text_active.value = task_text.value
+                    }
+              else {
+                      hidden.value = 0;
+                    }
+            }
+    </script>
