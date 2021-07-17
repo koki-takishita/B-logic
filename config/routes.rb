@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   root :to => 'goals#index'
   resources :goals
   resources :subgoals
-  resources :task
+  resources :tasks
   resources :users, only: [:edit, :update, :destroy, :show]
 
   scope :start do
