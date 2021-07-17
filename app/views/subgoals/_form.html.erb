@@ -19,7 +19,6 @@
   <div class='row'>
       <div class="col">
         <%= form.select :deadline_on, subgoal.select_deadline, { include_blank: '期限設定'}, { class: 'form-control' } %>
-        <%= form.hidden_field :division_remainder, value: subgoal.division_remainder %>
       </div>
       <div class="col-2">
         <%= form.number_field :quantification, class: 'form-control', placeholder: '具体的な数字' %>
