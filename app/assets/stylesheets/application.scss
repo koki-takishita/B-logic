@@ -1,10 +1,12 @@
 @import 'bootstrap';
-@import 'hexi-flexi-grid';
-@import 'hex-style';
-@import 'sidebar-style';
-@import "font-awesome";
+//@import 'hexi-flexi-grid';
+//@import 'hex-style';
+//@import 'sidebar-style';
 @import 'main-content';
-@import 'sub-content';
+//@import 'sub-content';
+@import "modal-style";
+@import "font-awesome";
+
 h1 {
   margin: 0px;
 }
@@ -15,6 +17,7 @@ html {
 
 body {
   height: 100%;
+  background-color: black;
 }
 .column-control {
   height: 100%;

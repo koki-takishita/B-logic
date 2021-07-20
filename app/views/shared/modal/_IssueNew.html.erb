@@ -1,0 +1,31 @@
+<!-- Modal -->
+<div class="modal fade" id="IssueNewModal" tabindex="-1" aria-labelledby="IssueNewModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content issue_modal_border_color">
+      <div class="modal-header issue-modal-header">
+        <h5 class="modal-title" id="IssueNewModalLabel">新規</h5>
+        <!--
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
+        </button>
+        -->
+      </div>
+      <div class="modal-body">
+        <%= form_with scope: :session, url: login_path, method: :post, local: true, html: { autocomplete: 'off' } do |f| %>
+          <div class="field issue-field">
+            <%#= f.label :email, issue.human_attribute_name(:email), class: 'form-label'%>
+            <%#= f.text_field :email, class: 'form-control issue-form-control'%>
+          </div>
+          <div class="field issue-field">
+            <%#= f.label :password, issue.human_attribute_name(:password), class: 'form-labl' %>
+            <%#= f.text_field :password, class: 'form-control issue-form-control' %>
+          </div>
+      </div>
+      <div class="modal-footer issue-modal-footer">
+        <button type="button" class="issue-btn btn" data-bs-dismiss="modal">閉じる</button>
+          <%= f.submit 'ログイン', class: 'btn issue-btn'%>
+        <%end%>
+      </div>
+    </div>
+  </div>
+</div>
+

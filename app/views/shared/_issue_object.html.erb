@@ -1,0 +1,22 @@
+<div class="base_object_text issue_object_text_color">
+  <h1>課題</h1>
+</div>
+<div class="border-blue base_object overflow-auto">
+  <div class="container">
+    <div class="base_object_list margin_top_30">
+      <ol class="issue_object_text_color">
+        <li class="h2 margin_top_20">
+          <h2>
+            <%=link_to "課題一覧", issues_path, class: "issue_hover_text issue_object_text_color text-decoration-none"%>
+          </h2>
+        </li>
+        <li class="h2 margin_top_20">
+          <h2>
+            <%=button_tag '課題新規作成', 'data-bs-toggle': 'modal', 'data-bs-target': '#IssueNewModal', class: 'issue_hover_text issue_object_text_color text-decoration-none' %>
+          </h2>
+        </li>
+      </ol>
+    </div>
+  </div>
+</div>
+<%=render 'shared/modal/IssueNew'%>

@@ -1,5 +1,5 @@
 class UserSessionsController < ApplicationController
-  layout 'start'
+  #layout 'start'
 
   skip_before_action :require_login, only: [:new, :create]
 
@@ -17,10 +17,10 @@ class UserSessionsController < ApplicationController
 
   def destroy
     logout
-    redirect_to(:login, notice: 'Logged out!')
+    redirect_to(:root, notice: 'Logged out!')
   end
 
   def user_params
-    params.require(:user_session).permit(:email, :password)
+    params.require(:session).permit(:email, :password)
   end
 end

@@ -1,0 +1,85 @@
+.modal-header{
+  padding: 5px;
+  padding-left: 10px;
+}
+
+// user-style
+.user-modal-header{
+  border-bottom-color: #31ff10;
+  color: #31ff10; 
+}
+.issue-modal-header{
+  border-bottom-color: #26b8f6;
+  color: #26b8f6;
+}
+//
+
+
+// btn
+.btn{
+  background-color: black;
+}
+.user-btn{
+  border: 1.5px solid #31ff10;
+  color: #31ff10;
+}
+.user-btn:hover{
+  background-color: #31ff10;
+}
+
+.issue-btn{
+  border: 1.5px solid #26b8f6;
+  color: #26b8f6;
+}
+.issue-btn:hover{
+  background-color: #26b8f6;
+}
+//
+
+.modal-content{
+  background-color: black;
+}
+
+.user_modal_border_color {
+  border: 1.5px solid #31ff10;
+}
+.issue-modal-footer{
+  border-top-color: #26b8f6;
+}
+.issue_modal_border_color {
+  border: 1.5px solid #26b8f6;
+}
+.issue-modal-footer{
+  border-top-color: #26b8f6;
+}
+
+
+// form
+.user-field{
+  color: #31ff10;
+  margin-bottom: 10px;
+}
+.user-form-control{
+  background-color: black;
+  border: 1.5px solid #31ff10;
+  color: #31ff10;
+}
+.user-form-control:focus {
+  background-color: black;
+  color: #31ff10;
+}
+
+.issue-field{
+  color: #26b8f6;
+  margin-bottom: 10px;
+}
+.issue-form-control{
+  background-color: black;
+  border: 1.5px solid #26b8f6;
+  color: #26b8f6;
+}
+.issue-form-control:focus {
+  background-color: black;
+  color: #26b8f6;
+}
+//

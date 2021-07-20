@@ -1,0 +1,29 @@
+<div class="base_object_text user_object_text_color">
+  <h1>ユーザー</h1>
+</div>
+<div class="border-green base_object overflow-auto">
+  <div class="container">
+    <div class="base_object_list margin_top_30">
+      <ol class="user_object_text_color">
+        <li class="h2 margin_top_20">
+          <h2>
+            <%=button_tag '新規登録', 'data-bs-toggle': 'modal', 'data-bs-target': '#exampleModal', class: 'user_hover_text user_object_text_color text-decoration-none' %>
+
+          </h2>
+        </li>
+        <li class="h2 margin_top_20">
+          <h2>
+            <%=button_tag 'ログイン', 'data-bs-toggle': 'modal', 'data-bs-target': '#LoginModal', class: 'user_hover_text user_object_text_color text-decoration-none' %>
+          </h2>
+        </li>
+        <li class="h2 margin_top_20">
+          <h2>
+            <%=link_to "ログアウト", logout_path, method: :post, class: "user_hover_text user_object_text_color text-decoration-none"%>
+          </h2>
+        </li>
+      </ol>
+    </div>
+  </div>
+</div>
+<%= render 'shared/modal/signup' %>
+<%= render 'shared/modal/login'%>
