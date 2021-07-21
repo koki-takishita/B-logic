@@ -10,44 +10,35 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_07_16_190449) do
+ActiveRecord::Schema.define(version: 2021_07_21_105149) do
 
   create_table "goals", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.string "embodiment"
-    t.integer "quantification"
-    t.string "unit"
-    t.string "what_to_do"
     t.integer "status", default: 0
-    t.datetime "deadline_on"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "user_id", null: false
+    t.string "name"
+    t.datetime "deadline"
     t.index ["user_id"], name: "index_goals_on_user_id"
   end
 
-  create_table "subgoals", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.string "embodiment"
-    t.integer "quantification"
-    t.string "unit"
-    t.string "subgoal"
-    t.integer "status", default: 0
-    t.datetime "deadline_on"
+  create_table "issues", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "name"
+    t.bigint "goal_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.bigint "goal_id"
-    t.index ["goal_id"], name: "index_subgoals_on_goal_id"
+    t.index ["goal_id"], name: "index_issues_on_goal_id"
   end
 
   create_table "tasks", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.integer "task_type", default: 0
     t.string "task"
-    t.datetime "deadline_on"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "status", default: 0
-    t.bigint "subgoal_id"
-    t.time "time_limit"
-    t.index ["subgoal_id"], name: "index_tasks_on_subgoal_id"
+    t.datetime "reminder"
+    t.bigint "issue_id"
+    t.index ["issue_id"], name: "index_tasks_on_issue_id"
   end
 
   create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -60,6 +51,6 @@ ActiveRecord::Schema.define(version: 2021_07_16_190449) do
   end
 
   add_foreign_key "goals", "users"
-  add_foreign_key "subgoals", "goals"
-  add_foreign_key "tasks", "subgoals"
+  add_foreign_key "issues", "goals"
+  add_foreign_key "tasks", "issues"
 end
