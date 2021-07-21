@@ -12,6 +12,11 @@
   border-bottom-color: #26b8f6;
   color: #26b8f6;
 }
+.goal-modal-header{
+  border-bottom-color: #ff8310;
+  color: #ff8310;
+}
+
 //
 
 
@@ -26,7 +31,6 @@
 .user-btn:hover{
   background-color: #31ff10;
 }
-
 .issue-btn{
   border: 1.5px solid #26b8f6;
   color: #26b8f6;
@@ -34,17 +38,26 @@
 .issue-btn:hover{
   background-color: #26b8f6;
 }
+.goal-btn{
+  border: 1.5px solid #ff8310;
+  color: #ff8310;
+}
+.goal-btn:hover{
+  background-color: #ff8310;
+}
+
 //
 
 .modal-content{
   background-color: black;
 }
 
+// border
 .user_modal_border_color {
   border: 1.5px solid #31ff10;
 }
-.issue-modal-footer{
-  border-top-color: #26b8f6;
+.user-modal-footer{
+  border-top-color: #31ff10;
 }
 .issue_modal_border_color {
   border: 1.5px solid #26b8f6;
@@ -52,6 +65,13 @@
 .issue-modal-footer{
   border-top-color: #26b8f6;
 }
+.goal_modal_border_color {
+  border: 1.5px solid #ff8310;
+}
+.goal-modal-footer{
+  border-top-color: #ff8310;
+}
+//
 
 
 // form
@@ -81,5 +101,34 @@
 .issue-form-control:focus {
   background-color: black;
   color: #26b8f6;
+}
+.goal-field{
+  color: #ff8310;
+  margin-bottom: 10px;
+}
+.goal-form-control{
+  background-color: black;
+  border: 1.5px solid #ff8310;
+  color: #ff8310;
+}
+.goal-form-control:focus {
+  background-color: black;
+  color: #ff8310;
+}
+//
+
+//tab
+.nav-tabs {
+  border: 0px none;
+}
+.nav-tabs .nav-link{
+  border: 0px none;
+}
+.nav-tabs .nav-link.active, .nav-tabs .nav-item.show .nav-link{
+  color: black;
+  background-color: #ff8310;
+}
+.goal-btn:hover{
+  color: black;
 }
 //

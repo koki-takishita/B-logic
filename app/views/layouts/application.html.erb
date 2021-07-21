@@ -7,30 +7,27 @@
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-material-datetimepicker/2.7.1/css/bootstrap-material-datetimepicker.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.20.1/moment.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.20.1/locale/ja.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-material-datetimepicker/2.7.1/js/bootstrap-material-datetimepicker.min.js"></script>
+
+    <script>
+      $(function(){
+        $("#picker").bootstrapMaterialDatePicker({
+           weekStart:0,
+           lang: 'ja',
+           time:false,
+           format:"YYYY-MM-DD HH:mm",
+           minDate:moment(),
+           maxDate:moment().add(6,"months")
+          });
+        });
+    </script>
   </head>
   <body>
-    <%#= render 'layouts/header' %>
-    <!--<div class='row column-control'>
-      <div class='col-3 sidebar'>
-        <%#= render 'layouts/sidebar' %>
-      </div>-->
-      <!--main content -->
-      <!--<div class='col column-control'>
-        <div class="row column-control">
-          <div class='main-content'>-->
-            <%#flash.each do |message_type, message|%>
-              <!--<div class="alert alert-<%#=message_type%>"><%#=message%></div>-->
-            <%#end%>
-            <%= yield %>
-          <!--</div>-->
-          <!--
-          <div class='padding-control sub-content-control'>
-            <div class='column-control'>
-              <%#= render 'layouts/subcontent' %>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>-->
+    <%= yield %>
   </body>
 </html>

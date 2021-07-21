@@ -1,0 +1,31 @@
+<!-- Modal -->
+<div class="modal fade" id="GoalNewModal" tabindex="-1" aria-labelledby="GoalNewModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content goal_modal_border_color">
+      <div class="modal-header goal-modal-header">
+        <h5 class="modal-title" id="GoalNewModalLabel">新規</h5>
+        <!--
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
+        </button>
+        -->
+      </div>
+      <div class="modal-body">
+        <%= form_with  model: Goal.new, local: true, html: { autocomplete: 'off' } do |f| %>
+          <div class="field goal-field">
+            <%= f.label :what_to_do, Goal.human_attribute_name(:what_to_do), class: 'form-label'%>
+            <%= f.text_field :what_to_do, class: 'form-control goal-form-control'%>
+          </div>
+          <div class="field goal-field">
+            <%= f.label :deadline_on, Goal.human_attribute_name(:deadline_on), class: 'form-labl' %>
+            <%= f.text_field :deadline_on, class: 'form-control goal-form-control d-block', id: 'picker' %>
+          </div>
+      </div>
+      <div class="modal-footer goal-modal-footer">
+        <button type="button" class="goal-btn btn" data-bs-dismiss="modal">閉じる</button>
+          <%= f.submit '登録する', class: 'btn goal-btn'%>
+        <%end%>
+      </div>
+    </div>
+  </div>
+</div>
+

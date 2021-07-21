@@ -86,9 +86,13 @@ button {
 }
 */
 
+.border-orange-square{
+  border: 1.5px solid #ff8310;
+}
+
 .border-orange{
   border: 1.5px solid #ff8310;
-  border-radius: 10px;
+  border-radius: 5px;
 }
 .border-blue{
   border: 1.5px solid #26b8f6;
@@ -152,6 +156,10 @@ button {
 .margin_top_20{
   margin-top: 20px;
 }
+.margin_top_25{
+  margin-top: 25px;
+}
+
 .bg-black{
   background-color: black;
 }
