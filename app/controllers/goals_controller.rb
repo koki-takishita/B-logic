@@ -1,30 +1,18 @@
 class GoalsController < ApplicationController
-  def new
-    @goal = Goal.new
-  end
 
   def index
     @goals = current_user.goals
-  end
-
-  def show
-    @goal = current_user.goals.find(params[:id])
-    session[:goal_id] = @goal.id.to_s
   end
 
   def create
     @goal = current_user.goals.build(goal_params)
     if @goal.save
       flash[:success] = t 'goals.flash.create'
-      redirect_to goal_path(@goal)
+      redirect_to goals_path 
     else
       flash[:success] = t 'goals.flash.danger'
-      render :new
+      render 'home/top' 
     end
-  end
-
-  def edit
-    @goal = current_user.goals.find(params[:id])
   end
 
   def update
@@ -32,9 +20,9 @@ class GoalsController < ApplicationController
     @goal.assign_attributes(goal_params)
     if @goal.save
       flash[:success] = t 'goals.flash.update'
-      redirect_to goal_path(@goal)
+      redirect_to goals_path
     else
-      render :edit
+      render :index
     end
   end
 
@@ -49,7 +37,7 @@ class GoalsController < ApplicationController
   private
 
     def goal_params
-      params.require(:goal).permit(:embodiment, :quantification, :unit, :what_to_do, :deadline_on)
+      params.require(:goal).permit(:name, :deadline)
     end
 
 end

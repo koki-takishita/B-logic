@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_07_21_105149) do
+ActiveRecord::Schema.define(version: 2021_07_22_040737) do
 
   create_table "goals", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.integer "status", default: 0
@@ -27,6 +27,7 @@ ActiveRecord::Schema.define(version: 2021_07_21_105149) do
     t.bigint "goal_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "solution"
     t.index ["goal_id"], name: "index_issues_on_goal_id"
   end
 

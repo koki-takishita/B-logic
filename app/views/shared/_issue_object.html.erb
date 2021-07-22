@@ -6,6 +6,8 @@
     <div class="base_object_list margin_top_30">
       <ol class="issue_object_text_color">
         <li class="h2 margin_top_20">
+
+            <%=render 'shared/modal/IssueNew'%>
           <h2>
             <%=link_to "課題一覧", issues_path, class: "issue_hover_text issue_object_text_color text-decoration-none"%>
           </h2>
@@ -19,4 +21,3 @@
     </div>
   </div>
 </div>
-<%=render 'shared/modal/IssueNew'%>

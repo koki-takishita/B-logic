@@ -115,6 +115,11 @@
   background-color: black;
   color: #ff8310;
 }
+.modal-show-label{
+  font-weight: normal;
+  padding: 5px 5px;
+  text-align: center;
+}
 //
 
 //tab
@@ -132,3 +137,14 @@
   color: black;
 }
 //
+.issue-inline{
+  display: inline;
+}
+.nav-link.issue-btn.active{
+  background-color: #26b8f6;
+  color: black;
+}
+.nav-link.user-btn.active{
+  background-color: #31ff10;
+  color: black;
+}

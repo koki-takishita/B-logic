@@ -2,8 +2,11 @@ Rails.application.routes.draw do
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   #root :to => 'goals#index'
   root :to => 'home#top'
-  resources :goals
-  resources :subgoals
+  resources :goals do
+    member do
+      put :done
+    end
+  end
   resources :tasks do
     put 'done', on: :member
   end

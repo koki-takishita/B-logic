@@ -117,7 +117,6 @@ button {
 
 .base_object_text{
   text-align: center;
-  margin-top: 30px;
 }
 
 .base_object_text_color{
@@ -159,6 +158,16 @@ button {
 .margin_top_25{
   margin-top: 25px;
 }
+.margin_bottom_30{
+  margin-bottom: 30px;
+}
+.margin_bottom_20{
+  margin-bottom: 20px;
+}
+.margin_bottom_25{
+  margin-bottom: 25px;
+}
+
 
 .bg-black{
   background-color: black;
@@ -170,12 +179,15 @@ button {
 //hover text
 .goal_hover_text:hover {
   background-color: #ff8310;
+  color: black;
 }
 .issue_hover_text:hover {
   background-color: #26b8f6;
+  color: black;
 }
 .user_hover_text:hover {
   background-color: #31ff10;
+  color: black;
 }
 button{
   background-color: black;
