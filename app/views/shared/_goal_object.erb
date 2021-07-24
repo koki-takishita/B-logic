@@ -5,18 +5,20 @@
   <div class="base_object_list margin_top_30">
     <div class="container">
       <ol class="goal_object_text_color">
-        <li class="h2 margin_top_20">
-          <h2>
-          <%=link_to "目標一覧", goals_path, class: "goal_hover_text goal_object_text_color text-decoration-none"%>
-          </h2>
-        </li>
-        <li class="h2 margin_top_20">
-          <h2>
-          <%=button_tag '目標新規作成', 'data-bs-toggle': 'modal', 'data-bs-target': '#GoalNewModal', class: 'goal_hover_text goal_object_text_color text-decoration-none' %>
-        </h2>
-        </li>
+        <%if logged_in?%>
+          <li class="h2 margin_top_20">
+            <h2>
+            <%=link_to "目標一覧", goals_path, class: "goal_hover_text goal_object_text_color text-decoration-none"%>
+            </h2>
+          </li>
+          <li class="h2 margin_top_20">
+            <h2>
+              <%=button_tag '目標新規作成', 'data-bs-toggle': 'modal', 'data-bs-target': '#GoalNewModal', class: 'goal_hover_text goal_object_text_color text-decoration-none' %>
+            </h2>
+            <%=render 'shared/modal/GoalNew'%>
+          </li>
+        <%end%>
       </ol>
     </div>
   </div>
 </div>
-<%=render 'shared/modal/GoalNew'%>

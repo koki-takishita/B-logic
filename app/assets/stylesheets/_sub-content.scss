@@ -1,33 +1,9 @@
-.col {
-  height: 100%;
+.base-height{
+  height: 800px;
 }
-.sub-content {
-  color: #33E971;
-  background-color: #383947;
-  height: 100%;
+.test-box{
+  height: 350px;
 }
-
-.padding-control {
-  padding: 0px;
-}
-
-.sub-content-control {
-  height: 30%;
-}
-.text{
-  border: 2px solid #26B8F6;
-  width: 700px;
-}
-.short_text{
-  @extend .text;
-  width: 150px;
-}
-.label{
-  margin-top: 20px;
-  margin-bottom: 0px;
-  text-align: left;
-}
-.btn_control{
-  margin-top: 60px;
-  margin-right: 10px;
+.terminal{
+  height: 700px;
 }

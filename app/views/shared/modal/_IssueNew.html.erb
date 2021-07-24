@@ -9,7 +9,6 @@
         </button>
         -->
       </div>
-
       <%= form_with model: Issue.new, local: true, html: { autocomplete: 'off' } do |f| %>
         <div class="modal-body">
           <div class="field issue-field">
@@ -24,6 +23,7 @@
             <%= f.label :solution, Issue.human_attribute_name(:solution), class: 'form-labl' %>
             <%= f.text_field :solution, class: 'form-control issue-form-control' %>
           </div>
+          <%=f.hidden_field :user_id, value: current_user.id%>
         </div>
         <div class="modal-footer issue-modal-footer">
           <button type="button" class="issue-btn btn" data-bs-dismiss="modal">閉じる</button>

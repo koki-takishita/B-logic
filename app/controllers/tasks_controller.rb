@@ -1,54 +1,41 @@
 class TasksController < ApplicationController
-  def new
-    @task = view_context.selected_subgoal.tasks.build 
-  end
 
-  def show
-    @task = view_context.selected_subgoal.tasks.find_by_id(params[:id]) 
-    session[:task_id] = @subgoal.id.to_s
+  def index
+    @tasks = current_user.tasks
   end
 
   def create
-    @task = view_context.selected_subgoal.tasks.build(task_params)
-    @task.task_type_check
-=begin
+    issue = issue_find
+    @task = issue.tasks.build(task_params)
     if @task.save
-      flash[:success] = t 'task.flash.create'
-      redirect_to task_path(@task)
+      redirect_back(fallback_location: back_url)
     else
-      flash[:success] = t 'task.flash.danger'
-      render :new
+      render 'home/top'
     end
-=end
-  end
-
-  def edit
-    @task = view_context.selected_subgoals.find(params[:id])
   end
 
   def update
-    @task = view_context.selected_subgoals.find(params[:id])
+    @task = task_find
     @task.assign_attributes(task_params)
     if @task.save
       flash[:success] = t 'task.flash.update'
-      redirect_to task_path(@task)
+      redirect_back(fallback_location: back_url)
     else
       render :edit
     end
   end
 
   def destroy
-    @task = view_context.selected_subgoals.find(params[:id])
+    @task = current_user.tasks.find(params[:id]) 
     if @task.destroy
-      flash[:danger] = t 'tasks.flash.destroy'
-      redirect_to subgoals_path
+      redirect_back(fallback_location: back_url)
     end
   end
 
   private
 
     def task_params
-      params_int(params.require(:task).permit(:task_type, :task, :deadline_on, :time_limit))
+      params.require(:task).permit(:name, :reminder, :user_id)
     end
 
     def params_int(model_params)
@@ -59,10 +46,24 @@ class TasksController < ApplicationController
       end
     end
 
+    def back_url
+      url = Rails.application.routes.recognize_path(request.referrer)
+      previous_action = url[:action]
+    end
+
     def integer_string?(str)
       Integer(str)
         true
       rescue ArgumentError
         false
+    end
+
+    def issue_find
+      Issue.find(params[:task][:issue_id])
+    end
+
+    def task_find
+      issue = issue_find
+      issue.tasks.find(params[:id])
     end
 end

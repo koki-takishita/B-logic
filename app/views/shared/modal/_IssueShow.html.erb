@@ -1,5 +1,5 @@
 <!-- Modal -->
-<div class="modal fade" id="IssueShow<%=issue.id%>Modal" tabindex="-1" aria-labelledby="IssueShow<%=issue.id%>ModalLabel" aria-hidden="true">
+<div class="modal fade" id="IssueShowModal<%=issue.id%>" tabindex="-1" aria-labelledby="IssueShowModalLabel<%=issue.id%>" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered">
     <div class="modal-content issue_modal_border_color">
       <div class="modal-header issue-modal-header">
@@ -37,6 +37,7 @@
                   <%= f.text_field :solution, class: 'form-control issue-form-control' %>
                 </div>
                 <%=f.hidden_field :goal_id, value: issue.goal.id%>
+                <%=f.hidden_field :user_id, value: current_user.id%>
                 <div class='field issue-field text-center'>
                   <%= f.submit '更新する', class: 'btn issue-btn'%>
                 </div>

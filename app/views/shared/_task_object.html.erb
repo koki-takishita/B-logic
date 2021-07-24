@@ -1,0 +1,24 @@
+<div class="base_object_text task_object_text_color">
+  <h1>タスク</h1>
+</div>
+<div class="border-yellow base_object overflow-auto">
+  <div class="base_object_list margin_top_30">
+    <div class="container">
+      <ol class="task_object_text_color">
+        <%if logged_in?%>
+          <li class="h2 margin_top_20">
+            <h2>
+            <%=link_to "タスク一覧", tasks_path, class: "task_hover_text task_object_text_color text-decoration-none"%>
+            </h2>
+          </li>
+          <li class="h2 margin_top_20">
+            <h2>
+              <%=button_tag 'タスク新規作成', 'data-bs-toggle': 'modal', 'data-bs-target': '#TaskNewModal', class: 'task_hover_text task_object_text_color text-decoration-none' %>
+            </h2>
+            <%=render 'shared/modal/TaskNew'%>
+          </li>
+        <%end%>
+      </ol>
+    </div>
+  </div>
+</div>

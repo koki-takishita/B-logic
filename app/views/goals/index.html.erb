@@ -37,7 +37,7 @@
             <%@goals.each do |goal|%>
               <%goal.issues.each do |issue|%>
                 <%=render 'shared/modal/IssueShow', issue: issue%>
-                <%= button_tag 'data-bs-toggle': 'modal', 'data-bs-target': "#IssueShow#{issue.id}Modal", class: 'd-inline w-100' do %>
+                <%= button_tag 'data-bs-toggle': 'modal', 'data-bs-target': "#IssueShowModal#{issue.id}", class: 'd-inline w-100' do %>
                   <div class="items">
                     <div class="issue_hover_text border-blue margin_top_30 height_50 overflow-scroll" style="display: flex; align-items: center; justify-content: center;">
                       <h3 class="issue_object_text_color m-2 issue_hover_text"><%=issue.name%></h3> 

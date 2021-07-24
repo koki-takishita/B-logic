@@ -16,7 +16,10 @@
   border-bottom-color: #ff8310;
   color: #ff8310;
 }
-
+.task-modal-header{
+  border-bottom-color: yellow;
+  color: yellow;
+}
 //
 
 
@@ -45,6 +48,13 @@
 .goal-btn:hover{
   background-color: #ff8310;
 }
+.task-btn{
+  border: 1.5px solid yellow;
+  color: yellow;
+}
+.task-btn:hover{
+  background-color: yellow;
+}
 
 //
 
@@ -71,6 +81,13 @@
 .goal-modal-footer{
   border-top-color: #ff8310;
 }
+.task_modal_border_color {
+  border: 1.5px solid yellow;
+}
+.task-modal-footer{
+  border-top-color: yellow; 
+}
+
 //
 
 
@@ -87,6 +104,19 @@
 .user-form-control:focus {
   background-color: black;
   color: #31ff10;
+}
+.task-field{
+  color: yellow;
+  margin-bottom: 10px;
+}
+.task-form-control{
+  background-color: black;
+  border: 1.5px solid yellow;
+  color: yellow;
+}
+.task-form-control:focus {
+  background-color: black;
+  color: yellow;
 }
 
 .issue-field{
@@ -133,7 +163,7 @@
   color: black;
   background-color: #ff8310;
 }
-.goal-btn:hover{
+.btn:hover{
   color: black;
 }
 //
@@ -144,6 +174,11 @@
   background-color: #26b8f6;
   color: black;
 }
+.nav-link.task-btn.active{
+  background-color: yellow;
+  color: black;
+}
+
 .nav-link.user-btn.active{
   background-color: #31ff10;
   color: black;

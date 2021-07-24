@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_07_22_040737) do
+ActiveRecord::Schema.define(version: 2021_07_23_031612) do
 
   create_table "goals", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.integer "status", default: 0
@@ -28,18 +28,22 @@ ActiveRecord::Schema.define(version: 2021_07_22_040737) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "solution"
+    t.bigint "user_id", null: false
     t.index ["goal_id"], name: "index_issues_on_goal_id"
+    t.index ["user_id"], name: "index_issues_on_user_id"
   end
 
   create_table "tasks", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.integer "task_type", default: 0
-    t.string "task"
+    t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "status", default: 0
     t.datetime "reminder"
     t.bigint "issue_id"
+    t.bigint "user_id", null: false
     t.index ["issue_id"], name: "index_tasks_on_issue_id"
+    t.index ["user_id"], name: "index_tasks_on_user_id"
   end
 
   create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -53,5 +57,7 @@ ActiveRecord::Schema.define(version: 2021_07_22_040737) do
 
   add_foreign_key "goals", "users"
   add_foreign_key "issues", "goals"
+  add_foreign_key "issues", "users"
   add_foreign_key "tasks", "issues"
+  add_foreign_key "tasks", "users"
 end

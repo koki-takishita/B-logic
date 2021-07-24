@@ -8,7 +8,7 @@ class GoalsController < ApplicationController
     @goal = current_user.goals.build(goal_params)
     if @goal.save
       flash[:success] = t 'goals.flash.create'
-      redirect_to goals_path 
+      redirect_back(fallback_location: back_url)
     else
       flash[:success] = t 'goals.flash.danger'
       render 'home/top' 
@@ -20,7 +20,7 @@ class GoalsController < ApplicationController
     @goal.assign_attributes(goal_params)
     if @goal.save
       flash[:success] = t 'goals.flash.update'
-      redirect_to goals_path
+      redirect_back(fallback_location: back_url)
     else
       render :index
     end
@@ -38,6 +38,11 @@ class GoalsController < ApplicationController
 
     def goal_params
       params.require(:goal).permit(:name, :deadline)
+    end
+
+    def back_url
+      url = Rails.application.routes.recognize_path(request.referrer)
+      previous_action = url[:action]
     end
 
 end

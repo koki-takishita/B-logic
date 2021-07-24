@@ -102,6 +102,10 @@ button {
   border: 1.5px solid #31ff10;
   border-radius: 10px;
 }
+.border-yellow{
+  border: 1.5px solid yellow;
+  border-radius: 10px;
+}
 
 // 枠線
 .base_object{
@@ -113,7 +117,6 @@ button {
   margin: 10px;
 }
 //
-
 
 .base_object_text{
   text-align: center;
@@ -131,6 +134,10 @@ button {
 .user_object_text_color{
   color: #31ff10;
 }
+.task_object_text_color{
+  color: yellow;
+}
+
 
 .object_header{
   background-color: #ff8310;
@@ -189,6 +196,14 @@ button {
   background-color: #31ff10;
   color: black;
 }
+.task_hover_text:hover {
+  background-color: yellow;
+  color: black;
+}
+.text-black:hover{
+  color: black;
+}
+
 button{
   background-color: black;
   padding: 0px;
