@@ -21,7 +21,7 @@
           </div>
           <div class="field task-field">
             <%= f.label :reminder, Task.human_attribute_name(:reminder), class: 'form-labl d-block' %>
-            <%= f.date_select :reminder, {}, { class: 'task-form-control'} %>
+            <%= f.time_select :reminder, {}, { class: 'task-form-control'} %>
           </div>
           <%=f.hidden_field :user_id, value: current_user.id%>
         </div>
