@@ -34,5 +34,5 @@ AdminLTE/
 # database
 config/database.yml
 
-dump.rdb
+*.rdb
 .tags
