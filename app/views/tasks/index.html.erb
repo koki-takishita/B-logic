@@ -1,28 +1,19 @@
 <div class="container">
+  <div class="base_object_text task_object_text_color">
+    <h1><%=t 'task.index.title'%></h1>
+  </div>
   <div class="row">
+    <div id="task-flash-message">
+    </div>
     <div class="col-md-12">
-      <div class="base_object_text task_object_text_color">
-        <h1><%=t 'task.index.title'%></h1>
-      </div>
       <div class="border-yellow base_object_index overflow-auto">
         <div class="base_object_list margin_top_30">
           <div class="container">
-            <ol class="task_object_text_color h2">
+            <ul class="task_object_text_color" id='js-task-record-list'>
               <%@tasks.each do |task|%>
-                <%= render 'shared/modal/TaskShow', task: task %>
-                <div class="row margin_bottom_20">
-                  <div class="col-md-10">
-                    <li>
-                      <%= button_tag task.name, 'data-bs-toggle': 'modal', 'data-bs-target': "#TaskShowModal#{task.id}", class: 'task_hover_text task_object_text_color text-decoration-none' %>
-                    </li>
-                  </div>
-                  <div class="col-md-2 text-center d-flex align-items-end">
-                    <!--<input class="form-check-input margin_top_25 border-yellow bg-black custom-control-input" type="checkbox" value="" id="defaultCheck<%#=task.id%>">-->
-                    <%= link_to '完了', task_path(task), method: 'delete', type: 'button', class: 'btn task-btn'%>
-                  </div>
-                </div>
+                <%= render 'shared/task_records', task: task%>
               <%end%>
-            </ol>
+            </ul>
           </div>
         </div>
       </div>
@@ -42,7 +33,7 @@
     </div>
     <div class="col-md-4">
       <div class="base_object_text task_object_text_color">
-        <h3><%=link_to '戻る', root_path, class: 'task_object_text_color task_hover_text text-decoration-none'%></h3>
+        <h3><%=link_to '戻る', root_path, class: 'task_object_text_color task_hover_text text-decoration-none', data: {'turbolinks' => false}%></h3>
       </div>
     </div>
   </div>

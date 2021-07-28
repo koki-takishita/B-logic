@@ -10,6 +10,7 @@
         </div>
       </div>
       <div class="modal-body">
+        <div id="task_flash_<%=task.id%>"></div>
         <div class="tab-content" id="nav-tabContent">
           <div class="tab-pane fade show active" id="nav-details-<%=task.id%>" role="tabpanel" aria-labelledby="nav-details-<%=task.id%>-tab">
             <div class="task-field">
@@ -22,7 +23,7 @@
             </div>
           </div>
           <div class="tab-pane fade" id="nav-edit-<%=task.id%>" role="tabpanel" aria-labelledby="nav-edit-<%task.id%>-tab">
-            <%= form_with  model: task, local: true, html: { autocomplete: 'off' } do |f| %>
+            <%= form_with  model: task, html: { autocomplete: 'off' } do |f| %>
               <div class="field task-field">
                 <%= f.label :name, Task.human_attribute_name(:name), class: 'form-label'%>
                 <%= f.text_field :name, class: 'form-control task-form-control', id: "task_name#{task.id}"%>

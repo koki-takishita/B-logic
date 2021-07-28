@@ -1,6 +1,7 @@
 class UsersController < ApplicationController
   before_action :set_user, only: %i[ show edit update destroy ]
   skip_before_action :require_login, only: [:new, :create]
+  skip_before_action :read_status_run_records
 
   # GET /users or /users.json
   def index
@@ -23,10 +24,16 @@ class UsersController < ApplicationController
   # POST /users or /users.json
   def create
     @user = User.new(user_params)
-    if @user.save
-      redirect_to root_path, notice: "User was successfully created."
-    else
-      redirect_to request.referer
+    respond_to do |format|
+      if @user.save
+        flash[:success] = "新規登録が完了しました" 
+        format.html { redirect_back(fallback_location: back_url) }
+        format.js
+      else
+        flash[:danger] = "新規登録できませんでした"
+        format.html { redirect_back(fallback_location: back_url) }
+        format.js
+      end
     end
   end
 

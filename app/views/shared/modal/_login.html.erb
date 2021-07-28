@@ -3,14 +3,11 @@
   <div class="modal-dialog modal-dialog-centered">
     <div class="modal-content user_modal_border_color">
       <div class="modal-header user-modal-header">
-        <h5 class="modal-title" id="LoginModalLabel">新規</h5>
-        <!--
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
-        </button>
-        -->
+        <h5 class="modal-title" id="LoginModalLabel">ログイン</h5>
       </div>
       <div class="modal-body">
-        <%= form_with scope: :session, url: login_path, method: :post, local: true, html: { autocomplete: 'off' } do |f| %>
+        <div id="user-session-flash"></div>
+        <%= form_with scope: :session, url: login_path, method: :post, html: { autocomplete: 'off' } do |f| %>
           <div class="field user-field">
             <%= f.label :email, User.human_attribute_name(:email), class: 'form-label'%>
             <%= f.text_field :email, class: 'form-control user-form-control'%>

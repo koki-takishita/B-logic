@@ -3,7 +3,7 @@ class Task < ApplicationRecord
   enum task_type: { single_task: 0, routine_task: 1 }
   belongs_to :issue
   belongs_to :user
-  validates :name, presence: true, length: { maximum: 255 }
+  validates :name, presence: true
 
   def task_type_check
     if routine_task?

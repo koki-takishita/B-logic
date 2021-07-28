@@ -165,4 +165,5 @@ ja:
       long: "%Y/%m/%d %H:%M"
       short: "%m/%d %H:%M"
       date: "%m/%d"
+      time: "%H時%M分"
     pm: 午後

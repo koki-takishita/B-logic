@@ -3,13 +3,13 @@
   <div class="modal-dialog modal-dialog-centered">
     <div class="modal-content goal_modal_border_color">
       <div class="modal-header goal-modal-header">
-        <!--<h5 class="modal-title" id="GoalShowModal<%=goal.id%>Label">詳細</h5>-->
         <div class="nav nav-tabs" id="nav-tab" role="tablist">
           <button class="nav-link active btn goal-btn me-1" id="nav-details-<%=goal.id%>-tab" data-bs-toggle="tab" href="#nav-details-<%=goal.id%>" role="tab" aria-controls="nav-details-<%=goal.id%>" aria-selected="true">詳細</a>
           <button class="nav-link goal-btn btn" id="nav-edit-<%=goal.id%>-tab" data-bs-toggle="tab" href="#nav-edit-<%=goal.id%>" role="tab" aria-controls="nav-edit-<%=goal.id%>" aria-selected="false">編集</a>
         </div>
       </div>
       <div class="modal-body">
+        <div id="goal_flash_<%=goal.id%>"></div>
         <div class="tab-content" id="nav-tabContent">
           <div class="tab-pane fade show active" id="nav-details-<%=goal.id%>" role="tabpanel" aria-labelledby="nav-details-<%=goal.id%>-tab">
             <%=label_tag 'name', '目標名', class: 'form-label'%>
@@ -19,7 +19,7 @@
           </div>
 
           <div class="tab-pane fade" id="nav-edit-<%=goal.id%>" role="tabpanel" aria-labelledby="nav-edit-<%goal.id%>-tab">
-            <%= form_with  model: goal, local: true, html: { autocomplete: 'off' } do |f| %>
+            <%= form_with  model: goal, html: { autocomplete: 'off' } do |f| %>
               <div class="field goal-field">
                 <%= f.label :name, Goal.human_attribute_name(:name), class: 'form-label'%>
                 <%= f.text_field :name, class: 'form-control goal-form-control', id: "goal_name#{goal.id}"%>

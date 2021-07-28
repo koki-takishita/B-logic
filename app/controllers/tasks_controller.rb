@@ -7,29 +7,54 @@ class TasksController < ApplicationController
   def create
     issue = issue_find
     @task = issue.tasks.build(task_params)
-    if @task.save
-      redirect_back(fallback_location: back_url)
-    else
-      render 'home/top'
+    respond_to do |format|
+      if @task.save
+        add_queue(@task)
+        flash[:success] = "タスクを作成しました"
+        format.html { redirect_back(fallback_location: back_url) }
+        format.js
+      else
+        flash[:danger] = "タスクを作成できませんでした"
+        format.html { redirect_back(fallback_location: back_url) }
+        format.js
+      end
     end
   end
 
   def update
     @task = task_find
     @task.assign_attributes(task_params)
-    if @task.save
-      flash[:success] = t 'task.flash.update'
-      redirect_back(fallback_location: back_url)
-    else
-      render :edit
+    @task.status = 'run'
+    respond_to do |format|
+      if @task.save
+        add_queue(@task)
+        flash[:success] = "タスクを更新しました"
+        format.html { redirect_back(fallback_location: back_url) }
+        format.js
+      else
+        flash[:danger] = "タスクを更新できませんでした"
+        format.html { redirect_back(fallback_location: back_url) }
+        format.js
+      end
     end
   end
 
   def destroy
     @task = current_user.tasks.find(params[:id]) 
     if @task.destroy
-      redirect_back(fallback_location: back_url)
+      flash[:success] = "タスクを削除しました"
     end
+  end
+
+  def status_run
+    @task = current_user.tasks.find(params[:id]) 
+    @task.run!
+    time_check(@task)
+  end
+
+  def status_done
+    @task = current_user.tasks.find(params[:id]) 
+    @task.done!
   end
 
   private
@@ -65,5 +90,23 @@ class TasksController < ApplicationController
     def task_find
       issue = issue_find
       issue.tasks.find(params[:id])
+    end
+
+    def add_queue(task)
+      on_time = ontime(task)
+      AsyncLogJob.set(wait_until: on_time).perform_later(task)
+    end
+
+    def ontime(object)
+      year = Time.zone.now.year
+      month = Time.zone.now.month
+      day = Time.zone.now.day
+      hour = object.reminder.hour
+      min = (object.reminder + 1.minute).min
+      Time.zone.local(year, month, day, hour, min)
+    end
+
+    def time_check(task)
+      task.expired! unless task.reminder > Time.zone.now
     end
 end

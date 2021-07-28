@@ -9,8 +9,9 @@
         </button>
         -->
       </div>
-      <%= form_with model: Issue.new, local: true, html: { autocomplete: 'off' } do |f| %>
+      <%= form_with model: Issue.new, html: { autocomplete: 'off' } do |f| %>
         <div class="modal-body">
+          <div id="issue_create_flash"></div>
           <div class="field issue-field">
             <%= f.label :goal_id, Goal.human_attribute_name(:name), class: 'form-label'%>
             <%= f.select :goal_id, goals_select, {include_blank: false} ,class: 'form-control issue-form-control'%>
@@ -20,8 +21,8 @@
             <%= f.text_field :name, class: 'form-control issue-form-control'%>
           </div>
           <div class="field issue-field">
-            <%= f.label :solution, Issue.human_attribute_name(:solution), class: 'form-labl' %>
-            <%= f.text_field :solution, class: 'form-control issue-form-control' %>
+            <%= f.label :solution, Issue.human_attribute_name(:solution), class: 'form-label' %>
+            <%= f.text_field :solution, class: 'form-control issue-form-control', id: 'js-issue-solution' %>
           </div>
           <%=f.hidden_field :user_id, value: current_user.id%>
         </div>

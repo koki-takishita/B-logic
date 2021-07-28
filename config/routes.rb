@@ -8,11 +8,15 @@ Rails.application.routes.draw do
   root :to => 'home#top'
   resources :goals do
     member do
-      put :done
+      put 'status_done'
+      put 'status_run'
     end
   end
   resources :tasks do
-    put 'done', on: :member
+    member do
+      put 'status_done'
+      put 'status_run'
+    end
   end
 
   resources :issues

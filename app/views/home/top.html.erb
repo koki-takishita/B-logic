@@ -1,16 +1,33 @@
 <div class="container root-page-background-color">
-  <div class="row">
-    <div class="col-md-3 goal_object_layout">
-      <%= render 'shared/goal_object'%>
-    </div>
-    <div class="col-md-3 issue_object_layout">
-      <%= render 'shared/issue_object'%>
-    </div>
-    <div class="col-md-3 issue_object_layout">
-      <%= render 'shared/task_object'%>
-    </div>
-    <div class="col-md-3 user_object_layout">
-      <%= render 'shared/user_object'%>
-    </div>
-  </div>
+	<div class="row">
+		<div class="col-xl-8">
+      <div class="row">
+        <div class="col-md-6 col-xl-6 item">
+          <div class="child-box" id="goal-child-box">
+            <%= render 'shared/goal_object'%>
+          </div>
+        </div>
+        <div class="col-md-6 col-xl-6 item">
+          <div class="child-box" id="issue-child-box">
+            <%= render 'shared/issue_object'%>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-6 col-xl-6 item">
+          <div class="child-box" id="task-child-box">
+            <%= render 'shared/task_object'%>
+          </div>
+        </div>
+        <div class="col-md-6 col-xl-6 item">
+          <div class="child-box">
+             <%= render 'shared/user_object'%>
+          </div>
+        </div>
+      </div>
+		</div>
+		<div class="col-xl-4 pl-12">
+      <%= render 'shared/terminal_object'%>
+		</div>
+	</div>
 </div>

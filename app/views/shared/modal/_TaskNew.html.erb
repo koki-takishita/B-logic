@@ -3,14 +3,10 @@
     <div class="modal-content task_modal_border_color">
       <div class="modal-header task-modal-header">
         <h5 class="modal-title" id="TaskNewModalLabel">新規</h5>
-        <!--
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
-        </button>
-        -->
       </div>
-
-      <%= form_with  model: Task.new, local: true, html: { autocomplete: 'off' } do |f| %>
+      <%= form_with  model: Task.new, html: { autocomplete: 'off' } do |f| %>
         <div class="modal-body">
+          <div id="task_create_flash"></div>
           <div class="field task-field">
             <%= f.label :task_id, Issue.human_attribute_name(:solution), class: 'form-label'%>
             <%= f.select :issue_id, issues_select, {include_blank: false} ,class: 'form-control task-form-control'%>

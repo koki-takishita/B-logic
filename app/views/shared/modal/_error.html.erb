@@ -1,0 +1,23 @@
+<div class="modal" id="errorModal" tabindex="-1" aria-labelledby="errorModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+    <div class="modal-content error_modal_border_color">
+    	<div class="modal-header error-modal-header">
+    		<h5 class="modal-title" id="errorModalLabel">エラー内容</h5>
+    		<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+    	</div>
+    	<div class="modal-body">
+        <%expired_models.each do |model|%>
+          <%if model.present? %>
+            <p class="bg-danger">エラーが<%=model.size%>件発生しています<br>速やかに解決してください</p>
+            <%model.each do |record|%>
+              <p class="bg-danger"><%= record.model_name.name.constantize.model_name.human%> : <%=record.name%></p>
+            <%end%>
+          <%end%>
+        <%end%>
+    	</div>
+    	<div class="modal-footer error-modal-footer">
+    		<button type="button" class="error-btn btn" data-bs-dismiss="modal">閉じる</button>
+    	</div>
+    </div>
+  </div>
+</div>

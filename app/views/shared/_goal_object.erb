@@ -1,24 +1,5 @@
-<div class="base_object_text goal_object_text_color">
-  <h1>目標</h1>
-</div>
-<div class="border-orange base_object overflow-auto">
-  <div class="base_object_list margin_top_30">
-    <div class="container">
-      <ol class="goal_object_text_color">
-        <%if logged_in?%>
-          <li class="h2 margin_top_20">
-            <h2>
-            <%=link_to "目標一覧", goals_path, class: "goal_hover_text goal_object_text_color text-decoration-none"%>
-            </h2>
-          </li>
-          <li class="h2 margin_top_20">
-            <h2>
-              <%=button_tag '目標新規作成', 'data-bs-toggle': 'modal', 'data-bs-target': '#GoalNewModal', class: 'goal_hover_text goal_object_text_color text-decoration-none' %>
-            </h2>
-            <%=render 'shared/modal/GoalNew'%>
-          </li>
-        <%end%>
-      </ol>
-    </div>
-  </div>
-</div>
+<%if !logged_in?%>
+  <%= render 'shared/lock', color: 'orange', object: 'goal'%>
+<%else%>
+  <%= render 'shared/menu_list', color: 'orange', object: 'goal', modal_name: 'Goal', index_path_name: '目標一覧', new_path_name: '目標新規作成', title: '目標', path: goals_path%>
+<%end%>

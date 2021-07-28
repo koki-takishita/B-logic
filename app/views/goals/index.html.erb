@@ -1,34 +1,25 @@
 <div class="container">
   <div class="row">
     <div class="col-md-8">
-      <div class="base_object_text goal_object_text_color">
+      <div class="base_object_text goal_object_text_color margin_top_20">
         <h1><%=t 'goal.index.title'%></h1>
       </div>
       <div class="border-orange base_object_index overflow-auto">
+        <div id="goal-flash-message"></div>
         <div class="base_object_list margin_top_30">
           <div class="container">
-            <ol class="goal_object_text_color h2">
+            <div id="goal_destroy_flash"></div>
+            <ul class="goal_object_text_color" id="js-goal-record-list">
               <%@goals.each do |goal|%>
-                <%= render 'shared/modal/GoalShow', goal: goal %>
-                <div class="row margin_bottom_20">
-                  <div class="col-md-10">
-                    <li>
-                      <%= button_tag goal.name, 'data-bs-toggle': 'modal', 'data-bs-target': "#GoalShowModal#{goal.id}", class: 'goal_hover_text goal_object_text_color text-decoration-none' %>
-                    </li>
-                  </div>
-                  <div class="col-md-2 text-center d-flex align-items-end">
-                    <!--<input class="form-check-input margin_top_25 border-orange bg-black custom-control-input" type="checkbox" value="" id="defaultCheck<%=goal.id%>">-->
-                    <%= link_to '完了', goal_path(goal), method: 'delete', type: 'button', class: 'btn goal-btn'%>
-                  </div>
-                </div>
+                <%=render 'shared/goal_records', goal: goal%>
               <%end%>
-            </ol>
+            </ul>
           </div>
         </div>
       </div>
     </div>
     <div class="col-md-4">
-      <div class="base_object_text issue_object_text_color">
+      <div class="base_object_text issue_object_text_color margin_top_20">
         <h1><%=t 'issue.index.title'%></h1>
       </div>
       <div class="border-blue base_object_index overflow-auto">
@@ -36,14 +27,16 @@
           <%if @goals%>
             <%@goals.each do |goal|%>
               <%goal.issues.each do |issue|%>
-                <%=render 'shared/modal/IssueShow', issue: issue%>
-                <%= button_tag 'data-bs-toggle': 'modal', 'data-bs-target': "#IssueShowModal#{issue.id}", class: 'd-inline w-100' do %>
-                  <div class="items">
-                    <div class="issue_hover_text border-blue margin_top_30 height_50 overflow-scroll" style="display: flex; align-items: center; justify-content: center;">
-                      <h3 class="issue_object_text_color m-2 issue_hover_text"><%=issue.name%></h3> 
+                <div class="js-g-index-issue-list-<%=goal.id%>">
+                  <%=render 'shared/modal/IssueShow', issue: issue%>
+                  <%= button_tag 'data-bs-toggle': 'modal', 'data-bs-target': "#IssueShowModal#{issue.id}", class: 'd-inline w-100' do %>
+                    <div class="items">
+                      <div class="issue_hover_text border-blue margin_top_30 height_50 overflow-scroll" style="display: flex; align-items: center; justify-content: center;">
+                        <h3 class="issue_object_text_color m-2 issue_hover_text"><%=issue.name%></h3> 
+                      </div>
                     </div>
-                  </div>
-                <%end%>
+                  <%end%>
+                </div>
               <%end%>
             <%end%>
           <%end%>
@@ -51,7 +44,6 @@
       </div>
     </div>
   </div>
-
 <%=render 'shared/modal/GoalNew'%>
   <div class="row">
     <div class="col-md-2">
@@ -62,7 +54,7 @@
     <div class="col-md-2">
       <div class="base_object_text goal_object_text_color">
         <div class="col-sm">
-          <h3><%=link_to '戻る', root_path, class: 'goal_object_text_color goal_hover_text text-decoration-none'%></h3>
+          <h3><%=link_to '戻る', root_path, class: 'goal_object_text_color goal_hover_text text-decoration-none', data: {'turbolinks' => false}%></h3>
         </div>
       </div>
     </div>
@@ -73,7 +65,7 @@
     </div>
     <div class="col-md-4">
       <div class="base_object_text goal_object_text_color">
-        <h3><%=link_to t('issue.index.title'), issues_path, class: 'issue_object_text_color issue_hover_text text-decoration-none'%></h3>
+        <h3><%=link_to t('issue.index.title'), issues_path, class: 'issue_object_text_color issue_hover_text text-decoration-none', data: {'turbolinks' => false}%></h3>
       </div>
     </div>
   </div>

@@ -5,8 +5,8 @@
 
 // user-style
 .user-modal-header{
-  border-bottom-color: #31ff10;
-  color: #31ff10; 
+  border-bottom-color: white;
+  color: white; 
 }
 .issue-modal-header{
   border-bottom-color: #26b8f6;
@@ -20,6 +20,15 @@
   border-bottom-color: yellow;
   color: yellow;
 }
+.error-modal-header{
+  border-bottom-color: #ff1010;
+  color: #ff1010;
+}
+.success-modal-header{
+  border-bottom-color: #33e971;
+  color: #33e971;
+}
+
 //
 
 
@@ -28,11 +37,11 @@
   background-color: black;
 }
 .user-btn{
-  border: 1.5px solid #31ff10;
-  color: #31ff10;
+  border: 1.5px solid white;
+  color: white;
 }
 .user-btn:hover{
-  background-color: #31ff10;
+  background-color: white;
 }
 .issue-btn{
   border: 1.5px solid #26b8f6;
@@ -55,6 +64,20 @@
 .task-btn:hover{
   background-color: yellow;
 }
+.error-btn{
+  border: 1.5px solid #ff1010;
+  color: #ff1010;
+}
+.error-btn:hover{
+  background-color: #ff1010;
+}
+.success-btn{
+  border: 1.5px solid #33e971;
+  color: #33e971;
+}
+.success-btn:hover{
+  background-color: #33e971;
+}
 
 //
 
@@ -64,10 +87,10 @@
 
 // border
 .user_modal_border_color {
-  border: 1.5px solid #31ff10;
+  border: 1.5px solid white;
 }
 .user-modal-footer{
-  border-top-color: #31ff10;
+  border-top-color: white;
 }
 .issue_modal_border_color {
   border: 1.5px solid #26b8f6;
@@ -87,23 +110,40 @@
 .task-modal-footer{
   border-top-color: yellow; 
 }
+.error_modal_border_color {
+  border: 1.5px solid #ff1010;
+}
+.error-modal-footer{
+  border-top-color: #ff1010;
+}
+.success_modal_border_color {
+  border: 5px solid #33e971;
+}
+.success-modal-footer{
+  border-top-color: #33e971;
+}
+.error_modal_border_color {
+  border: 5px solid #ff1010;
+}
+.error-modal-footer{
+  border-top-color: #ff1010;
+}
 
 //
 
-
 // form
 .user-field{
-  color: #31ff10;
+  color: white;
   margin-bottom: 10px;
 }
 .user-form-control{
   background-color: black;
-  border: 1.5px solid #31ff10;
-  color: #31ff10;
+  border: 1.5px solid white;
+  color: white;
 }
 .user-form-control:focus {
   background-color: black;
-  color: #31ff10;
+  color: white;
 }
 .task-field{
   color: yellow;
@@ -180,6 +220,6 @@
 }
 
 .nav-link.user-btn.active{
-  background-color: #31ff10;
+  background-color: white;
   color: black;
 }

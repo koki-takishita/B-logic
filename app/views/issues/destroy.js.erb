@@ -1,0 +1,15 @@
+// 前回のフラッシュメッセージ追加
+$("#issue-flash-message").html("");
+$("#issue_create_flash").html("");
+
+$("#js-issue-record-<%=@issue.id%>").remove();
+
+// indexページにて、紐付いているデータ削除
+$(".js-i-index-task-list-<%=@issue.id%>").remove();
+
+//$("#issue-flash-message").html("<%#= escape_javascript(render('shared/flash_message', object: @issue))%>").hide().fadeIn(500);
+$("#js-top-msg").html("<%=escape_javascript(render('shared/modal/top_message', object: @issue, message: "を達成しました", name: 'success'))%>");
+var successModal = new bootstrap.Modal(document.getElementById('successModal'), {
+  keyboard: false
+});
+successModal.show();

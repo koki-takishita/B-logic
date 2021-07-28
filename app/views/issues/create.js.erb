@@ -1,0 +1,30 @@
+var myModalEl = document.getElementById('IssueNewModal');
+var modal = bootstrap.Modal.getInstance(myModalEl);
+var issueName = document.getElementById('issue_name');
+var issueSolution = document.getElementById('js-issue-solution');
+// 前回のフラッシュメッセージ追加
+$("#task-flash-message").html("");
+$("#goal-flash-message").html("");
+$("#issue-flash-message").html("");
+$("#issue_create_flash").html("");
+
+<%if @issue.persisted?%>
+  $("#js-issue-record-list").append("<%= escape_javascript(render('shared/issue_records', issue: @issue))%>");
+  issueName.value="";
+  issueSolution.value="";
+  issueSolution.defaultValue="";
+
+  modal.hide();
+  $("#issue-flash-message").html("<%= escape_javascript(render('shared/flash_message', object: @issue))%>").hide().fadeIn(500);
+
+  <%if current_user.issues.count == 1%>
+  $("#task-child-box").html("<%= escape_javascript(render('shared/menu_list', color: 'yellow', object: 'task', modal_name: 'Task', index_path_name: 'タスク一覧', new_path_name: 'タスク新規作成', title: 'タスク', path: issues_path))%>").hide().fadeIn(500);
+  <%end%>
+
+<%else%>
+  $("#issue_create_flash").html("<%= escape_javascript(render('shared/flash_message', object: @issue))%>");
+  //モーダル閉じたら消す
+  myModalEl.addEventListener('hidden.bs.modal', function (event) {
+    $("#issue_create_flash").html("");
+  })
+<%end%>

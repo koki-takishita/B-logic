@@ -18,4 +18,5 @@
 //= require popper
 //= require bootstrap-sprockets
 //= require jquery-readyselector
+//= require done
 //= require_tree .

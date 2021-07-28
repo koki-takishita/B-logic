@@ -1,0 +1,6 @@
+// 前回のフラッシュメッセージ追加
+$("#task-flash-message").html("");
+$("#task_create_flash").html("");
+
+$("#js-task-record-<%=@task.id%>").remove();
+$("#task-flash-message").html("<%= escape_javascript(render('shared/flash_message', object: @task))%>").hide().fadeIn(500);

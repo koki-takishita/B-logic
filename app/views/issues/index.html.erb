@@ -5,24 +5,14 @@
         <h1><%=t 'issue.index.title'%></h1>
       </div>
       <div class="border-blue base_object_index overflow-auto">
+        <div id="issue-flash-message"></div>
         <div class="base_object_list margin_top_30">
           <div class="container">
-            <ol class="issue_object_text_color h2">
+            <ul class="issue_object_text_color" id="js-issue-record-list">
               <%@issues.each do |issue|%>
-                <%= render 'shared/modal/IssueShow', issue: issue %>
-                <div class="row margin_bottom_20">
-                  <div class="col-md-10">
-                    <li>
-                      <%= button_tag issue.name, 'data-bs-toggle': 'modal', 'data-bs-target': "#IssueShowModal#{issue.id}", class: 'issue_hover_text issue_object_text_color text-decoration-none' %>
-                    </li>
-                  </div>
-                  <div class="col-md-2 text-center d-flex align-items-end">
-                    <!--<input class="form-check-input margin_top_25 border-blue bg-black custom-control-input" type="checkbox" value="" id="defaultCheck<%#=issue.id%>">-->
-                    <%= link_to '完了', issue_path(issue), method: 'delete', type: 'button', class: 'btn issue-btn'%>
-                  </div>
-                </div>
+                <%= render 'shared/issue_records', issue: issue %>
               <%end%>
-            </ol>
+            </ul>
           </div>
         </div>
       </div>
@@ -36,14 +26,16 @@
           <%if @issues%>
             <%@issues.each do |issue|%>
               <%issue.tasks.each do |task|%>
-                <%=render 'shared/modal/TaskShow', task: task%>
-                <%= button_tag 'data-bs-toggle': 'modal', 'data-bs-target': "#TaskShowModal#{task.id}", class: 'd-inline w-100' do %>
-                  <div class="items">
-                    <div class=" task_object_text_color task_hover_text border-yellow margin_top_30 height_50 overflow-scroll" style="display: flex; align-items: center; justify-content: center;">
-                      <h3 class="m-2"><%=task.name%></h3> 
+                <div class="js-i-index-task-list-<%=issue.id%>">
+                  <%=render 'shared/modal/TaskShow', task: task%>
+                  <%= button_tag 'data-bs-toggle': 'modal', 'data-bs-target': "#TaskShowModal#{task.id}", class: 'd-inline w-100' do %>
+                    <div class="items">
+                      <div class=" task_object_text_color task_hover_text border-yellow margin_top_30 height_50 overflow-scroll" style="display: flex; align-items: center; justify-content: center;">
+                        <h3 class="m-2"><%=task.name%></h3> 
+                      </div>
                     </div>
-                  </div>
-                <%end%>
+                  <%end%>
+                </div>
               <%end%>
             <%end%>
           <%end%>
@@ -62,7 +54,7 @@
     <div class="col-md-2">
       <div class="base_object_text issue_object_text_color">
         <div class="col-sm">
-          <h3><%=link_to '戻る', root_path, class: 'issue_object_text_color issue_hover_text text-decoration-none'%></h3>
+          <h3><%=link_to '戻る', root_path, class: 'issue_object_text_color issue_hover_text text-decoration-none', data: {'turbolinks' => false}%></h3>
         </div>
       </div>
     </div>
@@ -73,7 +65,7 @@
     </div>
     <div class="col-md-4">
       <div class="base_object_text task_object_text_color">
-        <h3><%=link_to t('task.index.title'), issues_path, class: 'task_object_text_color task_hover_text text-decoration-none'%></h3>
+        <h3><%=link_to t('task.index.title'), tasks_path, class: 'task_object_text_color task_hover_text text-decoration-none', data: {'turbolinks' => false}%></h3>
       </div>
     </div>
   </div>

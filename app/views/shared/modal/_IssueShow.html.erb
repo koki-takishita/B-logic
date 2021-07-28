@@ -13,6 +13,9 @@
         -->
       </div>
       <div class="modal-body">
+
+        <div id="issue_flash"></div>
+
         <div class="tab-content" id="nav-tabContent">
           <div class="tab-pane fade show active" id="nav-issue-details-<%=issue.id%>" role="tabpanel" aria-labelledby="nav-issue-details-<%=issue.id%>-tab">
             <div class="field issue-field">
@@ -26,7 +29,7 @@
           </div>
 
           <div class="tab-pane fade" id="nav-issue-edit-<%=issue.id%>" role="tabpanel" aria-labelledby="nav-issue-edit-<%issue.id%>-tab">
-            <%= form_with  model: issue, local: true, html: { autocomplete: 'off' } do |f| %>
+            <%= form_with  model: issue, html: { autocomplete: 'off' } do |f| %>
               <div class="form">
                 <div class="field issue-field">
                   <%= f.label :name, Issue.human_attribute_name(:name), class: 'form-label'%>

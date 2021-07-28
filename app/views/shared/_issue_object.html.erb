@@ -1,24 +1,5 @@
-<div class="base_object_text issue_object_text_color">
-  <h1>課題</h1>
-</div>
-<div class="border-blue base_object overflow-auto">
-  <div class="container">
-    <div class="base_object_list margin_top_30">
-      <ol class="issue_object_text_color">
-        <%if logged_in?%>
-          <li class="h2 margin_top_20">
-            <%=render 'shared/modal/IssueNew'%>
-            <h2>
-              <%=link_to "課題一覧", issues_path, class: "issue_hover_text issue_object_text_color text-decoration-none"%>
-            </h2>
-          </li>
-          <li class="h2 margin_top_20">
-            <h2>
-              <%=button_tag '課題新規作成', 'data-bs-toggle': 'modal', 'data-bs-target': '#IssueNewModal', class: 'issue_hover_text issue_object_text_color text-decoration-none' %>
-            </h2>
-          </li>
-        <%end%>
-      </ol>
-    </div>
-  </div>
-</div>
+<%if !logged_in? || current_user.goals.blank?%>
+  <%= render 'shared/lock', color: 'blue', object: 'issue'%>
+<%else%>
+  <%= render 'shared/menu_list', color: 'blue', object: 'issue', modal_name: 'Issue', index_path_name: '課題一覧', new_path_name: '課題新規作成', title: '課題', path: issues_path%>
+<%end%>

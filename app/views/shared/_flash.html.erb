@@ -1,0 +1,7 @@
+<% if flash.present? %>
+  <%flash.each do |key, value|%>
+    <div class="flash-message alert object-alert-<%=key%> p-2 m-1">
+      <p class="m-0"><%= value %></p>
+    </div>
+  <%end%>
+<%end%>

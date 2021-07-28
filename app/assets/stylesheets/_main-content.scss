@@ -1,112 +1,29 @@
-/*
-.main-content {
-  height: 70%;
-  background-color: #4A4c6D;
-  color: #33E971;
-}
-.hex-contents {
-  height: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-.title {
-  margin-top: 10px;
-  margin-bottom: 30px;
-}
-.form-control{
-  margin: 0 auto;
-}
-.label {
-  display: block;
-  text-align: center;
-}
-.icon{
-  color: red;
-  text-align: center;
-  margin-top: 20px;
-  margin-bottom: 40px;
-}
-.icon_text strong{
-  color: white;
-  border: 2px solid red;
-  background-color: red;
-  padding: 10px;
-}
-.icon_text{
-  margin-top: 20px;
-}
-.actions{
-  text-align: center;
-}
-.alert {
-  position: absolute;
-  top: 2px;
-}
-.vertical-style{
-  writing-mode: vertical-rl;
-}
-.card-body{
-  text-align: center;
-}
-.task-card{
-  width: 20%;
-}
-.nav{
-  justify-content: center;
-}
-li {
-  text-align: left;
-}
-button {
-  background: none;
-  border: none;
-  outline: none;
-  -webkit-appearance: none;
-  -moz-appearance: none;
-  appearance: none;
-}
-.task_plus_button{
-  color: white;
-}
-.task_button_group{
-  width: 100%;
-  height: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-.task-card-body {
-  width: 250px;
-  height: 240px;
-}
-.block-size {
-  width: 100%;
-  height: 100%;
-}
-*/
-
 .border-orange-square{
   border: 1.5px solid #ff8310;
 }
-
 .border-orange{
   border: 1.5px solid #ff8310;
-  border-radius: 5px;
+  border-radius: 1px;
 }
 .border-blue{
   border: 1.5px solid #26b8f6;
-  border-radius: 10px;
+  border-radius: 1px;
 }
-.border-green{
-  border: 1.5px solid #31ff10;
-  border-radius: 10px;
+.border-white{
+  border: 1.5px solid white;
+  border-radius: 1px;
 }
 .border-yellow{
   border: 1.5px solid yellow;
-  border-radius: 10px;
+  border-radius: 1px;
 }
-
+.border-green{
+  border: 1.5px solid #33e971;
+  border-radius: 1px;
+}
+.top-page-base-object{
+  height: 100%;
+}
 // 枠線
 .base_object{
   height: 650px;
@@ -116,8 +33,6 @@ button {
   height: 600px;
   margin: 10px;
 }
-//
-
 .base_object_text{
   text-align: center;
 }
@@ -132,13 +47,17 @@ button {
   color: #26b8f6;
 }
 .user_object_text_color{
-  color: #31ff10;
+  color: white;
+}
+.terminal_object_text_color, .success-object-text-color{
+  color: #33e971;
+}
+.error-object-text-color{
+  color: #ff1010;
 }
 .task_object_text_color{
   color: yellow;
 }
-
-
 .object_header{
   background-color: #ff8310;
   height: 40px;
@@ -149,12 +68,9 @@ button {
 .padding_left{
   padding-left: 15px;
 }
-
-
 .height_50{
   height: 50px;
 }
-
 // margin
 .margin_top_30{
   margin-top: 30px;
@@ -174,15 +90,31 @@ button {
 .margin_bottom_25{
   margin-bottom: 25px;
 }
+//
+//padding
+.pl-12{
+  padding: 0px;
+  padding-left: 12px;
+}
+//alert
+.object-alert-success{
+  border: 1.5px solid #33e971;
+  border-radius: 1px;
+  color: #33e971; 
+}
+.object-alert-danger{
+  border: 1.5px solid #FF1010;
+  border-radius: 1px;
+  color: #FF1010; 
+}
 
-
+//
 .bg-black{
   background-color: black;
 }
 .custom-control-input:checked {
    background-color: black;
 }
-
 //hover text
 .goal_hover_text:hover {
   background-color: #ff8310;
@@ -193,7 +125,7 @@ button {
   color: black;
 }
 .user_hover_text:hover {
-  background-color: #31ff10;
+  background-color: white;
   color: black;
 }
 .task_hover_text:hover {
@@ -203,7 +135,6 @@ button {
 .text-black:hover{
   color: black;
 }
-
 button{
   background-color: black;
   padding: 0px;
@@ -212,3 +143,4 @@ button{
 button:hover{
   color: black;
 }
+

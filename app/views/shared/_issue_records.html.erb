@@ -1,0 +1,13 @@
+<div id="js-issue-record-<%=issue.id%>">
+  <div class="row margin_bottom_20">
+    <%= render 'shared/modal/IssueShow', issue: issue %>
+    <div class="col-md-6 d-flex text-align-items-start justify-content-start">
+      <li>
+        <%= button_tag issue.name, 'data-bs-toggle': 'modal', 'data-bs-target': "#IssueShowModal#{issue.id}", class: 'issue_hover_text issue_object_text_color text-decoration-none h2 m-0' %>
+      </li>
+    </div>
+    <div class="col-md-6 text-center d-flex align-items-center justify-content-center">
+      <%= link_to '達成', issue_path(issue), method: 'delete', type: 'button', class: 'btn issue-btn', remote: true,  data: { confirm: '本当に課題を達成しましたか？', 'turbolinks' => false}%>
+    </div>
+  </div>
+</div>
