@@ -16,6 +16,7 @@ default: &default
   username: root
   password: z9YuhYye?
   host: localhost
+  soket: /tmp/mysql.sock
 
 development:
   <<: *default
