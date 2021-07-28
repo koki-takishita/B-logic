@@ -10,13 +10,15 @@ class AsyncLogJob < ApplicationJob
       current_time = Time.zone.now
       # statuが'run'の場合statusを'expird'に更新
       puts '入った'
-      if task.run?
+      if task && task.run?
         puts task.status
       # 現在の時刻とtaskの時間を比較し現在の時刻のほうが未来ならば下記を実行(更新時実行されなくなる)
         unless current_time < task.reminder
           task.expired!
           puts task.status
         end
+      else
+        puts "削除されたタスク"
       end
     else
       puts 'modelがnilだったよ!'

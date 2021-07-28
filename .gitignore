@@ -33,3 +33,6 @@ AdminLTE/
 
 # database
 config/database.yml
+
+*.rdb
+.tags
