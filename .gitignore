@@ -28,6 +28,8 @@
 
 # liblary
 vendor/bundle
+vendor/assets/bower_components/*
+AdminLTE/
 
 # database
 config/database.yml

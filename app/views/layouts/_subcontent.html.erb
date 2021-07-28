@@ -1,0 +1,35 @@
+<div class='container sub-content'>
+  <%if selected_goal%>
+    <div class='row contents'>
+      <div class='col content col-sm-8'>
+        <h2 class='label'><%=Goal.model_name.human%></h2>
+        <h2 class='text'><%=order_join(selected_goal.quantification, selected_goal.unit, selected_goal.embodiment)%></h2>
+      </div>
+      <div class='col content col-sm-2'>
+        <h2 class='label'><%=Goal.human_attribute_name('deadline_on')%></h2>
+        <h2 class='short_text'><%=selected_goal.days_left(selected_goal.deadline_on) + '日'%>
+        </h2>
+      </div>
+      <div class='col content'>
+        <%= link_to '編集', edit_goal_path(selected_goal.id), class: 'btn btn-warning btn_control' %>
+        <%= link_to '削除', goal_path(selected_goal.id), method: :delete, class: 'btn btn-danger btn_control' %>
+      </div>
+    </div>
+    <% if selected_subgoal %>
+      <div class='row contents'%>
+        <div class='col content col-sm-8'>
+          <h2 class='label'><%=Subgoal.model_name.human%></h2>
+          <h2 class='text'><%=order_join(selected_subgoal.quantification, selected_subgoal.unit, selected_subgoal.embodiment)%></h2>
+        </div>
+        <div class='col content'>
+          <h2 class='label'><%=Subgoal.human_attribute_name('deadline_on')%></h2>
+          <h2 class='short_text'><%= selected_subgoal.days_left(selected_subgoal.deadline_on) + '日'%></h2>
+        </div>
+        <div class='col content'>
+          <%= link_to '編集', edit_subgoal_path(selected_subgoal.id), class: 'btn btn-warning btn_control' %>
+          <%= link_to '削除', subgoal_path(selected_subgoal.id), method: :delete, class: 'btn btn-danger btn_control' %>
+        </div>
+      </div>
+    <%end%>
+  <%end%>
+</div>

@@ -1,0 +1,13 @@
+<% if object && object.errors.present? %>
+    <div class="flash-message alert object-alert-danger p-2 m-1">
+      <p class="m-0"><%= flash[:danger] %></p>
+      <% object.errors.full_messages.each do |message|%>
+        <p class="m-0"><%= message %></p>
+      <%end%>
+    </div>
+  <% else %>
+    <div class="flash-message alert object-alert-success p-2 m-1">
+      <p class="m-0"><%= flash[:success] %></p>
+    </div>
+<%end%>
+

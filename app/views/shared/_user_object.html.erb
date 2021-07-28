@@ -1,0 +1,31 @@
+<div class="border-white top-page-base-object overflow-auto">
+  <div id="user-flash-message">
+    <% unless logged_in?%>
+      <%if flash.present?%>
+        <%flash.each do |key, value|%>
+          <div class="flash-message alert object-alert-<%=key%> p-2 m-1">
+            <p class="m-0"><%= value %></p>
+          </div>
+        <%end%>
+      <%end%>
+    <%end%>
+  </div>
+  <div class="base_object_list margin_top_30">
+    <div class="container">
+      <div class="base_object_text user_object_text_color">
+        <h1>ユーザー</h1>
+      </div>
+      <div class="base_object_list margin_top_30">
+        <ul class="user_object_text_color" id="user-menu-list">
+          <%if !logged_in?%>
+            <%= render 'users/not_logged_menu' %>
+          <%else%>
+            <%= render 'users/logged_menu' %>
+          <%end%>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+<%= render 'shared/modal/signup' %>
+<%= render 'shared/modal/login'%>

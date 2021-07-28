@@ -1,0 +1,36 @@
+<%= form_with(model: goal, local: true) do |form| %>
+  <div class='form-group'>
+    <%= form.label :what_to_do, class: 'label'%>
+    <%= form.text_field :what_to_do, class: 'form-control', placeholder: '夏までに腹筋ばきばきになる'%>
+  </div>
+
+    <div class='icon'>
+      <%= fa_icon 'arrow-down 4x', class: 'fa-solid'%>
+      <p class='icon_text'><strong>ゴールの定量化</strong><p>
+    </div>
+
+
+  <div class='row'>
+
+      <div class="col">
+        <%= form.select :deadline_on, @goal.select_deadline, { include_blank: '期限を延ばすのは最終手段!'}, {class: 'form-control' } %>
+      </div>
+
+      <div class="col-2">
+        <%= form.number_field :quantification, class: 'form-control', placeholder: '具体的な数字' %>
+      </div>
+
+      <div class="col-2">
+        <%= form.text_field :unit, class: 'form-control', placeholder: 'kg, 件, 回, 点(単位)' %>
+      </div>
+
+      <div class="col">
+        <%= form.text_field :embodiment, class: 'form-control', placeholder: 'やせる, とる, 覚える(何をするのか)' %>
+      </div>
+
+  </div>
+      <div class = 'actions'>
+        <%= form.submit class: 'btn btn-primary mt-3' %>
+      </div>
+
+<% end %>

@@ -1,0 +1,33 @@
+@import 'bootstrap';
+//@import 'hexi-flexi-grid';
+//@import 'hex-style';
+//@import 'sidebar-style';
+@import 'main-content';
+@import 'sub-content';
+@import "modal-style";
+@import "font-awesome";
+
+h1 {
+  margin: 0px;
+}
+
+html {
+  height: 100%;
+}
+
+body {
+  height: 100%;
+  background-color: black;
+}
+.column-control {
+  height: 100%;
+}
+
+.sidebar {
+  height: 100%;
+}
+
+.plus_button {
+  width: 50px;
+  height: 50px;
+}

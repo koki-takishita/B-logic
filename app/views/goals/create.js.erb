@@ -1,0 +1,36 @@
+var myModalEl = document.getElementById('GoalNewModal');
+var modal = bootstrap.Modal.getInstance(myModalEl);
+var GoalName = document.getElementById('goal_name');
+
+// 前回のフラッシュメッセージ追加
+$("#task-flash-message").html("");
+$("#goal-flash-message").html("");
+$("#issue-flash-message").html("");
+$("#user-flash-message").html("");
+$("#user-session-flash").html("");
+$("js-logout-flash").remove();
+
+$("#issue_create_flash").html("");
+$("#goal_create_flash").html("");
+$("#task_create_flash").html("");
+$("#user_create_flash").html("");
+
+
+<%if @goal.persisted?%>
+  $("#js-goal-record-list").append("<%= escape_javascript(render('shared/goal_records', goal: @goal))%>");
+  GoalName.value="";
+  modal.hide();
+  $("#goal-flash-message").html("<%= escape_javascript(render('shared/flash_message', object: @goal))%>").hide().fadeIn(500);
+
+  // トップページで作成した際に鍵マークを解除する
+  <%if current_user.goals.count == 1%>
+  $("#issue-child-box").html("<%= escape_javascript(render('shared/menu_list', color: 'blue', object: 'issue', modal_name: 'Issue', index_path_name: '課題一覧', new_path_name: '課題新規作成', title: '課題', path: issues_path))%>").hide().fadeIn(500);
+  <%end%>
+
+<%else%>
+  $("#goal_create_flash").html("<%= escape_javascript(render('shared/flash_message', object: @goal))%>");
+  //モーダル閉じたら消す
+  myModalEl.addEventListener('hidden.bs.modal', function (event) {
+    $("#goal_create_flash").html("");
+  })
+<%end%>

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>TentativeTitlePdca</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag    'start', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'start', 'data-turbolinks-track': 'reload' %>
+  </head>
+  <body>
+    <div class="terminal_style a" id="terminal">
+      <div class='box'>
+      </div>
+      <div class='text'>
+        <p>Mackbook-pro</p>
+        <p>$ <strong class='now_cmd'></strong><strong id='prompt'>_</strong></p>
+      </div>
+    </div>
+    <div class="terminal_style b" id="b1">
+      <div class='box'></div>
+    </div>
+
+    <%=form_with scope: :user_session, url: login_path, local: true do |f|%>
+      <%=f.label :email%>
+      <%=f.text_field :email%>
+      <%=f.label :password%>
+      <%=f.password_field :password%>
+      <%=f.submit 'login', id: 'login_button'%>
+    <%end%>
+
+    <%=form_with scope: :user, url: users_path, local: true do |f|%>
+      <%=f.label :email%>
+      <%=f.text_field :email%>
+      <%=f.label :password%>
+      <%=f.password_field :password%>
+      <%=f.label :password_confirmation%>
+      <%=f.password_field :password_confirmation%>
+      <%=f.submit 'signup', id: 'signup_button'%>
+    <%end%>
+
+    <%= yield%>
+  </body>
+</html>

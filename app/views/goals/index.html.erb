@@ -1,0 +1,72 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-8">
+      <div class="base_object_text goal_object_text_color margin_top_20">
+        <h1><%=t 'goal.index.title'%></h1>
+      </div>
+      <div class="border-orange base_object_index overflow-auto">
+        <div id="goal-flash-message"></div>
+        <div class="base_object_list margin_top_30">
+          <div class="container">
+            <div id="goal_destroy_flash"></div>
+            <ul class="goal_object_text_color" id="js-goal-record-list">
+              <%@goals.each do |goal|%>
+                <%=render 'shared/goal_records', goal: goal%>
+              <%end%>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div class="base_object_text issue_object_text_color margin_top_20">
+        <h1><%=t 'issue.index.title'%></h1>
+      </div>
+      <div class="border-blue base_object_index overflow-auto">
+        <div class="container">
+          <%if @goals%>
+            <%@goals.each do |goal|%>
+              <%goal.issues.each do |issue|%>
+                <div class="js-g-index-issue-list-<%=goal.id%>">
+                  <%=render 'shared/modal/IssueShow', issue: issue%>
+                  <%= button_tag 'data-bs-toggle': 'modal', 'data-bs-target': "#IssueShowModal#{issue.id}", class: 'd-inline w-100' do %>
+                    <div class="items">
+                      <div class="issue_hover_text border-blue margin_top_30 height_50 overflow-scroll" style="display: flex; align-items: center; justify-content: center;">
+                        <h3 class="issue_object_text_color m-2 issue_hover_text"><%=issue.name%></h3> 
+                      </div>
+                    </div>
+                  <%end%>
+                </div>
+              <%end%>
+            <%end%>
+          <%end%>
+        </div>
+      </div>
+    </div>
+  </div>
+<%=render 'shared/modal/GoalNew'%>
+  <div class="row">
+    <div class="col-md-2">
+      <div class="base_object_text goal_object_text_color d-inline-block">
+        <h3 class="text_left padding_left"><%=button_tag t('goal.new.title'), 'data-bs-toggle': 'modal', 'data-bs-target': '#GoalNewModal', class: 'goal_hover_text goal_object_text_color text-decoration-none'%></h3>
+      </div>
+    </div>
+    <div class="col-md-2">
+      <div class="base_object_text goal_object_text_color">
+        <div class="col-sm">
+          <h3><%=link_to '戻る', root_path, class: 'goal_object_text_color goal_hover_text text-decoration-none', data: {'turbolinks' => false}%></h3>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div class="base_object_text goal_object_text_color">
+        <h3><%=Date.current.strftime("%Y/%m/%d")%></h3>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div class="base_object_text goal_object_text_color">
+        <h3><%=link_to t('issue.index.title'), issues_path, class: 'issue_object_text_color issue_hover_text text-decoration-none', data: {'turbolinks' => false}%></h3>
+      </div>
+    </div>
+  </div>
+</div>

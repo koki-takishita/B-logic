@@ -1,0 +1,53 @@
+<!-- Modal -->
+<div class="modal fade" id="IssueShowModal<%=issue.id%>" tabindex="-1" aria-labelledby="IssueShowModalLabel<%=issue.id%>" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content issue_modal_border_color">
+      <div class="modal-header issue-modal-header">
+        <div class="nav nav-tabs" id="nav-tab" role="tablist">
+          <button class="nav-link active btn issue-btn me-1" id="nav-issue-details-<%=issue.id%>-tab" data-bs-toggle="tab" href="#nav-issue-details-<%=issue.id%>" role="tab" aria-controls="nav-issue-details-<%=issue.id%>" aria-selected="true">詳細</a>
+          <button class="issue-btn btn nav-link" id="nav-issue-edit-<%=issue.id%>-tab" data-bs-toggle="tab" href="#nav-issue-edit-<%=issue.id%>" role="tab" aria-controls="nav-issue-edit-<%=issue.id%>" aria-selected="false">編集</a>
+        </div>
+      </div>
+      <div class="modal-body">
+        <div id="issue_flash_<%=issue.id%>"></div>
+        <div class="tab-content" id="nav-tabContent">
+          <div class="tab-pane fade show active" id="nav-issue-details-<%=issue.id%>" role="tabpanel" aria-labelledby="nav-issue-details-<%=issue.id%>-tab">
+            <div class="field issue-field">
+              <%=label_tag 'name', '課題名', class: 'form-label'%>
+              <h2 class="border-blue modal-show-label"><%=issue.name%></h2>
+            </div>
+            <div class="field issue-field">
+              <%=label_tag 'solution', '解決策', class: 'form-label'%>
+              <h2 class="border-blue modal-show-label"><%=issue.solution%></h2>
+            </div>
+          </div>
+
+          <div class="tab-pane fade" id="nav-issue-edit-<%=issue.id%>" role="tabpanel" aria-labelledby="nav-issue-edit-<%issue.id%>-tab">
+            <%= form_with  model: issue, html: { autocomplete: 'off' } do |f| %>
+              <div class="form">
+                <div class="field issue-field">
+                  <%= f.label :name, Issue.human_attribute_name(:name), class: 'form-label'%>
+                  <%= f.text_field :name, class: 'form-control issue-form-control', id: "issue_name#{issue.id}"%>
+                </div>
+                <div class="field issue-field">
+                  <%= f.label :solution, Issue.human_attribute_name(:solution), class: 'form-labl' %>
+                  <%= f.text_field :solution, class: 'form-control issue-form-control' %>
+                </div>
+                <%=f.hidden_field :goal_id, value: issue.goal.id%>
+                <%=f.hidden_field :user_id, value: current_user.id%>
+                <div class='field issue-field text-center'>
+                  <%= f.submit '更新する', class: 'btn issue-btn'%>
+                </div>
+              </div>
+            <%end%>
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer issue-modal-footer">
+        <button type="button" class="issue-btn btn" data-bs-dismiss="modal">閉じる</button>
+          <%#= f.submit '登録', class: 'btn issue-btn'%>
+      </div>
+    </div>
+  </div>
+</div>
+

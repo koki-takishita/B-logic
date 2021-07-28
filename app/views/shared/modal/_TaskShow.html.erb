@@ -1,0 +1,50 @@
+<!-- Modal -->
+<div class="modal fade" id="TaskShowModal<%=task.id%>" tabindex="-1" aria-labelledby="taskShowModal<%=task.id%>Label" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content task_modal_border_color">
+      <div class="modal-header task-modal-header">
+        <!--<h5 class="modal-title" id="TaskShowModal<%=task.id%>Label">詳細</h5>-->
+        <div class="nav nav-tabs" id="nav-tab" role="tablist">
+          <button class="nav-link active btn task-btn me-1" id="nav-details-<%=task.id%>-tab" data-bs-toggle="tab" href="#nav-details-<%=task.id%>" role="tab" aria-controls="nav-details-<%=task.id%>" aria-selected="true">詳細</a>
+          <button class="nav-link task-btn btn" id="nav-edit-<%=task.id%>-tab" data-bs-toggle="tab" href="#nav-edit-<%=task.id%>" role="tab" aria-controls="nav-edit-<%=task.id%>" aria-selected="false">編集</a>
+        </div>
+      </div>
+      <div class="modal-body">
+        <div id="task_flash_<%=task.id%>"></div>
+        <div class="tab-content" id="nav-tabContent">
+          <div class="tab-pane fade show active" id="nav-details-<%=task.id%>" role="tabpanel" aria-labelledby="nav-details-<%=task.id%>-tab">
+            <div class="task-field">
+              <%=label_tag 'name', '目標名', class: 'form-label'%>
+              <h2 class="border-yellow modal-show-label"><%=task.name%></h2>
+            </div>
+            <div class="task-field">
+              <%=label_tag 'reminder', 'リマインド', class: 'form-label'%>
+              <h2 class="border-yellow modal-show-label"><%=l task.reminder, format: :date%></h2>
+            </div>
+          </div>
+          <div class="tab-pane fade" id="nav-edit-<%=task.id%>" role="tabpanel" aria-labelledby="nav-edit-<%task.id%>-tab">
+            <%= form_with  model: task, html: { autocomplete: 'off' } do |f| %>
+              <div class="field task-field">
+                <%= f.label :name, Task.human_attribute_name(:name), class: 'form-label'%>
+                <%= f.text_field :name, class: 'form-control task-form-control', id: "task_name#{task.id}"%>
+              </div>
+              <div class="field task-field">
+                <%= f.label :reminder, Task.human_attribute_name(:reminder), class: 'form-labl d-block' %>
+                <%= f.time_select :reminder, {}, { class: 'task-form-control', id: "task_reminder_#{task.id}" } %>
+                <%=f.hidden_field :goal_id, value: task.issue.goal.id%>
+                <%=f.hidden_field :issue_id, value: task.issue.id%>
+                <%=f.hidden_field :user_id, value: current_user.id%>
+              </div>
+              <div class='field task-field text-center'>
+                <%= f.submit '更新する', class: 'btn task-btn'%>
+              </div>
+            <%end%>
+				  </div>
+        </div>
+      </div>
+      <div class="modal-footer task-modal-footer">
+        <button type="button" class="task-btn btn" data-bs-dismiss="modal">閉じる</button>
+      </div>
+    </div>
+  </div>
+</div>

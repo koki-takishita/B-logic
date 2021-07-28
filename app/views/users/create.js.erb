@@ -1,0 +1,38 @@
+var myModalEl = document.getElementById('exampleModal');
+var modal = bootstrap.Modal.getInstance(myModalEl);
+
+var LoginM = new bootstrap.Modal(document.getElementById('LoginModal'));
+
+var UserName = document.getElementById('user_email');
+var UserPwd = document.getElementById('user_password');
+var UserPwdC = document.getElementById('user_password_confirmation');
+
+// 前回のフラッシュメッセージ
+$("#task-flash-message").html("");
+$("#issue-flash-message").html("");
+$("#goal-flash-message").html("");
+$("#user-flash-message").html("");
+$("#user-session-flash").html("");
+
+// モーダルフラッシュメッセージ
+$("#goal_create_flash").html("");
+$("#task_create_flash").html("");
+$("#user_create_flash").html("");
+
+<%if @user.persisted?%>
+  UserName.value="";
+  UserPwd.value="";
+  UserPwdC.value="";
+  modal.hide();
+
+  //ログイン用
+  //$("#user-menu-list").html("<%#= escape_javascript(render('user/logged_menu'))%>");
+  $("#user-session-flash").html("<%= escape_javascript(render('shared/flash_message', object: @user))%>").hide().fadeIn(500);
+  LoginM.show();
+<%else%>
+  $("#user_create_flash").html("<%= escape_javascript(render('shared/flash_message', object: @user))%>");
+  //モーダル閉じたら消す
+  myModalEl.addEventListener('hidden.bs.modal', function (event) {
+    $("#user_create_flash").html("");
+  })
+<%end%>

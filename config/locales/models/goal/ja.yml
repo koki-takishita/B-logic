@@ -1,0 +1,23 @@
+ja:
+  activerecord:
+    models:
+      goal: '目標'
+    attributes:
+      goal:
+        id: 'ID'
+        status: 'ステータス'
+        name: '目標名'
+        deadline: '期限'
+        created_at: '登録日時'
+        updated_at: '更新日時'
+  errors:
+    format: "%{attribute}%{message}"
+    messages:
+      input_attributes_blank: 'がなにも入力されていません.'
+  enums:
+    goal:
+      status:
+        run: '実行中'
+        done: '停止中'
+        expired: '期限切れ'
+

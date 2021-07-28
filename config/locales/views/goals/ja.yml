@@ -1,0 +1,15 @@
+ja:
+  goal:
+    index:
+      title: '目標一覧'
+    show:
+      title: '目標詳細'
+    edit:
+      title: '目標編集'
+    new:
+      title: '目標作成'
+    flash:
+      create: "目標を作成しました"
+      danger:  "目標を作成できませんでした"
+      update: '目標を更新しました'
+      destroy: '目標を削除しました'

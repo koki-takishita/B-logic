@@ -1,0 +1,32 @@
+$("#goal_flash").html("<%= escape_javascript(render('shared/flash_message', object: @goal))%>");
+
+var myModalEl = document.getElementById("GoalShowModal<%=@goal.id%>");
+var modal = bootstrap.Modal.getInstance(myModalEl);
+
+// 前回のフラッシュメッセージ追加
+$("#goal_flash_<%=@goal.id%>").html("");
+// 前回のフラッシュメッセージ追加
+$("#task-flash-message").html("");
+$("#goal-flash-message").html("");
+$("#issue-flash-message").html("");
+$("#user-flash-message").html("");
+$("#user-session-flash").html("");
+$("js-logout-flash").remove();
+
+$("#issue_create_flash").html("");
+$("#goal_create_flash").html("");
+$("#task_create_flash").html("");
+$("#user_create_flash").html("");
+
+
+<% if @goal.saved_changes? %>
+  modal.hide();
+  $("#js-goal-show-button-<%=@goal.id%>").html("<%= escape_javascript(render('shared/button/show', modalname: "#GoalShow", class_name: 'goal', object: @goal, id: 'goal-show'))%>");
+  $("#goal-flash-message").html("<%= escape_javascript(render('shared/flash_message', object: @goal))%>").hide().fadeIn(500);
+<%else%>
+  $("#goal_flash_<%=@goal.id%>").html("<%= escape_javascript(render('shared/flash_message', object: @goal))%>");
+  //モーダル閉じたら消す
+  myModalEl.addEventListener('hidden.bs.modal', function (event) {
+    $("#goal_flash_<%=@goal.id%>").html("");
+  })
+<%end%>

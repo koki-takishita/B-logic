@@ -1,0 +1,26 @@
+<div id="js-goal-record-<%=goal.id%>">
+  <div class="row margin_bottom_20">
+    <%= render 'shared/modal/GoalShow', goal: goal %>
+    <div class="col-md-4 d-flex text-align-items-start justify-content-start">
+      <li>
+        <%= render 'shared/button/show', modalname: "#GoalShow", class_name: 'goal', object: goal, id: 'goal-show'%>
+      </li>
+    </div>
+    <div class="col-md-4 d-flex text-align-items-start justify-content-center">
+      <h2 class="m-0"><%=l goal.deadline, format: :date %></h2>
+    </div>
+    <div class="col-md-4 d-flex align-items-center justify-content-center">
+      <!--<div id = "js-goal-status<%=goal.id%>">
+        <%# if goal.run? %>
+          <%#=render 'goals/shared/run', goal: goal%>
+        <%# elsif goal.done?%>
+          <%#=render 'goals/shared/done', goal: goal%>
+        <%#end%>
+      </div>
+      -->
+      <div id ='goal-destroy'>
+        <%= link_to '達成', goal_path(goal), method: 'delete', remote: true, type: 'button', class: 'btn goal-btn', data: { confirm: '本当に目標を達成しましたか?', 'turbolinks' => false} %>
+      </div>
+    </div>
+  </div>
+</div>

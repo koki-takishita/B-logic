@@ -8,8 +8,16 @@
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
-
   <body>
+    <div id="js-top-msg"></div>
+    <%if logged_in? && (@expired_models.select{|record| record.present?}).present?%>
+      <div id="error_msg"></div>
+      <%=render 'shared/modal/error', expired_models: @expired_models%>
+		<%else%>
+      <div id="error_nil_msg"></div>
+    <%end%>
+    <div class="w-100 h-100 d-flex justify-content-center align-items-center">
     <%= yield %>
+    </div>
   </body>
 </html>
