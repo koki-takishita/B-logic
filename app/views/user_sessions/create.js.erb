@@ -26,12 +26,12 @@ $("#user_create_flash").html("");
   $("#user-menu-list").html("<%= escape_javascript(render('users/logged_menu'))%>");
   $("#user-flash-message").html("<%= escape_javascript(render('shared/flash_message', object: nil))%>").hide().fadeIn(500);
   $("#goal-child-box").html("<%= escape_javascript(render('shared/menu_list', color: 'orange', object: 'goal', modal_name: 'Goal', index_path_name: '目標一覧', new_path_name: '目標新規作成', title: '目標', path: goals_path))%>").hide().fadeIn(500);
-  <%if current_user.issues.present?%>
+  <%if current_user.goals.present?%>
   $("#issue-child-box").html("<%= escape_javascript(render('shared/menu_list', color: 'blue', object: 'issue', modal_name: 'Issue', index_path_name: '課題一覧', new_path_name: '課題新規作成', title: '課題', path: issues_path))%>").hide().fadeIn(500);
   <%end%>
 
-  <%if current_user.tasks.present?%>
-  $("#task-child-box").html("<%= escape_javascript(render('shared/menu_list', color: 'yellow', object: 'task', modal_name: 'Task', index_path_name: 'タスク一覧', new_path_name: 'タスク新規作成', title: 'タスク', path: issues_path))%>").hide().fadeIn(500);
+  <%if current_user.issues.present?%>
+  $("#task-child-box").html("<%= escape_javascript(render('shared/menu_list', color: 'yellow', object: 'task', modal_name: 'Task', index_path_name: 'タスク一覧', new_path_name: 'タスク新規作成', title: 'タスク', path: tasks_path))%>").hide().fadeIn(500);
   <%end%>
 
 <%else%>
