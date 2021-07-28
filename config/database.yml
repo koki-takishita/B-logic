@@ -16,7 +16,6 @@ default: &default
   username: root
   password: z9YuhYye?
   host: localhost
-  soket: /var/run/mysqld/mysqld.sock 
 
 development:
   <<: *default
@@ -46,6 +45,7 @@ test:
 # You can use this database configuration with:
 production:
   url: <%= ENV['DATABASE_URL'] %>
+  soket: /tmp/mysql.sock 
 #
 production:
   <<: *default
