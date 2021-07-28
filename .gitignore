@@ -32,7 +32,7 @@ vendor/assets/bower_components/*
 AdminLTE/
 
 # database
-config/database.yml
+#config/database.yml
 
 *.rdb
 .tags
