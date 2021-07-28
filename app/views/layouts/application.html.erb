@@ -9,27 +9,15 @@
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
   <body>
-    <%#= render 'layouts/header' %>
-    <div class='row column-control'>
-      <div class='col-3 sidebar'>
-        <%= render 'layouts/sidebar' %>
-      </div>
-      <!--main content -->
-      <div class='col column-control'>
-        <div class="row column-control">
-          <div class='main-content'>
-            <%flash.each do |message_type, message|%>
-              <div class="alert alert-<%=message_type%>"><%=message%></div>
-            <%end%>
-            <%= yield %>
-          </div>
-          <div class='padding-control sub-content-control'>
-            <div class='column-control'>
-              <%= render 'layouts/subcontent' %>
-            </div>
-          </div>
-        </div>
-      </div>
+    <div id="js-top-msg"></div>
+    <%if logged_in? && (@expired_models.select{|record| record.present?}).present?%>
+      <div id="error_msg"></div>
+      <%=render 'shared/modal/error', expired_models: @expired_models%>
+		<%else%>
+      <div id="error_nil_msg"></div>
+    <%end%>
+    <div class="w-100 h-100 d-flex justify-content-center align-items-center">
+    <%= yield %>
     </div>
   </body>
 </html>

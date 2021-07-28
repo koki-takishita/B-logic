@@ -1,0 +1,10 @@
+// 前回のフラッシュメッセージ追加
+$("#task-flash-message").html("");
+$("#task_create_flash").html("");
+
+$("#js-task-status<%=@task.id%>").html("<%=escape_javascript(render('tasks/shared/done', task: @task))%>");
+$("#js-top-msg").html("<%=escape_javascript(render('shared/modal/top_message', object: @task, message: '完了', name: 'success'))%>");
+var successModal = new bootstrap.Modal(document.getElementById('successModal'), {
+  keyboard: false
+});
+successModal.show();

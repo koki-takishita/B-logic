@@ -1,0 +1,11 @@
+ja:
+  activerecord:
+    models:
+      issue: '課題'
+    attributes:
+      issue:
+        id: 'ID'
+        name: '課題名'
+        solution: '解決策'
+        created_at: '登録日時'
+        updated_at: '更新日時'

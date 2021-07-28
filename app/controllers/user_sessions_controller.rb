@@ -1,26 +1,34 @@
 class UserSessionsController < ApplicationController
-  layout 'start'
+  #layout 'start'
 
   skip_before_action :require_login, only: [:new, :create]
+  skip_before_action :read_status_run_records
 
   def new
   end
 
   def create
     @user = login(user_params[:email], user_params[:password])
-    if @user
-      redirect_to(:root, notice: 'Login successful')
-    else
-      redirect_to request.referer
+    respond_to do |format|
+      if @user
+        flash[:success] = "ログインしました" 
+        format.html { redirect_back(fallback_location: back_url) }
+        format.js
+      else
+        flash[:danger] = "ログインできませんでした"
+        format.html { redirect_back(fallback_location: back_url) }
+        format.js
+      end
     end
   end
 
   def destroy
     logout
-    redirect_to(:login, notice: 'Logged out!')
+    flash.now[:success] = "ログアウトしました" 
+    render 'home/top' 
   end
 
   def user_params
-    params.require(:user_session).permit(:email, :password)
+    params.require(:session).permit(:email, :password)
   end
 end

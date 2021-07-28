@@ -7,7 +7,7 @@ RSpec.describe "Users", type: :system do
     let(:shortage_password_user) { build(:user, :shortage_password) }
 
     before do
-      visit new_user_path
+      visit root_path
     end
 
     context 'すべての属性が有効な状態' do

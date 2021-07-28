@@ -1,0 +1,6 @@
+<% if @goal.run? %>
+$("#js-goal-status<%=@goal.id%>").html("<%=escape_javascript(render('goals/shared/done', goal: @goal))%>");
+<%else%>
+$("#js-goal-status<%=@goal.id%>").html("");
+ // 警告モーダル
+<% end %>

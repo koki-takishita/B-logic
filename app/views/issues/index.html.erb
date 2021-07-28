@@ -1,0 +1,72 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-8">
+      <div class="base_object_text issue_object_text_color">
+        <h1><%=t 'issue.index.title'%></h1>
+      </div>
+      <div class="border-blue base_object_index overflow-auto">
+        <div id="issue-flash-message"></div>
+        <div class="base_object_list margin_top_30">
+          <div class="container">
+            <ul class="issue_object_text_color" id="js-issue-record-list">
+              <%@issues.each do |issue|%>
+                <%= render 'shared/issue_records', issue: issue %>
+              <%end%>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div class="base_object_text task_object_text_color">
+        <h1><%=t 'task.index.title'%></h1>
+      </div>
+      <div class="border-yellow base_object_index overflow-auto">
+        <div class="container">
+          <%if @issues%>
+            <%@issues.each do |issue|%>
+              <%issue.tasks.each do |task|%>
+                <div class="js-i-index-task-list-<%=issue.id%>">
+                  <%=render 'shared/modal/TaskShow', task: task%>
+                  <%= button_tag 'data-bs-toggle': 'modal', 'data-bs-target': "#TaskShowModal#{task.id}", class: 'd-inline w-100' do %>
+                    <div class="items">
+                      <div class=" task_object_text_color task_hover_text border-yellow margin_top_30 height_50 overflow-scroll" style="display: flex; align-items: center; justify-content: center;">
+                        <h3 class="m-2"><%=task.name%></h3> 
+                      </div>
+                    </div>
+                  <%end%>
+                </div>
+              <%end%>
+            <%end%>
+          <%end%>
+        </div>
+      </div>
+    </div>
+  </div>
+
+<%=render 'shared/modal/IssueNew'%>
+  <div class="row">
+    <div class="col-md-2">
+      <div class="base_object_text issue_object_text_color d-inline-block">
+        <h3 class="text_left padding_left"><%=button_tag t('issue.new.title'), 'data-bs-toggle': 'modal', 'data-bs-target': '#IssueNewModal', class: 'issue_hover_text issue_object_text_color text-decoration-none'%></h3>
+      </div>
+    </div>
+    <div class="col-md-2">
+      <div class="base_object_text issue_object_text_color">
+        <div class="col-sm">
+          <h3><%=link_to '戻る', root_path, class: 'issue_object_text_color issue_hover_text text-decoration-none', data: {'turbolinks' => false}%></h3>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div class="base_object_text issue_object_text_color">
+        <h3><%=Date.current.strftime("%Y/%m/%d")%></h3>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div class="base_object_text task_object_text_color">
+        <h3><%=link_to t('task.index.title'), tasks_path, class: 'task_object_text_color task_hover_text text-decoration-none', data: {'turbolinks' => false}%></h3>
+      </div>
+    </div>
+  </div>
+</div>

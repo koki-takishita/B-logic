@@ -12,4 +12,8 @@ module ApplicationHelper
     @selected_subgoal ||= selected_goal.subgoals.find_by_id(session[:subgoal_id]) if session[:subgoal_id]
   end
 
+  def selected_task
+    @selected_task ||= selected_subgoals.find_by_id(session[:task_id]) if session[:task_id]
+  end
+
 end

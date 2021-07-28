@@ -1,55 +1,72 @@
 class GoalsController < ApplicationController
-  def new
-    @goal = Goal.new
-  end
 
   def index
     @goals = current_user.goals
   end
 
-  def show
-    @goal = current_user.goals.find(params[:id])
-    session[:goal_id] = @goal.id.to_s
-  end
-
   def create
     @goal = current_user.goals.build(goal_params)
-    if @goal.save
-      flash[:success] = t 'goals.flash.create'
-      redirect_to goal_path(@goal)
-    else
-      flash[:success] = t 'goals.flash.danger'
-      render :new
+    respond_to do |format|
+      if @goal.save
+        flash[:success] = "目標を作成しました" 
+        format.html { redirect_back(fallback_location: back_url) }
+        format.js
+      else
+        flash[:danger] = "目標を作成できませんでした"
+        format.html { redirect_back(fallback_location: back_url) }
+        format.js
+      end
     end
-  end
-
-  def edit
-    @goal = current_user.goals.find(params[:id])
   end
 
   def update
     @goal = current_user.goals.find(params[:id])
     @goal.assign_attributes(goal_params)
-    if @goal.save
-      flash[:success] = t 'goals.flash.update'
-      redirect_to goal_path(@goal)
-    else
-      render :edit
+    @goal.status = 'run'
+    respond_to do |format|
+      if @goal.save
+        flash[:success] = "目標を更新しました" 
+        format.html { redirect_back(fallback_location: back_url) }
+        format.js
+      else
+        flash[:danger] = "目標を更新できませんでした"
+        format.html { redirect_back(fallback_location: back_url) }
+        format.js
+      end
     end
   end
 
   def destroy
     @goal = current_user.goals.find(params[:id])
     if @goal.destroy
-      flash[:danger] = t 'goals.flash.destroy'
-      redirect_to goals_path
+      flash[:success] = '目標を削除しました'
     end
+  end
+
+  def status_run
+    @goal = current_user.goals.find(params[:id])
+    @goal.run!
+    time_check(@goal)
+  end
+
+  def status_done
+    @goal = current_user.goals.find(params[:id])
+    @goal.done!
   end
 
   private
 
     def goal_params
-      params.require(:goal).permit(:embodiment, :quantification, :unit, :what_to_do, :deadline_on)
+      params.require(:goal).permit(:name, :deadline)
+    end
+
+    def back_url
+      url = Rails.application.routes.recognize_path(request.referrer)
+      previous_action = url[:action]
+    end
+
+    def time_check(goal)
+      goal.expired! unless goal.deadline > Time.zone.now
     end
 
 end

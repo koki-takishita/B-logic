@@ -8,10 +8,10 @@
 # set :output, "/path/to/my/cron_log.log"
 #
 # every 2.hours do
-#   command "/usr/bin/some_great_command"
-#   runner "MyModel.some_method"
-#   rake "some:great:rake:task"
-# end
+#  command "/usr/bin/some_great_command"
+#  runner "MyModel.some_method"
+#  rake "some:great:rake:task"
+#end
 #
 # every 4.days do
 #   runner "AnotherModel.prune_old_records"
@@ -27,6 +27,10 @@ rails_env = ENV['RAILS_ENV'] || :development
 set :environment, rails_env
 set :output, "#{Rails.root}/log/cron.log"
 set :chronic_options, hours24: true
+
+every :day, at: '00:01' do
+  rake 'job_start:task_status_check'
+end
 
 every :day, at: '00:01' do
   rake 'status_expired:expired!'

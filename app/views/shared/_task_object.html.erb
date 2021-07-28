@@ -1,0 +1,5 @@
+<%if !logged_in? || current_user.issues.blank?%>
+  <%= render 'shared/lock', color: 'yellow', object: 'task'%>
+<%else%>
+  <%= render 'shared/menu_list', color: 'yellow', object: 'task', modal_name: 'Task', index_path_name: 'タスク一覧', new_path_name: 'タスク新規作成', title: 'タスク', path: tasks_path%>
+<%end%>

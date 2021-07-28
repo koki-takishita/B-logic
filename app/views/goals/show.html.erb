@@ -1,55 +1,115 @@
-<div class='hex-contents'>
-  <div id="myHexGrid" class='item'>
-    <div class="hexCrop">
-      <div class='hexContainer' id='selecter'>
-        <% (1..10).zip(selected_goal.subgoals) do |i, subgoal|%>
-          <% if !selected_goal.subgoals.offset(9).blank? && i==1 %>
-            <%= link_to subgoal_path(selected_goal.subgoals.offset(9)), class: "hex number#{i}" do%>
-              <strong  class='hex-font'>実行中</strong>
-            <%end%>
-          <% elsif selected_goal.subgoals.fourth && i==2 %>
-            <%= link_to subgoal_path(selected_goal.subgoals.fourth), class: "hex number#{i}" do%>
-              <strong  class='hex-font'>実行中</strong>
-            <%end%>
-          <% elsif selected_goal.subgoals.second && i==3 %>
-            <%= link_to subgoal_path(selected_goal.subgoals.second), class: "hex number#{i}" do%>
-              <strong  class='hex-font'>実行中</strong>
-            <%end%>
-          <% elsif !selected_goal.subgoals.offset(5).blank? && i==4 %>
-            <%= link_to subgoal_path(selected_goal.subgoals.offset(5)), class: "hex number#{i}" do%>
-              <strong  class='hex-font'>実行中</strong>
-            <%end%>
-          <% elsif !selected_goal.subgoals.offset(7).blank? && i==5 %>
-            <%= link_to subgoal_path(selected_goal.subgoals.offset(7)), class: "hex number#{i}" do%>
-              <strong  class='hex-font'>実行中</strong>
-            <%end%>
-          <% elsif !selected_goal.subgoals.offset(8).blank? && i==6 %>
-            <%= link_to subgoal_path(selected_goal.subgoals.offset(8)), class: "hex number#{i}" do%>
-              <strong  class='hex-font'>実行中</strong>
-            <%end%>
-          <% elsif selected_goal.subgoals.third && i==7 %>
-            <%= link_to subgoal_path(selected_goal.subgoals.third), class: "hex number#{i}" do%>
-              <strong  class='hex-font'>実行中</strong>
-            <%end%>
-          <% elsif selected_goal.subgoals.first && i==8 %>
-            <%= link_to subgoal_path(selected_goal.subgoals.first), class: "hex number#{i}" do%>
-              <strong  class='hex-font'>実行中</strong>
-            <%end%>
-          <% elsif selected_goal.subgoals.fifth && i==9 %>
-            <%= link_to subgoal_path(selected_goal.subgoals.fifth), class: "hex number#{i}" do%>
-              <strong  class='hex-font'>実行中</strong>
-            <%end%>
-          <% elsif !selected_goal.subgoals.offset(6).blank? && i==10 %>
-            <%= link_to subgoal_path(selected_goal.subgoals.offset(10)), class: "hex number#{i}" do%>
-              <strong  class='hex-font'>実行中</strong>
-            <%end%>
-          <% else %>
-            <%= link_to new_subgoal_path, class: "hex number#{i}" do%>
-              <strong  class='hex-font'>準備中</strong>
-            <%end%>
-          <%end%>
-        <%end%>
+<!--
+<div class="container root-page-background-color">
+  <div class="row">
+    <div class="col-md-4">
+      <div class="base_object_text goal_object_text_color">
+        <h1>目標</h1>
+      </div>
+      <div class="border-orange base_object overflow-auto">
+        <div class="base_object_list margin_top_30">
+          <div class="container">
+            <ol class="goal_object_text_color">
+              <li class="h2 margin_top_20"><h2>目標一覧</h2></li>
+              <li class="h2 margin_top_20"><h2>目標新規作成</h2></li>
+              <li class="h2 margin_top_20"><h2>目標詳細</h2></li>
+              <li class="h2 margin_top_20"><h2>目標編集</h2></li>
+              <li class="h2 margin_top_20"><h2>目標一覧</h2></li>
+              <li class="h2 margin_top_20"><h2>目標新規作成</h2></li>
+              <li class="h2 margin_top_20"><h2>目標詳細</h2></li>
+              <li class="h2 margin_top_20"><h2>目標編集</h2></li>
+              <li class="h2 margin_top_20"><h2>目標一覧</h2></li>
+              <li class="h2 margin_top_20"><h2>目標新規作成</h2></li>
+              <li class="h2 margin_top_20"><h2>目標詳細</h2></li>
+              <li class="h2 margin_top_20"><h2>目標編集</h2></li>
+              <li class="h2 margin_top_20"><h2>目標一覧</h2></li>
+              <li class="h2 margin_top_20"><h2>目標新規作成</h2></li>
+              <li class="h2 margin_top_20"><h2>目標詳細</h2></li>
+              <li class="h2 margin_top_20"><h2>目標編集</h2></li>
+              <li class="h2 margin_top_20"><h2>目標一覧</h2></li>
+              <li class="h2 margin_top_20"><h2>目標新規作成</h2></li>
+              <li class="h2 margin_top_20"><h2>目標詳細</h2></li>
+              <li class="h2 margin_top_20"><h2>目標編集</h2></li>
+
+            </ol>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div class="base_object_text issue_object_text_color">
+        <h1>課題</h1>
+      </div>
+      <div class="border-blue base_object overflow-auto">
+        <div class="container">
+          <div class="base_object_list margin_top_30">
+            <ol class="issue_object_text_color">
+              <li class="h2 margin_top_20"><h2>課題一覧</h2></li>
+              <li class="h2 margin_top_20"><h2>課題新規作成</h2></li>
+              <li class="h2 margin_top_20"><h2>課題詳細</h2></li>
+              <li class="h2 margin_top_20"><h2>課題編集</h2></li>
+              <li class="h2 margin_top_20"><h2>目標一覧</h2></li>
+              <li class="h2 margin_top_20"><h2>目標新規作成</h2></li>
+              <li class="h2 margin_top_20"><h2>目標詳細</h2></li>
+              <li class="h2 margin_top_20"><h2>目標編集</h2></li>
+              <li class="h2 margin_top_20"><h2>目標一覧</h2></li>
+              <li class="h2 margin_top_20"><h2>目標新規作成</h2></li>
+              <li class="h2 margin_top_20"><h2>目標詳細</h2></li>
+              <li class="h2 margin_top_20"><h2>目標編集</h2></li>
+              <li class="h2 margin_top_20"><h2>目標一覧</h2></li>
+              <li class="h2 margin_top_20"><h2>目標新規作成</h2></li>
+              <li class="h2 margin_top_20"><h2>目標詳細</h2></li>
+              <li class="h2 margin_top_20"><h2>目標編集</h2></li>
+              <li class="h2 margin_top_20"><h2>目標一覧</h2></li>
+              <li class="h2 margin_top_20"><h2>目標新規作成</h2></li>
+              <li class="h2 margin_top_20"><h2>目標詳細</h2></li>
+              <li class="h2 margin_top_20"><h2>目標編集</h2></li>
+              <li class="h2 margin_top_20"><h2>目標一覧</h2></li>
+              <li class="h2 margin_top_20"><h2>目標新規作成</h2></li>
+              <li class="h2 margin_top_20"><h2>目標詳細</h2></li>
+              <li class="h2 margin_top_20"><h2>目標編集</h2></li>
+            </ol>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div class="base_object_text user_object_text_color">
+        <h1>ユーザー</h1>
+      </div>
+      <div class="border-green base_object overflow-auto">
+        <div class="container">
+          <div class="base_object_list margin_top_30">
+            <ol class="user_object_text_color">
+              <li class="h2 margin_top_20"><h2>新規登録</h2></li>
+              <li class="h2 margin_top_20"><h2>ログイン</h2></li>
+              <li class="h2 margin_top_20"><h2>ログアウト</h2></li>
+              <li class="h2 margin_top_20"><h2>目標一覧</h2></li>
+              <li class="h2 margin_top_20"><h2>目標新規作成</h2></li>
+              <li class="h2 margin_top_20"><h2>目標詳細</h2></li>
+              <li class="h2 margin_top_20"><h2>目標編集</h2></li>
+              <li class="h2 margin_top_20"><h2>目標一覧</h2></li>
+              <li class="h2 margin_top_20"><h2>目標新規作成</h2></li>
+              <li class="h2 margin_top_20"><h2>目標詳細</h2></li>
+              <li class="h2 margin_top_20"><h2>目標編集</h2></li>
+              <li class="h2 margin_top_20"><h2>目標一覧</h2></li>
+              <li class="h2 margin_top_20"><h2>目標新規作成</h2></li>
+              <li class="h2 margin_top_20"><h2>目標詳細</h2></li>
+              <li class="h2 margin_top_20"><h2>目標編集</h2></li>
+              <li class="h2 margin_top_20"><h2>目標一覧</h2></li>
+              <li class="h2 margin_top_20"><h2>目標新規作成</h2></li>
+              <li class="h2 margin_top_20"><h2>目標詳細</h2></li>
+              <li class="h2 margin_top_20"><h2>目標編集</h2></li>
+              <li class="h2 margin_top_20"><h2>目標一覧</h2></li>
+              <li class="h2 margin_top_20"><h2>目標新規作成</h2></li>
+              <li class="h2 margin_top_20"><h2>目標詳細</h2></li>
+              <li class="h2 margin_top_20"><h2>目標編集</h2></li>
+            </ol>
+          </div>
+        </div>
       </div>
     </div>
   </div>
 </div>
+-->
+
+

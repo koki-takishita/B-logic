@@ -1,0 +1,17 @@
+var myModalEl = document.getElementById('LoginModal');
+var modal = bootstrap.Modal.getInstance(myModalEl);
+
+// 前回のフラッシュメッセージ
+$("#task-flash-message").html("");
+$("#issue-flash-message").html("");
+$("#goal-flash-message").html("");
+$("#user-flash-message").html("");
+$("#user-session-flash").html("");
+
+// モーダルフラッシュメッセージ
+$("#goal_create_flash").html("");
+$("#task_create_flash").html("");
+$("#user_create_flash").html("");
+
+modal.hide();
+$("#user-flash-message").html("<%= escape_javascript(render('shared/flash_message', object: nil))%>").hide().fadeIn(500);

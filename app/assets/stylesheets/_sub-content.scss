@@ -1,33 +1,9 @@
-.col {
+.child-box{
+  height: 350px;
+}
+.terminal{
   height: 100%;
 }
-.sub-content {
-  color: #33E971;
-  background-color: #383947;
-  height: 100%;
-}
-
-.padding-control {
-  padding: 0px;
-}
-
-.sub-content-control {
-  height: 30%;
-}
-.text{
-  border: 2px solid #26B8F6;
-  width: 700px;
-}
-.short_text{
-  @extend .text;
-  width: 150px;
-}
-.label{
-  margin-top: 20px;
-  margin-bottom: 0px;
-  text-align: left;
-}
-.btn_control{
-  margin-top: 60px;
-  margin-right: 10px;
+.item{
+  padding: 2px 2px;
 }

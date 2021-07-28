@@ -30,11 +30,12 @@ module TentativeTitlePdca
     # Don't generate system test files.
     config.generators.system_tests = nil
     config.i18n.default_locale = :ja
+    config.active_job.queue_adapter = :sidekiq
 
     config.time_zone = 'Tokyo'
     config.active_record.default_timezone = :local
-    config.i18n.load_path += Dir[Rails.root.join('config', 'locales', '**', '*.{rb,yml}').to_s]
-
+    config.i18n.load_path += Dir[Rails.root.join('config', 'locales', '**', '**', '*.{rb,yml}').to_s]
+    config.action_view.embed_authenticity_token_in_remote_forms = true
     config.generators do |g|
       g.assets false
       g.skip_routes true

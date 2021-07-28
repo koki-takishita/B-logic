@@ -1,0 +1,5 @@
+<%if !logged_in?%>
+  <%= render 'shared/lock', color: 'orange', object: 'goal'%>
+<%else%>
+  <%= render 'shared/menu_list', color: 'orange', object: 'goal', modal_name: 'Goal', index_path_name: '目標一覧', new_path_name: '目標新規作成', title: '目標', path: goals_path%>
+<%end%>
