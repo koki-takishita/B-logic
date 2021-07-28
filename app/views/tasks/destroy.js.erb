@@ -1,6 +1,16 @@
 // 前回のフラッシュメッセージ追加
 $("#task-flash-message").html("");
+$("#goal-flash-message").html("");
+$("#issue-flash-message").html("");
+$("#user-flash-message").html("");
+$("#user-session-flash").html("");
+$("js-logout-flash").remove();
+
+$("#issue_create_flash").html("");
+$("#goal_create_flash").html("");
 $("#task_create_flash").html("");
+$("#user_create_flash").html("");
+
 
 $("#js-task-record-<%=@task.id%>").remove();
 $("#task-flash-message").html("<%= escape_javascript(render('shared/flash_message', object: @task))%>").hide().fadeIn(500);

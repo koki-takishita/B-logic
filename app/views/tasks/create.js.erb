@@ -4,9 +4,17 @@ var TaskName = document.getElementById('task_name');
 
 // 前回のフラッシュメッセージ追加
 $("#task-flash-message").html("");
-$("#issue-flash-message").html("");
 $("#goal-flash-message").html("");
+$("#issue-flash-message").html("");
+$("#user-flash-message").html("");
+$("#user-session-flash").html("");
+$("js-logout-flash").remove();
+
+$("#issue_create_flash").html("");
+$("#goal_create_flash").html("");
 $("#task_create_flash").html("");
+$("#user_create_flash").html("");
+
 //成功時はモーダル閉じて、上部にフラッシュメッセージ追加
 //失敗時はモーダル閉じないで,モーダル内にフラッシュメッセージを表示させる
 <% if @task.persisted?%>

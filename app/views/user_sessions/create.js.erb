@@ -10,6 +10,7 @@ $("#issue-flash-message").html("");
 $("#goal-flash-message").html("");
 $("#user-flash-message").html("");
 $("#user-session-flash").html("");
+$("js-logout-flash").remove();
 
 // モーダルフラッシュメッセージ
 $("#goal_create_flash").html("");
@@ -24,9 +25,7 @@ $("#user_create_flash").html("");
   //ログイン用
   $("#user-menu-list").html("<%= escape_javascript(render('users/logged_menu'))%>");
   $("#user-flash-message").html("<%= escape_javascript(render('shared/flash_message', object: nil))%>").hide().fadeIn(500);
-  <%if current_user.goals.present?%>
-    $("#goal-child-box").html("<%= escape_javascript(render('shared/menu_list', color: 'orange', object: 'goal', modal_name: 'Goal', index_path_name: '目標一覧', new_path_name: '目標新規作成', title: '目標', path: goals_path))%>").hide().fadeIn(500);
-  <%end%>
+  $("#goal-child-box").html("<%= escape_javascript(render('shared/menu_list', color: 'orange', object: 'goal', modal_name: 'Goal', index_path_name: '目標一覧', new_path_name: '目標新規作成', title: '目標', path: goals_path))%>").hide().fadeIn(500);
   <%if current_user.issues.present?%>
   $("#issue-child-box").html("<%= escape_javascript(render('shared/menu_list', color: 'blue', object: 'issue', modal_name: 'Issue', index_path_name: '課題一覧', new_path_name: '課題新規作成', title: '課題', path: issues_path))%>").hide().fadeIn(500);
   <%end%>
