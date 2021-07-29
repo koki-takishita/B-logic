@@ -1,11 +1,13 @@
 @import 'bootstrap';
-//@import 'hexi-flexi-grid';
-//@import 'hex-style';
-//@import 'sidebar-style';
 @import 'main-content';
 @import 'sub-content';
 @import "modal-style";
 @import "font-awesome";
+@import url('https://fonts.googleapis.com/css2?family=DotGothic16&display=swap');
+
+* {
+  font-family: 'DotGothic16', sans-serif;
+}
 
 h1 {
   margin: 0px;
