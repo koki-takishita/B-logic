@@ -22,19 +22,14 @@
         <h1><%=t 'task.index.title'%></h1>
       </div>
       <div class="border-yellow base_object_index overflow-auto">
+        <div id='task-flash-message'></div>
         <div class="container">
           <%if @issues%>
             <%@issues.each do |issue|%>
               <%issue.tasks.each do |task|%>
-                <div class="js-i-index-task-list-<%=issue.id%>">
-                  <%=render 'shared/modal/TaskShow', task: task%>
-                  <%= button_tag 'data-bs-toggle': 'modal', 'data-bs-target': "#TaskShowModal#{task.id}", class: 'd-inline w-100' do %>
-                    <div class="items">
-                      <div class=" task_object_text_color task_hover_text border-yellow margin_top_30 height_50 overflow-scroll" style="display: flex; align-items: center; justify-content: center;">
-                        <h3 class="m-2"><%=task.name%></h3> 
-                      </div>
-                    </div>
-                  <%end%>
+                <%= render "shared/modal/TaskShow", task: task%>
+                <div class="js-i-index-task-list-<%=issue.id%>" id="js-i-index-task-list-<%=task.id%>">
+                  <%= render 'shared/button/index_button', object: task, modal_name: 'Task', color: 'yellow', class_name: 'task' %>
                 </div>
               <%end%>
             <%end%>

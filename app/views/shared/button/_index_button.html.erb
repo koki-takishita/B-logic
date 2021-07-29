@@ -1,0 +1,7 @@
+<%= button_tag 'data-bs-toggle': 'modal', 'data-bs-target': "##{modal_name}ShowModal#{object.id}", class: 'd-inline w-100' do %>
+  <div class="items">
+    <div class="<%=class_name%>_hover_text border-<%=color%> margin_top_30 height_50 overflow-scroll" style="display: flex; align-items: center; justify-content: center;">
+      <h3 class="<%=class_name%>_object_text_color m-2 <%=class_name%>_hover_text"><%=object.name%></h3> 
+    </div>
+  </div>
+<%end%>
