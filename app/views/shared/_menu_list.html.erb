@@ -8,12 +8,12 @@
       <div class="base_object_list margin_top_30">
         <ul class="<%=object%>_object_text_color">
           <%if logged_in?%>
-            <li class="margin_top_20">
+            <li class="margin_top_20 list-unstyled">
               <h2>
                 <%=link_to "#{index_path_name}", "#{path}", class: "#{object}_hover_text #{object}_object_text_color text-decoration-none", data: {'turbolinks' => false}%>
               </h2>
             </li>
-            <li class="margin_top_20">
+            <li class="margin_top_20 list-unstyled">
               <h2>
                 <%=button_tag "#{new_path_name}", 'data-bs-toggle': 'modal', 'data-bs-target': "##{modal_name}NewModal", class: "#{object}_hover_text #{object}_object_text_color text-decoration-none" %>
               </h2>
