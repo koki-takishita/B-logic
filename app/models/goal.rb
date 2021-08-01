@@ -8,7 +8,7 @@ class Goal < ApplicationRecord
 
   def deadline_cannot_be_in_the_past
     if deadline.present? && deadline <= Date.today
-      errors.add(:expiration_date, ": 明日以降の日付を選択してください")
+      errors.add(:deadline, ": 明日以降の日付を選択してください")
     end
   end 
 

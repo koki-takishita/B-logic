@@ -13,6 +13,18 @@ class ApplicationController < ActionController::Base
     end
   end
 
+  def issue_empty
+    if current_user.issues.blank?
+      redirect_to root_path
+    end
+  end
+
+  def task_empty
+    if current_user.tasks.blank?
+      redirect_to root_path
+    end
+  end
+
   private
 
     def read_expired_models(models)

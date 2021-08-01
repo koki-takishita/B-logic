@@ -1,4 +1,5 @@
 class IssuesController < ApplicationController
+  before_action :issue_empty, only: [:index]
 
   def index
     @issues = current_user.issues

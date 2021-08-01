@@ -1,4 +1,5 @@
 class TasksController < ApplicationController
+  before_action :task_empty, only: [:index]
 
   def index
     @tasks = current_user.tasks
