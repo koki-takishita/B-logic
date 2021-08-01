@@ -14,13 +14,13 @@ class ApplicationController < ActionController::Base
   end
 
   def issue_empty
-    if current_user.issues.blank?
+    if current_user.goals.blank?
       redirect_to root_path
     end
   end
 
   def task_empty
-    if current_user.tasks.blank?
+    if current_user.issues.blank?
       redirect_to root_path
     end
   end
