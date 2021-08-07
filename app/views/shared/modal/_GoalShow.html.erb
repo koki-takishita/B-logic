@@ -13,9 +13,9 @@
         <div class="tab-content" id="nav-tabContent">
           <div class="tab-pane fade show active" id="nav-details-<%=goal.id%>" role="tabpanel" aria-labelledby="nav-details-<%=goal.id%>-tab">
             <%=label_tag 'name', '目標名', class: 'form-label'%>
-            <h2 class="border-orange"><%=goal.name%></h2>
+            <p class="border-orange form-control goal-form-control"><%=goal.name%></p>
             <%=label_tag 'deadline', '期限', class: 'form-label'%>
-            <h2 class="border-orange"><%=l goal.deadline, format: :date%></h2>
+            <p class="border-orange form-control goal-form-control"><%=l goal.deadline, format: :date%></p>
           </div>
 
           <div class="tab-pane fade" id="nav-edit-<%=goal.id%>" role="tabpanel" aria-labelledby="nav-edit-<%goal.id%>-tab">

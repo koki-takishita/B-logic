@@ -9,7 +9,7 @@
         <div class="base_object_list margin_top_30">
           <div class="container">
             <div id="goal_destroy_flash"></div>
-            <ul class="goal_object_text_color" id="js-goal-record-list">
+            <ul class="goal_object_text_color list-unstyled" id="js-goal-record-list">
               <%@goals.each do |goal|%>
                 <%=render 'shared/goal_records', goal: goal%>
               <%end%>

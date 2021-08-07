@@ -1,3 +1,46 @@
+.check-box input[type="checkbox"]{
+  display: none;
+}
+.check-box input[type="checkbox"]{
+    display: none;
+    cursor: pointer;
+    display: inline-block;
+    position: relative;
+    padding-left: 25px;
+    padding-right: 10px;
+}
+.check-box input[type="checkbox"]::before{
+  content: "";
+  position: absolute;
+  display: block;
+  box-sizing: border-box;
+  width: 30px;
+  height: 30px;
+  margin-top: -15px;
+  left: 0;
+  top: 50%;
+  border: 1px solid;
+  border-color:  #ff8310; /* 枠の色変更 お好きな色を */
+  border-radius: 30%;
+  background-color: black; /* 背景の色変更 お好きな色を */
+}
+/* チェックが入った時のレ点 */
+.check-box input[type="checkbox"]:checked::after{
+    content: "";
+    position: absolute;
+    display: block;
+    box-sizing: border-box;
+    width: 18px;
+    height: 9px;
+    margin-top: -6px;
+    top: 50%;
+    left: 5px;
+    transform: rotate(-45deg);
+    border-bottom: 3px solid;
+    border-left: 3px solid;
+    border-color:  #ff8310; /* チェックの色変更 お好きな色を */
+}
+
 .border-orange-square{
   border: 1.5px solid #ff8310;
 }
