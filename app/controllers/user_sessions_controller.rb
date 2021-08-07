@@ -11,11 +11,11 @@ class UserSessionsController < ApplicationController
     @user = login(user_params[:email], user_params[:password])
     respond_to do |format|
       if @user
-        flash[:success] = "ログインしました" 
+        flash[:success] = t('.success')
         format.html { redirect_back(fallback_location: back_url) }
         format.js
       else
-        flash[:danger] = "ログインできませんでした"
+        flash[:danger] = t('.danger')
         format.html { redirect_back(fallback_location: back_url) }
         format.js
       end
@@ -24,7 +24,7 @@ class UserSessionsController < ApplicationController
 
   def destroy
     logout
-    flash.now[:success] = "ログアウトしました" 
+    flash.now[:success] = t('.success')
     render 'home/top' 
   end
 

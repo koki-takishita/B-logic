@@ -26,11 +26,11 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
     respond_to do |format|
       if @user.save
-        flash[:success] = "新規登録が完了しました" 
+        flash[:success] = t('.success')
         format.html { redirect_back(fallback_location: back_url) }
         format.js
       else
-        flash[:danger] = "新規登録できませんでした"
+        flash[:danger] = t('.danger')
         format.html { redirect_back(fallback_location: back_url) }
         format.js
       end
