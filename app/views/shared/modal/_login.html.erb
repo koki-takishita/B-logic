@@ -3,7 +3,7 @@
   <div class="modal-dialog modal-dialog-centered">
     <div class="modal-content user_modal_border_color">
       <div class="modal-header user-modal-header">
-        <h5 class="modal-title" id="LoginModalLabel">ログイン</h5>
+        <h5 class="modal-title" id="LoginModalLabel"><%=t('.login')%></h5>
       </div>
       <div class="modal-body">
         <div id="user-session-flash"></div>
@@ -14,12 +14,12 @@
           </div>
           <div class="field user-field">
             <%= f.label :password, User.human_attribute_name(:password), class: 'form-labl' %>
-            <%= f.text_field :password, class: 'form-control user-form-control' %>
+            <%= f.password_field :password, class: 'form-control user-form-control' %>
           </div>
       </div>
       <div class="modal-footer user-modal-footer">
-        <button type="button" class="user-btn btn" data-bs-dismiss="modal">閉じる</button>
-          <%= f.submit 'ログイン', class: 'btn user-btn'%>
+        <button type="button" class="user-btn btn" data-bs-dismiss="modal"><%= I18n.t('modal.close')%></button>
+        <%= f.submit t('.login'), class: 'btn user-btn'%>
         <%end%>
       </div>
     </div>

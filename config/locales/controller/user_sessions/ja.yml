@@ -1,0 +1,7 @@
+ja:
+  user_sessions:
+    create:
+      success: 'ログインしました'
+      danger: 'ログインできませんでした'
+    destroy:
+      success: 'ログアウトしました'

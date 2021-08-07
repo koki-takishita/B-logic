@@ -105,6 +105,16 @@ ja:
       create: 登録する
       submit: 保存する
       update: 更新する
+      login: ログイン
+  users:
+    logged_menu:
+      logout: ログアウト
+  shared:
+    modal:
+      login:
+        login: ログイン
+  modal:
+    close: 閉じる
   number:
     currency:
       format:

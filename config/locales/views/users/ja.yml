@@ -8,3 +8,5 @@ ja:
       title: 'ユーザ情報編集'
     new:
       title: 'ユーザ作成'
+    button:
+      new: '新規登録'
