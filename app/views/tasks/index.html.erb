@@ -9,7 +9,7 @@
       <div class="border-yellow base_object_index overflow-auto">
         <div class="base_object_list margin_top_30">
           <div class="container">
-            <ul class="task_object_text_color" id='js-task-record-list'>
+            <ul class="task_object_text_color list-unstyled" id='js-task-record-list'>
               <%@tasks.each do |task|%>
                 <%= render 'shared/task_records', task: task%>
               <%end%>
