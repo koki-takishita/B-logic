@@ -17,5 +17,4 @@
 //= require jquery_ujs
 //= require popper
 //= require bootstrap-sprockets
-//= require done
 //= require_tree .
