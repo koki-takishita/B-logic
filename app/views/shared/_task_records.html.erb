@@ -3,7 +3,7 @@
     <%= render 'shared/modal/TaskShow', task: task %>
 
     <div class="col-md-1 d-flex align-items-center justify-content-center p-0 check-box">
-      <%=check_box_tag :check1 %>
+      <%=check_box_tag :check1, true, task.done?, { id: "check-box-#{task.id}" }%>
     </div>
 
     <div class="col-md-11 d-flex text-align-items-start justify-content-start">
