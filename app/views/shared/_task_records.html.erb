@@ -13,7 +13,7 @@
           </li>
         </div>
       </div>
-      <div class="align-self-center">
+      <div class="align-self-center pe-5">
         <div id ='task-destroy<%=task.id%> d-inline-block'>
           <%= link_to '削除', task_path(task), method: 'delete', remote: true, type: 'button', class: 'btn task-btn', data: {'turbolinks' => false, confirm: '本当に削除しますか？'}%>
         </div>
