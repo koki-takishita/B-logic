@@ -1,42 +1,23 @@
 <div class="task-record-list" id="js-task-record-<%=task.id%>">
   <div class="row margin_bottom_20" >
     <%= render 'shared/modal/TaskShow', task: task %>
-
-    <div class="col-md-1 d-flex align-items-center justify-content-center p-0 check-box">
-      <%=check_box_tag :check1, true, task.done?, { id: "check-box-#{task.id}" }%>
-    </div>
-
-    <div class="col-md-11 d-flex text-align-items-start justify-content-start">
-      <li id="js-task-list<%=task.id%>">
-        <div>
-          <%= render 'shared/button/show', modalname: "#TaskShow", class_name: 'task', object: task, id: 'task-show'%>
-          <p class="m-0"><%= l task.reminder, format: :time%></p>
+    <div class="d-flex justify-content-between">
+      <div class="d-flex align-items-center check-box">
+        <%=check_box_tag :check1, true, task.done?, { id: "check-box-#{task.id}" }%>
+        <div class="ms-5">
+          <li id="js-task-list<%=task.id%>">
+            <div>
+              <%= render 'shared/button/show', modalname: "#TaskShow", class_name: 'task', object: task, id: 'task-show'%>
+              <p class="m-0"><%= l task.reminder, format: :time%></p>
+            </div>
+          </li>
         </div>
-      </li>
-    </div>
-
-    <!--
-    <div class="col-md-4 d-flex text-align-items-start justify-content-center">
-      <h2 class="m-0">
-        <%#= l task.reminder, format: :time%>
-      </h2>
-    </div>
-    -->
-
-    <!--
-    <div class="col-md-4 d-flex align-items-center justify-content-center">
-      <div id ="js-task-status<%#=task.id%>" class="me-2">
-        <%# if task.run? || task.expired? %>
-          <%#=render 'tasks/shared/run', task: task%>
-        <%# else %>
-          <%#=render 'tasks/shared/done', task: task%>
-        <%#end%>
       </div>
-      <div id ='task-destroy<%#=task.id%>'>
-        <%#= link_to '削除', task_path(task), method: 'delete', remote: true, type: 'button', class: 'btn task-btn', data: {'turbolinks' => false}%>
+      <div class="align-self-center">
+        <div id ='task-destroy<%=task.id%> d-inline-block'>
+          <%= link_to '削除', task_path(task), method: 'delete', remote: true, type: 'button', class: 'btn task-btn', data: {'turbolinks' => false, confirm: '本当に削除しますか？'}%>
+        </div>
       </div>
     </div>
-    -->
-
   </div>
 </div>

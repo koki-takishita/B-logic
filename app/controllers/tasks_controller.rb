@@ -10,7 +10,6 @@ class TasksController < ApplicationController
     @task = issue.tasks.build(task_params)
     respond_to do |format|
       if @task.save
-        add_queue(@task)
         flash[:success] = "タスクを作成しました"
         format.html { redirect_back(fallback_location: back_url) }
         format.js
@@ -28,7 +27,6 @@ class TasksController < ApplicationController
     @task.status = 'run'
     respond_to do |format|
       if @task.save
-        add_queue(@task)
         flash[:success] = "タスクを更新しました"
         format.html { redirect_back(fallback_location: back_url) }
         format.js
