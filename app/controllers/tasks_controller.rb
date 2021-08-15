@@ -2,7 +2,7 @@ class TasksController < ApplicationController
   before_action :task_empty, only: [:index]
 
   def index
-    @tasks = current_user.tasks
+    @tasks = current_user.tasks.order(:reminder)
   end
 
   def create
