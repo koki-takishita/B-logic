@@ -16,7 +16,10 @@
       </div>
     </div>
     <div class="col-md-9 p-0">
-      <div class="border-yellow base_object_index overflow-auto ms-0 border-start-0">
+      <div class="border-yellow base_object_index overflow-auto ms-0 border-start-0" id="js-destroy-plus-btn">
+        <%if !@tasks.present?%>
+          <%= render 'shared/button/plus_btn_center'%>
+        <%end%>
         <div id="task-flash-message">
         </div>
         <div class="base_object_list margin_top_30">
@@ -24,6 +27,9 @@
             <ul class="task_object_text_color list-unstyled" id='js-task-record-list'>
               <%@tasks.each do |task|%>
                 <%= render 'shared/task_records', task: task%>
+              <%end%>
+              <%if @tasks.present?%>
+                <%=render 'shared/button/plus_btn'%>
               <%end%>
             </ul>
           </div>
