@@ -5,11 +5,9 @@
       <div class="d-flex align-items-center check-box">
         <%=check_box_tag :check1, true, task.done?, { id: "check-box-#{task.id}" }%>
         <div class="ms-5">
-          <li id="js-task-list<%=task.id%>">
-            <div>
+          <li id="js-task-list-<%=task.id%>">
               <%= render 'shared/button/show', modalname: "#TaskShow", class_name: 'task', object: task, id: 'task-show'%>
-              <p class="m-0"><%= l task.reminder, format: :time%></p>
-            </div>
+              <!--<p class="m-0" id="js-task-reminder-<%#=task.id%>"><%#= l task.reminder, format: :time%></p>-->
           </li>
         </div>
       </div>

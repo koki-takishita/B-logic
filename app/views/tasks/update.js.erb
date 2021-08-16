@@ -15,8 +15,8 @@ $("#user_create_flash").html("");
 
 <% if @task.saved_changes? %>
   modal.hide();
-  $("#js-task-show-button-<%=@task.id%>").html("<%= escape_javascript(render('shared/button/show', modalname: "#TaskShow", class_name: 'task', object: @task, id: 'task-show'))%>");
-  $("#js-i-index-task-list-<%=@task.id%>").html("<%= escape_javascript(render('shared/button/index_button', modal_name: "Task", class_name: 'task', object: @task, color: 'yellow'))%>");
+  $("#js-task-list-<%=@task.id%>").html("<%= escape_javascript(render('shared/button/show', modalname: "#TaskShow", class_name: 'task', object: @task, id: 'task-show'))%>");
+  //$("#js-i-index-task-list-<%#=@task.id%>").html("<%#= escape_javascript(render('shared/button/index_button', modal_name: "Task", class_name: 'task', object: @task, color: 'yellow'))%>");
   $("#task-flash-message").html("<%= escape_javascript(render('shared/flash_message', object: @task))%>").hide().fadeIn(500);
 <%else%>
   $("#task_flash_<%=@task.id%>").html("<%= escape_javascript(render('shared/flash_message', object: @task))%>");
