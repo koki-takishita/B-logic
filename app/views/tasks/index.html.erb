@@ -3,10 +3,22 @@
     <h1><%=t 'task.index.title'%></h1>
   </div>
   <div class="row">
-    <div id="task-flash-message">
+    <div class="col-md-3 p-0">
+      <div class="border-yellow base_object_index overflow-auto me-0">
+        <div class="issues-list">
+          <ul class="task_object_text_color ps-1">
+            <p class="m-3"><i class="fa fa-file me-2"></i><%= link_to 'すべてのタスク' ,tasks_path, class: "task_hover_text task_object_text_color text-decoration-none #{active_if(action: 'index')}"%></p>
+            <% current_user.issues.each do |issue| %>
+              <p class="m-3"><i class="fa fa-genderless me-2"></i><%= link_to issue.solution, select_issue_task_path(issue), class: "task_hover_text task_object_text_color text-decoration-none #{active_if(id: issue.id)}" %></p>
+            <% end%>
+          </ul>
+        </div>
+      </div>
     </div>
-    <div class="col-md-12">
-      <div class="border-yellow base_object_index overflow-auto">
+    <div class="col-md-9 p-0">
+      <div class="border-yellow base_object_index overflow-auto ms-0 border-start-0">
+        <div id="task-flash-message">
+        </div>
         <div class="base_object_list margin_top_30">
           <div class="container">
             <ul class="task_object_text_color list-unstyled" id='js-task-record-list'>

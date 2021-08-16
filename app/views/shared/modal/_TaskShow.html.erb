@@ -15,11 +15,11 @@
           <div class="tab-pane fade show active" id="nav-details-<%=task.id%>" role="tabpanel" aria-labelledby="nav-details-<%=task.id%>-tab">
             <div class="task-field">
               <%=label_tag 'name', '目標名', class: 'form-label'%>
-              <h2 class="border-yellow modal-show-label"><%=task.name%></h2>
+              <p class="border-yellow modal-show-label"><%=task.name%></p>
             </div>
             <div class="task-field">
               <%=label_tag 'reminder', 'リマインド', class: 'form-label'%>
-              <h2 class="border-yellow modal-show-label"><%=l task.reminder, format: :date%></h2>
+              <p class="border-yellow modal-show-label"><%=l task.reminder, format: :time%></p>
             </div>
           </div>
           <div class="tab-pane fade" id="nav-edit-<%=task.id%>" role="tabpanel" aria-labelledby="nav-edit-<%task.id%>-tab">

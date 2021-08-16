@@ -16,4 +16,12 @@ module ApplicationHelper
     @selected_task ||= selected_subgoals.find_by_id(session[:task_id]) if session[:task_id]
   end
 
+  def active_if(action: nil, id: nil)
+    return active_issue(id) if id && @issue
+    active_action(action) if action
+  end
+
+  def active_action(action)
+    action == action_name ? 'task_active' : ''
+  end
 end

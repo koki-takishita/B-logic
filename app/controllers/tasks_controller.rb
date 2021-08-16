@@ -56,6 +56,12 @@ class TasksController < ApplicationController
     @task.done!
   end
 
+  def select_issue
+    @issue = current_user.issues.find_by_id(params[:id])
+    @tasks = @issue.tasks.order(:reminder).includes(:issue)
+    render :index
+  end
+
   private
 
     def task_params

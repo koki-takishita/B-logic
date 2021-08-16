@@ -1,4 +1,4 @@
-onPageLoad 'tasks#index', ->
+onPageLoad ['tasks#index', 'tasks#select_issue'], ->
   $("[name=check1]").each (index, element) ->
     element.addEventListener 'change', (e) => 
      # idを変数に格納、正規表現で数値を取り出し

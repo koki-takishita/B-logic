@@ -16,6 +16,7 @@ Rails.application.routes.draw do
     member do
       put 'status_done'
       put 'status_run'
+      get 'select_issue'
     end
   end
 
