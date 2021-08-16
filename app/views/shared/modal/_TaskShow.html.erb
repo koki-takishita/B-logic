@@ -1,9 +1,7 @@
-<!-- Modal -->
 <div class="modal fade" id="TaskShowModal<%=task.id%>" tabindex="-1" aria-labelledby="taskShowModal<%=task.id%>Label" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered">
     <div class="modal-content task_modal_border_color">
       <div class="modal-header task-modal-header">
-        <!--<h5 class="modal-title" id="TaskShowModal<%=task.id%>Label">詳細</h5>-->
         <div class="nav nav-tabs" id="nav-tab" role="tablist">
           <button class="nav-link active btn task-btn me-1" id="nav-details-<%=task.id%>-tab" data-bs-toggle="tab" href="#nav-details-<%=task.id%>" role="tab" aria-controls="nav-details-<%=task.id%>" aria-selected="true">詳細</a>
           <button class="nav-link task-btn btn" id="nav-edit-<%=task.id%>-tab" data-bs-toggle="tab" href="#nav-edit-<%=task.id%>" role="tab" aria-controls="nav-edit-<%=task.id%>" aria-selected="false">編集</a>
@@ -14,7 +12,7 @@
         <div class="tab-content" id="nav-tabContent">
           <div class="tab-pane fade show active" id="nav-details-<%=task.id%>" role="tabpanel" aria-labelledby="nav-details-<%=task.id%>-tab">
             <div class="task-field">
-              <%=label_tag 'name', '目標名', class: 'form-label'%>
+              <%=label_tag 'name', 'タスク名', class: 'form-label'%>
               <p class="border-yellow modal-show-label"><%=task.name%></p>
             </div>
             <div class="task-field">

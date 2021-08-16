@@ -6,8 +6,7 @@
         <%=check_box_tag :check1, true, task.done?, { id: "check-box-#{task.id}" }%>
         <div class="ms-5">
           <li id="js-task-list-<%=task.id%>">
-              <%= render 'shared/button/show', modalname: "#TaskShow", class_name: 'task', object: task, id: 'task-show'%>
-              <!--<p class="m-0" id="js-task-reminder-<%#=task.id%>"><%#= l task.reminder, format: :time%></p>-->
+            <%= render 'shared/button/show', modalname: "#TaskShow", class_name: 'task', object: task, id: 'task-show'%>
           </li>
         </div>
       </div>
