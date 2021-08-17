@@ -8,9 +8,13 @@
     	<div class="modal-body">
         <%expired_models.each do |model|%>
           <%if model.present? %>
-            <p class="bg-danger">エラーが<%=model.size%>件発生しています<br>速やかに解決してください</p>
+            <%if !model.first.nil?%>
+              <p class="bg-danger"><%=model.first.model_name.human%>でエラーが発生しています</p>
+            <%end%>
             <%model.each do |record|%>
-              <p class="bg-danger"><%= record.model_name.name.constantize.model_name.human%> : <%=record.name%></p>
+              <%if !record.nil?%>
+                <p class="bg-danger"><%= record.model_name.name.constantize.model_name.human%> : <%=record.name%></p>
+              <%end%>
             <%end%>
           <%end%>
         <%end%>
