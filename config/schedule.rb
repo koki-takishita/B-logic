@@ -31,7 +31,3 @@ set :chronic_options, hours24: true
 every :day, at: '00:01' do
   rake 'job_start:task_status_check'
 end
-
-every :day, at: '00:01' do
-  rake 'status_expired:expired!'
-end

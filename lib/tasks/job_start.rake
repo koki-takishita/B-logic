@@ -6,9 +6,10 @@ namespace :job_start do
     # 一つずつ取り出してremindを取得し変数に格納
     tasks.each{ |task|
       task.run!
-      time = task.reminder
+#      time = task.reminder
       puts task
 
+=begin
       year = Time.zone.now.year
       month = Time.zone.now.month
       day = Time.zone.now.day
@@ -19,7 +20,8 @@ namespace :job_start do
       # 今日の日付 + 指定した時間で毎回生成することで、毎日チェックが入るようになる
       on_time = Time.zone.local(year, month, day, hour, minute) 
       puts on_time
-      AsyncLogJob.set(wait_until: on_time).perform_later(task)
+      #AsyncLogJob.set(wait_until: on_time).perform_later(task)
+=end
     }
     
     # 時間を指定してjobを呼び出す(eachの中)
