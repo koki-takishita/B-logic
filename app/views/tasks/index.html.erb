@@ -1,10 +1,10 @@
-<div class="container-fluid">
-  <div class="base_object_text task_object_text_color">
-    <h1><%=t 'task.index.title'%></h1>
+<div class="container-fluid h-100">
+  <div class="base_object_text task_object_text_color h-7">
+    <h1 class="pb-1"><%=t 'task.index.title'%></h1>
   </div>
-  <div class="row">
+  <div class="row h-86">
     <div class="col-md-3 p-0">
-      <div class="border-yellow base_object_index overflow-auto me-0">
+      <div class="border-yellow base_object_index overflow-auto m-0">
         <div class="issues-list">
           <ul class="task_object_text_color ps-1">
             <p class="m-3"><i class="fa fa-file me-2"></i><%= link_to 'すべてのタスク' ,tasks_path, class: "task_hover_text task_object_text_color text-decoration-none #{active_if(action: 'index')}"%></p>
@@ -16,7 +16,7 @@
       </div>
     </div>
     <div class="col-md-9 p-0">
-      <div class="border-yellow base_object_index overflow-auto ms-0 border-start-0" id="js-destroy-plus-btn">
+      <div class="border-yellow base_object_index overflow-auto m-0 border-start-0" id="js-destroy-plus-btn">
         <%if !@tasks.present?%>
           <%= render 'shared/button/plus_btn_center'%>
         <%end%>
@@ -38,15 +38,15 @@
     </div>
   </div>
   <%=render 'shared/modal/TaskNew'%>
-  <div class="d-flex justify-content-between">
+  <div class="d-flex justify-content-between h-7 mt-2">
     <div class="base_object_text task_object_text_color d-inline-block">
-      <h3 class="text_left ps-3"><%=button_tag t('task.new.title'), 'data-bs-toggle': 'modal', 'data-bs-target': '#TaskNewModal', class: 'task_hover_text task_object_text_color text-decoration-none'%></h3>
+      <h3 class="text_left ps-3 m-0"><%=button_tag t('task.new.title'), 'data-bs-toggle': 'modal', 'data-bs-target': '#TaskNewModal', class: 'task_hover_text task_object_text_color text-decoration-none'%></h3>
     </div>
     <div class="base_object_text task_object_text_color">
-      <h3><%=Date.current.strftime("%Y/%m/%d")%></h3>
+      <h3 class="m-0"><%=Date.current.strftime("%Y/%m/%d")%></h3>
     </div>
     <div class="base_object_text task_object_text_color">
-      <h3 class="pe-3"><%=link_to '戻る', root_path, class: 'task_object_text_color task_hover_text text-decoration-none', data: {'turbolinks' => false}%></h3>
+      <h3 class="pe-3 m-0"><%=link_to '戻る', root_path, class: 'task_object_text_color task_hover_text text-decoration-none', data: {'turbolinks' => false}%></h3>
     </div>
   </div>
 </div>
