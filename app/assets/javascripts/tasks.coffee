@@ -17,6 +17,7 @@ onPageLoad ['tasks#index', 'tasks#select_issue'], ->
          type: "PUT"
          url: "/tasks/#{task_id[0]}/status_run"
 
+onPageLoad ['tasks#select_issue'], ->
   TaskNewModal = document.getElementById 'TaskNewModal'
   TaskNewModal.addEventListener 'show.bs.modal', (event) =>
     button = event.relatedTarget

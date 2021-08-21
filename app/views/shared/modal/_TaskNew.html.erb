@@ -9,7 +9,7 @@
           <div id="task_create_flash"></div>
           <div class="field task-field">
             <%= f.label :task_id, Issue.human_attribute_name(:solution), class: 'form-label'%>
-            <%= f.select :issue_id, issues_select, {include_blank: false} ,class: 'form-control task-form-control'%>
+            <%= f.select :issue_id, issues_select, {prompt: '課題を選択してください'} ,class: 'form-control task-form-control'%>
           </div>
           <div class="field task-field">
             <%= f.label :name, Task.human_attribute_name(:name), class: 'form-label'%>

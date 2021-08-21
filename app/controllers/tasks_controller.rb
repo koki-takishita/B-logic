@@ -6,8 +6,12 @@ class TasksController < ApplicationController
   end
 
   def create
-    issue = issue_find
-    @task = issue.tasks.build(task_params)
+    if params[:task][:issue_id].present?
+      issue = issue_find
+      @task = issue.tasks.build(task_params)
+    else
+      @task = Task.new(task_params)
+    end
     respond_to do |format|
       if @task.save
         flash[:success] = "タスクを作成しました"

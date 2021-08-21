@@ -1,67 +1,59 @@
-<div class="container-fluid">
-  <div class="row">
-    <div class="col-md-8">
-      <div class="base_object_text issue_object_text_color">
-        <h1><%=t 'issue.index.title'%></h1>
-      </div>
-      <div class="border-blue base_object_index overflow-auto">
+<div class="container-fluid h-100 p-3">
+  <div class="base_object_text issue_object_text_color h-7">
+    <h1><%=t 'issue.index.title'%></h1>
+  </div>
+  <div class="row h-86">
+    <div class="col-md p-0">
+      <div class="border-blue base_object_index overflow-auto m-0">
         <div id="issue-flash-message"></div>
         <div class="base_object_list margin_top_30">
-          <div class="container">
-            <ul class="issue_object_text_color" id="js-issue-record-list">
-              <%@issues.each do |issue|%>
-                <%= render 'shared/issue_records', issue: issue %>
-              <%end%>
-            </ul>
-          </div>
+          <ul class="issue_object_text_color" id="js-issue-record-list">
+            <%@issues.each do |issue|%>
+              <%= render 'shared/issue_records', issue: issue %>
+            <%end%>
+          </ul>
         </div>
       </div>
     </div>
-    <div class="col-md-4">
+    <!--
+    <div class="col-md-4 p-0">
       <div class="base_object_text task_object_text_color">
-        <h1><%=t 'task.index.title'%></h1>
+        <h1><%#=t 'task.index.title'%></h1>
       </div>
       <div class="border-yellow base_object_index overflow-auto">
         <div id='task-flash-message'></div>
         <div class="container">
-          <%if @issues%>
-            <%@issues.each do |issue|%>
-              <%issue.tasks.each do |task|%>
-                <%= render "shared/modal/TaskShow", task: task%>
-                <div class="js-i-index-task-list-<%=issue.id%>" id="js-i-index-task-list-<%=task.id%>">
-                  <%= render 'shared/button/index_button', object: task, modal_name: 'Task', color: 'yellow', class_name: 'task' %>
+          <%#if @issues%>
+            <%#@issues.each do |issue|%>
+              <%#issue.tasks.each do |task|%>
+                <%#= render "shared/modal/TaskShow", task: task%>
+                <div class="js-i-index-task-list-<%#=issue.id%>" id="js-i-index-task-list-<%#=task.id%>">
+                  <%#= render 'shared/button/index_button', object: task, modal_name: 'Task', color: 'yellow', class_name: 'task' %>
                 </div>
-              <%end%>
-            <%end%>
-          <%end%>
+              <%#end%>
+            <%#end%>
+          <%#end%>
         </div>
       </div>
     </div>
+    -->
   </div>
 
 <%=render 'shared/modal/IssueNew'%>
-  <div class="row">
-    <div class="col-md-2">
-      <div class="base_object_text issue_object_text_color d-inline-block">
-        <h3 class="text_left padding_left"><%=button_tag t('issue.new.title'), 'data-bs-toggle': 'modal', 'data-bs-target': '#IssueNewModal', class: 'issue_hover_text issue_object_text_color text-decoration-none'%></h3>
-      </div>
+  <div class="d-flex justify-content-between h-7 mt-2">
+    <div class="base_object_text issue_object_text_color d-inline-block">
+      <h3 class="text_left padding_left ps-3 m-0"><%=button_tag t('issue.new.title'), 'data-bs-toggle': 'modal', 'data-bs-target': '#IssueNewModal', class: 'issue_hover_text issue_object_text_color text-decoration-none'%></h3>
     </div>
-    <div class="col-md-2">
-      <div class="base_object_text issue_object_text_color">
-        <div class="col-sm">
-          <h3><%=link_to '戻る', root_path, class: 'issue_object_text_color issue_hover_text text-decoration-none', data: {'turbolinks' => false}%></h3>
-        </div>
-      </div>
+    <div class="base_object_text issue_object_text_color">
+      <h3 class="m-0"><%=Date.current.strftime("%Y/%m/%d")%></h3>
     </div>
-    <div class="col-md-4">
-      <div class="base_object_text issue_object_text_color">
-        <h3><%=Date.current.strftime("%Y/%m/%d")%></h3>
-      </div>
+    <div class="base_object_text issue_object_text_color">
+      <h3 class="m-0 pe-3"><%=link_to '戻る', root_path, class: 'issue_object_text_color issue_hover_text text-decoration-none', data: {'turbolinks' => false}%></h3>
     </div>
-    <div class="col-md-4">
-      <div class="base_object_text task_object_text_color">
-        <h3><%=link_to t('task.index.title'), tasks_path, class: 'task_object_text_color task_hover_text text-decoration-none', data: {'turbolinks' => false}%></h3>
-      </div>
+    <!--
+    <div class="base_object_text task_object_text_color">
+      <h3 class="pe-3 m-0"><%#=link_to t('task.index.title'), tasks_path, class: 'task_object_text_color task_hover_text text-decoration-none', data: {'turbolinks' => false}%></h3>
     </div>
+    -->
   </div>
 </div>

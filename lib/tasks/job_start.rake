@@ -7,7 +7,6 @@ namespace :job_start do
     tasks.each{ |task|
       task.run!
 #      time = task.reminder
-      puts task
 
 =begin
       year = Time.zone.now.year
