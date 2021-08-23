@@ -9,6 +9,10 @@
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
   <body data-controller="<%= controller_name%>" data-action="<%= action_name%>">
+    <div class="container-fluid h-100">
+      <%= yield %>
+    </div>
+
     <div id="js-top-msg"></div>
     <%if logged_in? && (@expired_models.select{|record| record.present?}).present?%>
       <div id="error_msg"></div>
@@ -16,8 +20,5 @@
 		<%else%>
       <div id="error_nil_msg"></div>
     <%end%>
-    <div class="container-fluid h-100">
-      <%= yield %>
-    </div>
   </body>
 </html>
