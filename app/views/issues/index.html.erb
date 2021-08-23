@@ -15,30 +15,7 @@
         </div>
       </div>
     </div>
-    <!--
-    <div class="col-md-4 p-0">
-      <div class="base_object_text task_object_text_color">
-        <h1><%#=t 'task.index.title'%></h1>
-      </div>
-      <div class="border-yellow base_object_index overflow-auto">
-        <div id='task-flash-message'></div>
-        <div class="container">
-          <%#if @issues%>
-            <%#@issues.each do |issue|%>
-              <%#issue.tasks.each do |task|%>
-                <%#= render "shared/modal/TaskShow", task: task%>
-                <div class="js-i-index-task-list-<%#=issue.id%>" id="js-i-index-task-list-<%#=task.id%>">
-                  <%#= render 'shared/button/index_button', object: task, modal_name: 'Task', color: 'yellow', class_name: 'task' %>
-                </div>
-              <%#end%>
-            <%#end%>
-          <%#end%>
-        </div>
-      </div>
-    </div>
-    -->
   </div>
-
 <%=render 'shared/modal/IssueNew'%>
   <div class="d-flex justify-content-between h-7 mt-2">
     <div class="base_object_text issue_object_text_color d-inline-block">
@@ -50,10 +27,5 @@
     <div class="base_object_text issue_object_text_color">
       <h3 class="m-0 pe-3"><%=link_to '戻る', root_path, class: 'issue_object_text_color issue_hover_text text-decoration-none', data: {'turbolinks' => false}%></h3>
     </div>
-    <!--
-    <div class="base_object_text task_object_text_color">
-      <h3 class="pe-3 m-0"><%#=link_to t('task.index.title'), tasks_path, class: 'task_object_text_color task_hover_text text-decoration-none', data: {'turbolinks' => false}%></h3>
-    </div>
-    -->
   </div>
 </div>
