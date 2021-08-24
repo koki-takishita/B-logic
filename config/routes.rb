@@ -20,7 +20,11 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :issues
+  resources :issues do
+    member do
+      get 'select_goal'
+    end
+  end
   resources :users, only: [:edit, :update, :destroy, :show]
 
   get 'login' => 'user_sessions#new', :as => :login

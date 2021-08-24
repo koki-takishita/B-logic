@@ -16,7 +16,6 @@ class IssuesController < ApplicationController
         format.js
       else
         flash.now[:danger] = '課題を作成できませんでした'
-
         format.html { redirect_back(fallback_location: back_url) }
         format.js
       end
@@ -47,6 +46,12 @@ class IssuesController < ApplicationController
     if @issue.destroy
       flash[:success] = '課題を削除しました'
     end
+  end
+
+  def select_goal
+    @goal = current_user.goals.find_by_id(params[:id])
+    @issues = @goal.issues.includes(:goal)
+    render :index
   end
 
   private

@@ -17,11 +17,28 @@ module ApplicationHelper
   end
 
   def active_if(action: nil, id: nil)
-    return active_issue(id) if id && @issue
+    return active_instance(id) if id && model_instance
     active_action(action) if action
   end
 
+  def model_instance
+    @issue || @goal
+  end
+
+  def active_instance(id)
+    id == model_instance.id ? css : ''
+  end
+
   def active_action(action)
-    action == action_name ? 'task_active' : ''
+    css if action == action_name
+  end
+
+  def css
+    case controller_name
+    when 'issues' then
+      'issue_active'
+    when 'tasks' then
+      'task_active'
+    end
   end
 end

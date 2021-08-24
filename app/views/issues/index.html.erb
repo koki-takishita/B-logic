@@ -1,31 +1,56 @@
-<div class="container-fluid h-100 p-3">
-  <div class="base_object_text issue_object_text_color h-7">
-    <h1><%=t 'issue.index.title'%></h1>
+<div class="container-fluid h-100 p-0">
+  <div class="row h-7">
+    <div class="base_object_text issue_object_text_color border-blue border-bottom-0 d-flex align-items-center justify-content-center">
+      <h2 class="m-0"><%=t 'issue.index.title'%></h1>
+    </div>
   </div>
   <div class="row h-86">
-    <div class="col-md p-0">
+    <div class="col-md-3 p-0">
       <div class="border-blue base_object_index overflow-auto m-0">
-        <div id="issue-flash-message"></div>
-        <div class="base_object_list margin_top_30">
-          <ul class="issue_object_text_color" id="js-issue-record-list">
-            <%@issues.each do |issue|%>
-              <%= render 'shared/issue_records', issue: issue %>
-            <%end%>
+        <div class="issues-list">
+          <ul class="issue_object_text_color ps-1">
+            <p class="m-3"><i class="fa fa-file me-2"></i><%= link_to 'すべてのタスク' ,issues_path, class: "issue_hover_text issue_object_text_color text-decoration-none #{active_if(action: 'index')}"%></p>
+            <% current_user.goals.each do |goal| %>
+              <p class="m-3"><i class="fa fa-genderless me-2"></i><%= link_to goal.name, select_goal_issue_path(goal), class: "issue_hover_text issue_object_text_color text-decoration-none #{active_if(id: goal.id)}" %></p>
+            <% end%>
           </ul>
         </div>
       </div>
     </div>
+    <div class="col-md-9 p-0">
+      <div class="border-blue base_object_index overflow-auto m-0 border-start-0" id="js-destroy-plus-btn">
+        <%if !@issues.present?%>
+          <%= render 'shared/button/plus_btn_center'%>
+        <%end%>
+        <div id="issue-flash-message">
+        </div>
+        <div class="base_object_list margin_top_30">
+          <div class="container">
+            <ul class="issue_object_text_color list-unstyled" id='js-issue-record-list'>
+              <%@issues.each do |issue|%>
+                <%= render 'shared/issue_records', issue: issue%>
+              <%end%>
+              <%if @issues.present?%>
+                <%=render 'shared/button/plus_btn'%>
+              <%end%>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
-<%=render 'shared/modal/IssueNew'%>
-  <div class="d-flex justify-content-between h-7 mt-2">
-    <div class="base_object_text issue_object_text_color d-inline-block">
-      <h3 class="text_left padding_left ps-3 m-0"><%=button_tag t('issue.new.title'), 'data-bs-toggle': 'modal', 'data-bs-target': '#IssueNewModal', class: 'issue_hover_text issue_object_text_color text-decoration-none'%></h3>
-    </div>
-    <div class="base_object_text issue_object_text_color">
-      <h3 class="m-0"><%=Date.current.strftime("%Y/%m/%d")%></h3>
-    </div>
-    <div class="base_object_text issue_object_text_color">
-      <h3 class="m-0 pe-3"><%=link_to '戻る', root_path, class: 'issue_object_text_color issue_hover_text text-decoration-none', data: {'turbolinks' => false}%></h3>
+  <%=render 'shared/modal/IssueNew'%>
+  <div class="row h-7">
+    <div class="d-flex justify-content-between h-7 border-blue border-top-0 p-2 align-items-center h-100">
+      <div class="base_object_text issue_object_text_color d-inline-block">
+        <h3 class="text_left m-0"><%=button_tag t('issue.new.title'), 'data-bs-toggle': 'modal', 'data-bs-target': '#IssueNewModal', class: 'issue_hover_text issue_object_text_color text-decoration-none'%></h3>
+      </div>
+      <div class="base_object_text issue_object_text_color">
+        <h3 class="m-0"><%=Date.current.strftime("%Y/%m/%d")%></h3>
+      </div>
+      <div class="base_object_text issue_object_text_color">
+        <h3 class="m-0"><%=link_to '戻る', root_path, class: 'issue_object_text_color issue_hover_text text-decoration-none', data: {'turbolinks' => false}%></h3>
+      </div>
     </div>
   </div>
 </div>
