@@ -6,12 +6,15 @@ class IssuesController < ApplicationController
   end
 
   def create
-    goal = goal_find
-    @issue = goal.issues.build(issue_params)
+    if params[:issue][:goal_id].present?
+      goal = goal_find
+      @issue = goal.issues.build(issue_params)
+    else
+      @issue = Issue.new(issue_params)
+    end
     respond_to do |format|
       if @issue.save
         flash[:success] = '課題を作成しました' 
-
         format.html { redirect_back(fallback_location: back_url) }
         format.js
       else

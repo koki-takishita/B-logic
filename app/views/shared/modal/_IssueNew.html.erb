@@ -4,17 +4,13 @@
     <div class="modal-content issue_modal_border_color">
       <div class="modal-header issue-modal-header">
         <h5 class="modal-title" id="IssueNewModalLabel">新規</h5>
-        <!--
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
-        </button>
-        -->
       </div>
       <%= form_with model: Issue.new, html: { autocomplete: 'off' } do |f| %>
         <div class="modal-body">
           <div id="issue_create_flash"></div>
           <div class="field issue-field">
             <%= f.label :goal_id, Goal.human_attribute_name(:name), class: 'form-label'%>
-            <%= f.select :goal_id, goals_select, {include_blank: false} ,class: 'form-control issue-form-control'%>
+            <%= f.select :goal_id, goals_select, {prompt: '課題を選択してください'} ,class: 'form-control issue-form-control'%>
           </div>
           <div class="field issue-field">
             <%= f.label :name, Issue.human_attribute_name(:name), class: 'form-label'%>

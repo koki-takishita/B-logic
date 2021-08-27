@@ -20,7 +20,7 @@
     <div class="col-md-9 p-0">
       <div class="border-yellow base_object_index overflow-auto m-0 border-start-0" id="js-destroy-plus-btn">
         <%if !@tasks.present?%>
-          <%= render 'shared/button/plus_btn_center'%>
+          <%= render 'shared/button/plus_btn_center', modal: 'Task', object: 'task'%>
         <%end%>
         <div id="task-flash-message">
         </div>
@@ -31,7 +31,7 @@
                 <%= render 'shared/task_records', task: task%>
               <%end%>
               <%if @tasks.present?%>
-                <%=render 'shared/button/plus_btn'%>
+                <%=render 'shared/button/plus_btn', modal: 'Task', object: 'task'%>
               <%end%>
             </ul>
           </div>

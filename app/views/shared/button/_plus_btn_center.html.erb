@@ -2,9 +2,7 @@
   <div class="d-flex align-items-center justify-content-center h-100 w-100">
     <div class="w-100">
       <div class="d-grid gap-2">
-        <%=button_tag 'data-bs-toggle': 'modal', 'data-bs-target': '#TaskNewModal', class: 'task_hover_text', 'data-bs-whatever': "#{@issue.id if !@issue.nil?}" do %>
-          <i class="fa fa-plus fa-3x  d-block task_hover_text task_object_text_color"></i>
-        <%end%>
+        <%=render 'shared/button/plus_btn', modal: "#{modal}", object: "#{object}"%>
       </div>
     </div>
   </div>
