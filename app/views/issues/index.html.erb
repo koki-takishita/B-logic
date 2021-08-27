@@ -9,7 +9,7 @@
       <div class="border-blue base_object_index overflow-auto m-0">
         <div class="issues-list">
           <ul class="issue_object_text_color ps-1">
-            <p class="m-3"><i class="fa fa-file me-2"></i><%= link_to 'すべてのタスク' ,issues_path, class: "issue_hover_text issue_object_text_color text-decoration-none #{active_if(action: 'index')}"%></p>
+            <p class="m-3"><i class="fa fa-file me-2"></i><%= link_to 'すべての課題' ,issues_path, class: "issue_hover_text issue_object_text_color text-decoration-none #{active_if(action: 'index')}"%></p>
             <% current_user.goals.each do |goal| %>
               <p class="m-3"><i class="fa fa-genderless me-2"></i><%= link_to goal.name, select_goal_issue_path(goal), class: "issue_hover_text issue_object_text_color text-decoration-none #{active_if(id: goal.id)}" %></p>
             <% end%>
