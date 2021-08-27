@@ -21,7 +21,7 @@ $("#user_create_flash").html("");
   $("#js-plus-btn-center").remove();
   $("#js-plus-btn-end").remove();
   $("#js-task-record-list").append("<%= escape_javascript(render('shared/task_records', task: @task))%>");
-  $("#js-task-record-list").append("<%= escape_javascript(render('shared/button/plus_btn'))%>")
+  $("#js-task-record-list").append("<%= escape_javascript(render('shared/button/plus_btn', modal: 'Task', object: 'task'))%>")
   TaskName.value="";
   modal.hide();
   $("#task-flash-message").html("<%= escape_javascript(render('shared/flash_message', object: @task))%>").hide().fadeIn(500);
