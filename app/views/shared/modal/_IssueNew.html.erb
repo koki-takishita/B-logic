@@ -10,7 +10,7 @@
           <div id="issue_create_flash"></div>
           <div class="field issue-field">
             <%= f.label :goal_id, Goal.human_attribute_name(:name), class: 'form-label'%>
-            <%= f.select :goal_id, goals_select, {prompt: '課題を選択してください'} ,class: 'form-control issue-form-control'%>
+            <%= f.select :goal_id, goals_select, {prompt: '目標を選択してください'} ,class: 'form-control issue-form-control'%>
           </div>
           <div class="field issue-field">
             <%= f.label :name, Issue.human_attribute_name(:name), class: 'form-label'%>

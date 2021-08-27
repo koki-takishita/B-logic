@@ -15,7 +15,6 @@ $("#goal_create_flash").html("");
 $("#task_create_flash").html("");
 $("#user_create_flash").html("");
 
-
 <%if @issue.persisted?%>
   $("#js-issue-record-list").append("<%= escape_javascript(render('shared/issue_records', issue: @issue))%>");
   issueName.value="";

@@ -23,6 +23,9 @@
           <%= render 'shared/button/plus_btn_center', modal: 'Issue', object: 'issue'%>
         <%end%>
         <div id="issue-flash-message">
+          <%if flash.present? && flash.first.second == "課題を削除しました"%>
+            <%= render 'shared/flash'%>
+          <%end%>
         </div>
         <div class="base_object_list margin_top_30">
           <div class="container">

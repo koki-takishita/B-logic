@@ -32,12 +32,10 @@ class IssuesController < ApplicationController
     respond_to do |format|
       if @issue.save
         flash[:success] = '課題を更新しました' 
-
         format.html { redirect_back(fallback_location: back_url) }
         format.js
       else
         flash.now[:danger] = '課題を更新できませんでした'
-
         format.html { redirect_back(fallback_location: back_url) }
         format.js
       end
@@ -46,8 +44,11 @@ class IssuesController < ApplicationController
 
   def destroy
     @issue = current_user.issues.find(params[:id])
-    if @issue.destroy
-      flash[:success] = '課題を削除しました'
+    respond_to do |format|
+      if @issue.destroy
+        format.html { redirect_to issues_path, flash: { success: '課題を削除しました' } }
+        format.js
+      end
     end
   end
 
