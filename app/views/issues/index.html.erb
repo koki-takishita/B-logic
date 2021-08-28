@@ -46,7 +46,7 @@
   <div class="row h-7">
     <div class="d-flex justify-content-between h-7 border-blue border-top-0 p-2 align-items-center h-100">
       <div class="base_object_text issue_object_text_color d-inline-block">
-        <h3 class="text_left m-0"><%=button_tag t('issue.new.title'), 'data-bs-toggle': 'modal', 'data-bs-target': '#IssueNewModal', class: 'issue_hover_text issue_object_text_color text-decoration-none'%></h3>
+        <h3 class="text_left m-0"><%=button_tag t('issue.new.title'), 'data-bs-toggle': 'modal', 'data-bs-target': '#IssueNewModal', class: 'issue_hover_text issue_object_text_color text-decoration-none', 'data-bs-whatever': "#{(0 if action_name == 'index')|| model_instance.id}"%></h3>
       </div>
       <div class="base_object_text issue_object_text_color">
         <h3 class="m-0"><%=Date.current.strftime("%Y/%m/%d")%></h3>

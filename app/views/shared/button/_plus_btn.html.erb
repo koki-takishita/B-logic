@@ -1,5 +1,6 @@
 <div class="d-grid gap-2" id="js-plus-btn-end">
-  <%=button_tag 'data-bs-toggle': 'modal', 'data-bs-target': "##{modal}NewModal", class: "#{object}_hover_text", 'data-bs-whatever': "#{model_instance.id if !model_instance.nil?}" do %>
+  <!--select_issue時 model_instance.id index時 i_id-->
+  <%=button_tag 'data-bs-toggle': 'modal', 'data-bs-target': "##{modal}NewModal", class: "#{object}_hover_text", 'data-bs-whatever': "#{(0 if action_name == 'index')|| model_instance.id}" do %>
     <i class="fa fa-plus fa-2x  d-block <%=object%>_hover_text <%=object%>_object_text_color"></i>
   <%end%>
 </div>

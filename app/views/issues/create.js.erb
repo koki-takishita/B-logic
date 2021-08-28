@@ -16,11 +16,14 @@ $("#task_create_flash").html("");
 $("#user_create_flash").html("");
 
 <%if @issue.persisted?%>
-  $("#js-issue-record-list").append("<%= escape_javascript(render('shared/issue_records', issue: @issue))%>");
   issueName.value="";
   issueSolution.value="";
   issueSolution.defaultValue="";
+  $("#js-plus-btn-center").remove();
+  $("#js-plus-btn-end").remove();
 
+  $("#js-issue-record-list").append("<%= escape_javascript(render('shared/issue_records', issue: @issue))%>");
+  $("#js-issue-record-list").append("<%= escape_javascript(render('shared/button/plus_btn', modal: 'Issue', object: 'issue'))%>");
   modal.hide();
   $("#issue-flash-message").html("<%= escape_javascript(render('shared/flash_message', object: @issue))%>").hide().fadeIn(500);
 
