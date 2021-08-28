@@ -34,4 +34,9 @@ module ApplicationHelper
       'task_active'
     end
   end
+
+  def format(object)
+    return :time if object.model_name.name == 'Task'
+    :date
+  end
 end

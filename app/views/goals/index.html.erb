@@ -1,66 +1,43 @@
-<div class="container">
-  <div class="row">
-    <div class="col-md-8">
-      <div class="base_object_text goal_object_text_color margin_top_20">
-        <h1><%=t 'goal.index.title'%></h1>
-      </div>
-      <div class="border-orange base_object_index overflow-auto">
-        <div id="goal-flash-message"></div>
+<div class="container-fluid h-100 p-0">
+  <div class="row h-7">
+    <div class="base_object_text goal_object_text_color border-orange border-bottom-0 d-flex align-items-center justify-content-center">
+      <h2 class="m-0"><%=t 'goal.index.title'%></h1>
+    </div>
+  </div>
+  <div class="row h-86">
+    <div class="p-0 h-100">
+      <div class="border-orange base_object_index overflow-auto m-0" id="js-destroy-plus-btn">
+        <%if !@goals.present?%>
+          <%= render 'shared/button/plus_btn_center', modal: 'Goal', object: 'goal'%>
+        <%end%>
+        <div id="goal-flash-message">
+        </div>
         <div class="base_object_list margin_top_30">
-          <div class="container">
-            <div id="goal_destroy_flash"></div>
-            <ul class="goal_object_text_color list-unstyled" id="js-goal-record-list">
+          <div class="container-fluid">
+            <ul class="goal_object_text_color list-unstyled" id='js-goal-record-list'>
               <%@goals.each do |goal|%>
-                <%=render 'shared/goal_records', goal: goal%>
+                <%= render 'shared/goal_records', goal: goal%>
+              <%end%>
+              <%if @goals.present?%>
+                <%=render 'shared/button/plus_btn', modal: 'Goal', object: 'goal'%>
               <%end%>
             </ul>
           </div>
         </div>
       </div>
     </div>
-    <div class="col-md-4">
-      <div class="base_object_text issue_object_text_color margin_top_20">
-        <h1><%=t 'issue.index.title'%></h1>
-      </div>
-      <div class="border-blue base_object_index overflow-auto">
-        <div id='issue-flash-message'></div>
-        <div class="container">
-          <%if @goals%>
-            <%@goals.each do |goal|%>
-              <%goal.issues.each do |issue|%>
-                <%=render "shared/modal/IssueShow", issue: issue%>
-                <div class="js-g-index-issue-list-<%=goal.id%>" id="js-g-index-issue-list-<%=issue.id%>">
-                  <%= render 'shared/button/index_button', object: issue, modal_name: 'Issue', color: 'blue', class_name: 'issue' %>
-                </div>
-              <%end%>
-            <%end%>
-          <%end%>
-        </div>
-      </div>
-    </div>
   </div>
-<%=render 'shared/modal/GoalNew'%>
-  <div class="row">
-    <div class="col-md-2">
+  <%=render 'shared/modal/GoalNew'%>
+  <div class="row h-7">
+    <div class="d-flex justify-content-between h-7 border-orange border-top-0 p-2 align-items-center h-100">
       <div class="base_object_text goal_object_text_color d-inline-block">
-        <h3 class="text_left padding_left"><%=button_tag t('goal.new.title'), 'data-bs-toggle': 'modal', 'data-bs-target': '#GoalNewModal', class: 'goal_hover_text goal_object_text_color text-decoration-none'%></h3>
+        <h3 class="text_left m-0"><%=button_tag t('goal.new.title'), 'data-bs-toggle': 'modal', 'data-bs-target': '#GoalNewModal', class: 'goal_hover_text goal_object_text_color text-decoration-none', 'data-bs-whatever': "#{(0 if action_name == 'index') || model_instance.id}"%></h3>
       </div>
-    </div>
-    <div class="col-md-2">
       <div class="base_object_text goal_object_text_color">
-        <div class="col-sm">
-          <h3><%=link_to '戻る', root_path, class: 'goal_object_text_color goal_hover_text text-decoration-none', data: {'turbolinks' => false}%></h3>
-        </div>
+        <h3 class="m-0"><%=Date.current.strftime("%Y/%m/%d")%></h3>
       </div>
-    </div>
-    <div class="col-md-4">
       <div class="base_object_text goal_object_text_color">
-        <h3><%=Date.current.strftime("%Y/%m/%d")%></h3>
-      </div>
-    </div>
-    <div class="col-md-4">
-      <div class="base_object_text goal_object_text_color">
-        <h3><%=link_to t('issue.index.title'), issues_path, class: 'issue_object_text_color issue_hover_text text-decoration-none', data: {'turbolinks' => false}%></h3>
+        <h3 class="m-0"><%=link_to '戻る', root_path, class: 'goal_object_text_color goal_hover_text text-decoration-none', data: {'turbolinks' => false}%></h3>
       </div>
     </div>
   </div>

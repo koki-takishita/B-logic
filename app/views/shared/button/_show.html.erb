@@ -1,6 +1,6 @@
 <%= button_tag object.name, 'data-bs-toggle': 'modal', 'data-bs-target': "#{modalname}Modal#{object.id}", class: "#{class_name}_hover_text #{class_name}_object_text_color text-decoration-none m-0 text-start", id: "js-#{id}-button-#{object.id}" %>
 <% unless object.model_name.name=="Issue"%>
   <p class="m-0" id="js-<%=object%>-reminder-<%=object.id%>">
-    <%= l (object.respond_to?(:reminder) ? (object.reminder) : (object.deadline)), format: :time%>
+    <%= l (object.respond_to?(:reminder) ? (object.reminder) : (object.deadline)), format: format(object) %>
   </p>
 <% end%>
