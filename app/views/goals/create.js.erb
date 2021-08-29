@@ -17,7 +17,11 @@ $("#user_create_flash").html("");
 
 
 <%if @goal.persisted?%>
+  $("#js-plus-btn-center").remove();
+  $("#js-plus-btn-end").remove();
   $("#js-goal-record-list").append("<%= escape_javascript(render('shared/goal_records', goal: @goal))%>");
+
+  $("#js-goal-record-list").append("<%= escape_javascript(render('shared/button/plus_btn', modal: 'Goal', object: 'goal'))%>")
   GoalName.value="";
   modal.hide();
   $("#goal-flash-message").html("<%= escape_javascript(render('shared/flash_message', object: @goal))%>").hide().fadeIn(500);
