@@ -38,8 +38,11 @@ class GoalsController < ApplicationController
 
   def destroy
     @goal = current_user.goals.find(params[:id])
-    if @goal.destroy
-      flash[:success] = '目標を削除しました'
+    respond_to do |format|
+      if @goal.destroy
+        format.html { redirect_to goals_path, flash: { success: '目標を削除しました' } }
+        format.js
+      end
     end
   end
 

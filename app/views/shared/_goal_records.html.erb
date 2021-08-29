@@ -23,7 +23,7 @@
           </div>
           <div class="col p-1">
             <div id ='goal-destroy<%=goal.id%> d-inline-block'>
-              <%= link_to '削除', goal_path(goal), method: 'delete', remote: true, type: 'button', class: 'btn goal-btn', data: {'turbolinks' => false, confirm: '本当に削除しますか？'}%>
+              <%= link_to '削除', goal_path(goal), method: 'delete', type: 'button', class: 'btn goal-btn', data: { confirm: '本当に削除しますか？'}%>
             </div>
           </div>
         </div>

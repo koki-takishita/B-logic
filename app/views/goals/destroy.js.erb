@@ -17,8 +17,6 @@ $("#js-goal-record-<%=@goal.id%>").remove();
 // indexページにて、紐付いているデータ削除
 $(".js-g-index-issue-list-<%=@goal.id%>").remove();
 
-//$("#goal-flash-message").html("<%#= escape_javascript(render('shared/flash_message', object: @goal))%>").hide().fadeIn(500);
-
 $("#js-top-msg").html("<%=escape_javascript(render('shared/modal/top_message', object: @goal, message: "を達成しました", name: 'success'))%>");
 var successModal = new bootstrap.Modal(document.getElementById('successModal'), {
   keyboard: false
