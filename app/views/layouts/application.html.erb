@@ -12,9 +12,8 @@
     <div class="container-fluid h-100">
       <%= yield %>
     </div>
-
     <div id="js-top-msg"></div>
-    <%if logged_in? && (@expired_models.select{|record| record.present?}).present?%>
+    <%if logged_in? && @expired_models.present?%>
       <div id="error_msg"></div>
       <%=render 'shared/modal/error', expired_models: @expired_models%>
 		<%else%>

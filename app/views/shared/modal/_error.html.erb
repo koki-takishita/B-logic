@@ -6,16 +6,10 @@
     		<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
     	</div>
     	<div class="modal-body">
+        <p class="text-danger">期限が過ぎています</p>
         <%expired_models.each do |model|%>
           <%if model.present? %>
-            <%if !model.first.nil?%>
-              <p class="bg-danger"><%=model.first.model_name.human%>でエラーが発生しています</p>
-            <%end%>
-            <%model.each do |record|%>
-              <%if !record.nil?%>
-                <p class="bg-danger"><%= record.model_name.name.constantize.model_name.human%> : <%=record.name%></p>
-              <%end%>
-            <%end%>
+            <p class="bg-danger"><%= model.model_name.name.constantize.model_name.human%> : <%=model.name%></p>
           <%end%>
         <%end%>
     	</div>

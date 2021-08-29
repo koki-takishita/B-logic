@@ -21,7 +21,7 @@ $("#user_create_flash").html("");
 
 <% if @goal.saved_changes? %>
   modal.hide();
-  $("#js-goal-show-button-<%=@goal.id%>").html("<%= escape_javascript(render('shared/button/show', modalname: "#GoalShow", class_name: 'goal', object: @goal, id: 'goal-show'))%>");
+  $("#js-goal-list-<%=@goal.id%>").html("<%= escape_javascript(render('shared/button/show', modalname: "#GoalShow", class_name: 'goal', object: @goal, id: 'goal-show'))%>");
   $("#goal-flash-message").html("<%= escape_javascript(render('shared/flash_message', object: @goal))%>").hide().fadeIn(500);
 <%else%>
   $("#goal_flash_<%=@goal.id%>").html("<%= escape_javascript(render('shared/flash_message', object: @goal))%>");

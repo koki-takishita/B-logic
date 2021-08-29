@@ -67,7 +67,12 @@ class ApplicationController < ActionController::Base
 
     def push_records(model1, model2)
       records = []
-      records << model1 unless model1 == nil
-      records << model2 unless model2 == nil
+      model1.each{|model|
+        records << model unless model == nil
+      }
+      model2.each{|model|
+        records << model unless model == nil
+      }
+      records
     end
 end
