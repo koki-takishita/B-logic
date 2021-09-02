@@ -10,11 +10,10 @@
   </head>
   <body data-controller="<%= controller_name%>" data-action="<%= action_name%>">
     <div class="container-fluid h-100">
-
-      <div class="h-9 container-fluid">
+      <div class="h-9 container-fluid p-0">
         <div class='row h-100 mb-2'>
           <div class="border-green terminal-object-text-color d-flex align-items-center justify-content-between">
-            <p class="m-0">ロゴ</p>
+            <%= link_to 'B-logic', root_path, class: 'terminal-object-text-color text-decoration-none user_hover_text'%>
             <p class="m-0">問い合わせ</p>
             <%= link_to '利用規約', t_of_s_path, class: 'terminal-object-text-color text-decoration-none user_hover_text'%>
             <%= link_to 'プライバシーポリシー', p_p_path, class: 'terminal-object-text-color text-decoration-none user_hover_text'%>
