@@ -93,7 +93,7 @@
 .user_object_text_color{
   color: white;
 }
-.terminal_object_text_color, .success-object-text-color{
+.terminal-object-text-color, .success-object-text-color{
   color: #33e971;
 }
 .error-object-text-color{
@@ -220,4 +220,16 @@ button:hover{
 }
 .h-86{
   height: 86%;
+}
+#js-flickr {
+ animation: flash 0.5s linear infinite;
+}
+@keyframes flash {
+  0%,100% {
+    opacity: 1;
+  }
+
+  50% {
+    opacity: 0;
+  }
 }
