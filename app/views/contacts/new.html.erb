@@ -1,0 +1,35 @@
+<div class="w-100 terminal-object-text-color p-0 h-90">
+  <div class ="border-green row h-100">
+    <div class="container h-100">
+    <%if flash.present?%>
+      <%flash.each do |key, value|%>
+        <div class="flash-message alert object-alert-<%=key%> p-2 m-1">
+          <p class="m-0"><%= value %></p>
+        </div>
+      <%end%>
+    <%end%>
+      <h1 class="mt-3 text-center">お問い合わせ</h1>
+      <div class="h-70">
+        <div class="h-100">
+
+          <%= form_with model: @contact, class: 'h-100' do |f|%>
+            <div class='mb-3 mt-3'>
+              <%= f.label :タイトル, class: 'form-label'%>
+              <%= f.text_field :title, class: 'form-control user-form-control'%>
+            </div>
+            <div class='mb-3'>
+              <%= f.label :お問い合わせ内容, class: 'form-label'%>
+              <%= f.text_area :message, class: 'form-control user-form-control', size: '10x13'%>
+            </div>
+            <%=f.submit '送信', class: 'btn user-btn'%>
+          <%end%>
+        </div>
+      </div>
+      <div class='d-flex align-items-center justify-content-center'>
+        <div class="m-4">
+          <h3 class="m-0"><%=link_to '戻る', root_path, class: 'terminal_object_text_color user_hover_text text-decoration-none', data: {'turbolinks' => false}%></h3>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

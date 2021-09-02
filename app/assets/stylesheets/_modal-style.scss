@@ -37,11 +37,11 @@
   background-color: black;
 }
 .user-btn{
-  border: 1.5px solid white;
-  color: white;
+  border: 1.5px solid #33e971;
+  color: #33e971;
 }
 .user-btn:hover{
-  background-color: white;
+  background-color: #33e971;
 }
 .issue-btn{
   border: 1.5px solid #26b8f6;
@@ -138,12 +138,12 @@
 }
 .user-form-control{
   background-color: black;
-  border: 1.5px solid white;
-  color: white;
+  border: 1.5px solid #33e971;
+  color: #33e971;
 }
 .user-form-control:focus {
   background-color: black;
-  color: white;
+  color: #33e971;
 }
 .task-field{
   color: yellow;
@@ -220,6 +220,6 @@
 }
 
 .nav-link.user-btn.active{
-  background-color: white;
+  background-color: #33e971;
   color: black;
 }

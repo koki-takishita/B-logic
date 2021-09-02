@@ -4,11 +4,11 @@ Rails.application.routes.draw do
   if Rails.env.development?
     require "sidekiq/web"
     mount Sidekiq::Web => "/sidekiq"
+    mount LetterOpenerWeb::Engine, at: "/letter_opener"
   end
   root :to => 'home#top'
   get 'p_p', to: 'home#play_policies'
   get 't_of_s', to: 'home#terms_of_service'
-  get 'contact', to: 'home#contact'
   get 'explanation', to: 'home#explanation'
   resources :goals do
     member do
@@ -35,4 +35,5 @@ Rails.application.routes.draw do
   post 'login' => "user_sessions#create"
   post 'logout' => 'user_sessions#destroy', :as => :logout
   resources :users, only: [:new, :create]
+  resources :contacts, only: [:new, :create]
 end

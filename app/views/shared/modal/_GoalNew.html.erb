@@ -4,10 +4,6 @@
     <div class="modal-content goal_modal_border_color">
       <div class="modal-header goal-modal-header">
         <h5 class="modal-title" id="GoalNewModalLabel">新規</h5>
-        <!--
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
-        </button>
-        -->
       </div>
 
       <%= form_with  model: Goal.new, html: { autocomplete: 'off' } do |f| %>
