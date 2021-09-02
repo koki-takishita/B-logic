@@ -25,6 +25,7 @@ open_files = [
   'introduction.html',
   # 問い合わせ
   'contact.html',
+  'terms_of_service.html'
   # プライポリシー
   'play_policies.html'
 ]
@@ -132,11 +133,13 @@ open_page = ->
   else if open_arg[0] == 'task_index.html'
     screen_transition('tasks')
   else if open_arg[0] == 'contact.html'
-    screen_transition('contact')
-  else if open_arg[0] == 'introduction.html'
-    screen_transition('introduction')
+    screen_transition('contacts/new')
+  else if open_arg[0] == 'explanation.html'
+    screen_transition('explanation')
+  else if open_arg[0] == 'terms_of_service.html'
+    screen_transition('t_of_s')
   else if open_arg[0] == 'play_policies.html'
-    screen_transition('play_policies')
+    screen_transition('p_p')
   open_arg = 0
 
 find_ary = (ary, object) ->
