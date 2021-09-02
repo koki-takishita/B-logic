@@ -10,6 +10,21 @@
   </head>
   <body data-controller="<%= controller_name%>" data-action="<%= action_name%>">
     <div class="container-fluid h-100">
+
+      <div class="h-9 container-fluid">
+        <div class='row h-100 mb-2'>
+          <div class="border-green terminal-object-text-color d-flex align-items-center justify-content-between">
+            <p class="m-0">ロゴ</p>
+            <p class="m-0">目標一覧</p>
+            <p class="m-0">課題一覧</p>
+            <p class="m-0">タスク一覧</p>
+            <p class="m-0">問い合わせ</p>
+            <p class="m-0">利用規約</p>
+          </div>
+        </div>
+      </div>
+      <div class="h-1 container-fluid">
+      </div>
       <%= yield %>
     </div>
     <div id="js-top-msg"></div>
