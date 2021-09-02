@@ -15,11 +15,9 @@
         <div class='row h-100 mb-2'>
           <div class="border-green terminal-object-text-color d-flex align-items-center justify-content-between">
             <p class="m-0">ロゴ</p>
-            <p class="m-0">目標一覧</p>
-            <p class="m-0">課題一覧</p>
-            <p class="m-0">タスク一覧</p>
             <p class="m-0">問い合わせ</p>
-            <p class="m-0">利用規約</p>
+            <%= link_to '利用規約', t_of_s_path, class: 'terminal-object-text-color text-decoration-none user_hover_text'%>
+            <%= link_to 'プライバシーポリシー', p_p_path, class: 'terminal-object-text-color text-decoration-none user_hover_text'%>
           </div>
         </div>
       </div>

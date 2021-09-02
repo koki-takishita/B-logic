@@ -6,6 +6,10 @@ Rails.application.routes.draw do
     mount Sidekiq::Web => "/sidekiq"
   end
   root :to => 'home#top'
+  get 'p_p', to: 'home#play_policies'
+  get 't_of_s', to: 'home#terms_of_service'
+  get 'contact', to: 'home#contact'
+  get 'explanation', to: 'home#explanation'
   resources :goals do
     member do
       put 'status_done'

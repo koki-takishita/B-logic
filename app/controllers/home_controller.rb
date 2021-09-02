@@ -3,4 +3,11 @@ class HomeController < ApplicationController
 
   def top
   end
+
+  def play_policies
+  end
+
+  def terms_of_service
+  end
+
 end
