@@ -12,11 +12,11 @@ class UserSessionsController < ApplicationController
     respond_to do |format|
       if @user
         flash[:success] = t('.success')
-        format.html { redirect_back(fallback_location: back_url) }
+        format.html { redirect_to root_path }
         format.js
       else
         flash[:danger] = t('.danger')
-        format.html { redirect_back(fallback_location: back_url) }
+        format.html { redirect_to root_path }
         format.js
       end
     end

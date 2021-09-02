@@ -1,5 +1,19 @@
-<div class="terminal border-green overflow-auto d-flex h-100">
-  <div id="prompt" class="m-2 w-100">
-    <p class="terminal-object-text-color m-0" id="terminal">$ <strong id="js-input-cmd"></strong><strong id="js-flickr">_</strong></p>
+<%if !logged_in?%>
+  <%= render 'shared/lock', color: 'green', object: 'terminal'%>
+<%else%>
+  <div class="terminal border-green overflow-auto h-100">
+
+    <div id="flash-message">
+      <%if flash.present? && flash.first.second == "課題を作成してください"%>
+        <%= render 'shared/flash'%>
+      <%elsif flash.present? && flash.first.second == "目標を作成してください"%>
+        <%= render 'shared/flash'%>
+      <%end%>
+    </div>
+
+    <div id="prompt" class="m-2 w-100">
+      <p class="terminal-object-text-color m-0" id="terminal">$ <strong id="js-input-cmd"></strong><strong id="js-flickr">_</strong></p>
+    </div>
+
   </div>
-</div>
+<%end%>

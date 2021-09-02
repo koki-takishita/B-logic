@@ -3,7 +3,7 @@ class ApplicationController < ActionController::Base
   before_action :read_status_run_records
 
   def not_authenticated
-    redirect_to root_path, alert: 'Please login first'
+    redirect_to root_path, alert: 'ログインしてください'
   end
 
   def read_status_run_records
@@ -15,12 +15,14 @@ class ApplicationController < ActionController::Base
 
   def issue_empty
     if current_user.goals.blank?
+      flash[:danger] ='目標を作成してください'
       redirect_to root_path
     end
   end
 
   def task_empty
     if current_user.issues.blank?
+      flash[:danger] ='課題を作成してください'
       redirect_to root_path
     end
   end
