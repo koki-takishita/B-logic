@@ -64,6 +64,12 @@
   border: 1.5px solid #33e971;
   border-radius: 1px;
 }
+.border-green-bottom {
+  @extend .border-green;
+  border-top-style: none;
+  border-right-style: none;
+  border-left-style: none;
+}
 .top-page-base-object{
   height: 100%;
 }
@@ -201,11 +207,15 @@ button:hover{
   background-color: #26b8f6;
   color: black;
 }
-
+.w-510{
+  width: 510px;
+}
+.w-600{
+  width: 600px;
+}
 .h-90 {
   height: 90%;
 }
-
 .h-80 {
   height: 80%;
 }
@@ -247,4 +257,40 @@ button:hover{
   50% {
     opacity: 0;
   }
+}
+.square{
+  width: 250px;
+  height: 250px;
+  border: 3px solid;
+  border-radius: 5%;
+}
+.orange-square{
+  @extend .square;
+  border-color: #ff8310;
+  color: #ff8310;
+}
+.blue-square{
+  @extend .square;
+  border-color: #26b8f6;
+  color: #26b8f6;
+}
+.task-square{
+  @extend .square;
+  border-color: yellow;
+  color: yellow;
+}
+.text-color-green{
+  color: #33e971;
+}
+.text-color-blue{
+  color: #26b8f6;
+}
+.text-color-yellow{
+  color: yellow;
+}
+.text-color-orange{
+  color: #ff8310;
+}
+.w-40{
+  width: 40%
 }

@@ -1,0 +1,284 @@
+<div class="h-70 mb-1">
+  <div class="logo-wrapperr border-blue h-100">
+    <div class="d-flex h-100">
+      <div class="w-50 text-center d-flex align-items-center justify-content-center">
+        <%=image_tag('/b-logic3.png')%>
+      </div>
+      <div class="pe-5 w-50 h-100 d-flex align-items-center text-color-green">
+        <!--ターミナル-->
+        <div class="border-green overflow-auto text-start h-90 m-0 w-100">
+          <div class="border-green-bottom border-green h-5 ps-1">B-Logic</div>
+          <div class="contaner w-100">
+            <div id="flash-message">
+              <%if flash.present? && flash.first.second == "課題を作成してください"%>
+                <%= render 'shared/flash'%>
+              <%elsif flash.present? && flash.first.second == "目標を作成してください"%>
+                <%= render 'shared/flash'%>
+              <%end%>
+            </div>
+            <div id="prompt" class="m-2 w-100">
+              <p class="terminal-object-text-color m-0" id="terminal">$ <strong id="js-input-cmd"></strong><strong id="js-flickr">_</strong></p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="border-green">
+  <div class="about-style">
+    <div class="p-4 text-color-green">
+      <h2>目標をすべて叶える</h2>
+      <div class="container-fluid">
+        <p>B-Bogicは目標、課題、タスク３つの項目から計画を立て、目標を達成を手助けするサービスです。</p>
+      </div>
+      <h2>目標達成するためのアプローチ</h2>
+      <div class="container-fluid">
+        目標・課題・タスクを作成し自分だけのロジックを作成します。
+        <br>うまくいかないときはロジックが間違っています!<br>
+        ロジックを修正して正しいロジックを見つけましょう。
+      </div>
+    </div>
+    <div class="mt-3">
+      <div class="d-flex justify-content-around mb-5">
+        <div class="text-color-orange">
+          <div class="orange-square d-flex align-items-center justify-content-center">
+            <p class="m-0">目標</p>
+          </div>
+          <p class="m-0 pt-3 text-center">達成したいこと</p>
+        </div>
+        <div class="text-color-blue">
+          <div class="blue-square d-flex align-items-center justify-content-center">
+            <p class="m-0 text-center">課題</p>
+          </div>
+          <p class="m-0 pt-3 text-center">自分に足りないもの・障壁</p>
+        </div>
+        <div class="text-color-yellow">
+          <div class="task-square d-flex align-items-center justify-content-center">
+            <p class="m-0 text-center">タスク</p>
+          </div>
+          <p class="m-0 pt-3 text-center">壁を突破する行動</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!--目標ページできること説明-->
+<div class="p-1 mt-1 border-orange">
+  <div class="container-fluid">
+    <h2 class="text-center text-color-orange m-4">目標</h2>
+    <div class="row mt-5">
+      <div class="col text-color-orange">
+        <div class="w-600 mx-auto">
+          <h2>作成</h2>
+          <div class="container">
+            <p class="m-0 mb-2">
+              目標とは自分が達成したいことを登録します.<br>期限と目標を決めましょう。<br>
+              目標を決める際は、例のように具体化と定量化を意識して、目標を明確にしましょう.
+            </p>
+          </div>
+        </div>
+      </div>
+      <!--図形-->
+      <div class="col text-center">
+        <a href="https://gyazo.com/70ee139d54718a37383e1b1c89bbca53"><img src="https://i.gyazo.com/70ee139d54718a37383e1b1c89bbca53.png" alt="Image from Gyazo" width="511"/></a>
+      </div>
+    </div>
+    <div class="row mt-5 mb-5">
+      <!--図形-->
+      <div class="col text-center">
+        <a href="https://gyazo.com/e9b40296e9de0ff110c57b9de01b75dd"><img src="https://i.gyazo.com/e9b40296e9de0ff110c57b9de01b75dd.png" alt="Image from Gyazo" width="511"/></a>
+      </div>
+      <div class="col text-color-orange">
+        <div class="w-600 mx-auto">
+          <h2>編集</h2>
+          <div class="container">
+            <p class="m-0 mb-2">
+              編集ボタンから日付、目標を更新できます。
+            </p>
+          </div>
+          <h2 class="mt-3">達成</h2>
+          <div class="container">
+            <p class="m-0 mb-2">
+            目標を達成したら、達成ボタンで完了できます。<br>
+              ※完了をすると関連している課題とタスクは削除されます。
+            </p>
+          </div>
+          <h2 class="mt-3">削除</h2>
+          <div class="container">
+            <p class="m-0 mb-2">
+            削除ボタンから削除できます。<br>
+              ※削除すると関連している課題とタスクも削除されます。
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="p-1 mt-1 border-blue">
+  <div class="container-fluid">
+    <h2 class="text-center text-color-blue m-4">課題</h2>
+    <div class="row mt-5 mb-5">
+      <div class="col text-color-blue">
+        <div class="w-600 mx-auto">
+          <h2>作成</h2>
+            <div class="container">
+              <p class="m-0 mb-2">
+              課題とは目標を達成する上で、障壁になりそうなものです。<br>
+              目標を選択、課題と課題に対する解決策を考えます。<br>
+              例えば1年後までに貯金額を100万円にすることが目標で、現在の貯金は50万円、
+              毎月の貯金額は2万円、生活費を引いた自由に使えるお金は4万円とします。<br>
+              つまり、1年までに追加で50万円貯金をしなければいけません。<br>
+              毎月4.2万円貯金すれば達成できそうです。<br>
+              では課題を立てていきましょう。<br>
+              課題は漏れなく、考えられるだけ上げていきます。<br>
+              上げた中で、重要なものを抜き出して2〜4つほどに絞ります。
+              </p>
+              <p class="m-0">課題</p>
+              <ol>
+                <li>物欲が抑えられるか?(現状毎月2万円は本、服、ガジェットに使用)</li>
+                <li>お菓子を日常的に買う習慣がある</li>
+                <li>ECサイトを見ていると衝動的に、購入してしまうことがよくある</li>
+              </ol>
+              <p>
+                次に各課題に対して、解決策を考えます。<br>
+                図のようになぜなぜと追って行き、真の原因を探ります。
+              </p>
+              <!--図を用意-->
+              <p class="m-0">解決策</p>
+              <ol>
+                <li>購入したいものをリスト化して、残り残高に応じて買うかどうか決める</li>
+                <li>上限を2000円として、毎月月末に買うことにする(月末以外は買ってはならない)</li>
+                <li>1番目の解決策と同じ</li>
+              </ol>
+              <p>
+              このように課題を考えていきます。<br>
+                タスク作成の際にこの課題を使って、タスクを考えていきます。
+              </p>
+            </div>
+        </div>
+      </div>
+      <!--図形-->
+      <div class="col d-flex align-items-center justify-content-center">
+        <div>
+          <a href="https://gyazo.com/c4bf69b67354c325db18c0d9947b1423"><img src="https://i.gyazo.com/c4bf69b67354c325db18c0d9947b1423.png" alt="Image from Gyazo" width="509"/></a>
+        </div>
+      </div>
+    </div>
+    <div class="row mb-5">
+      <!--図形-->
+      <div class="col d-flex align-items-center justify-content-center">
+        <a href="https://gyazo.com/0ea5fa32dbd1f85eb3f37de69afdc83a"><img src="https://i.gyazo.com/0ea5fa32dbd1f85eb3f37de69afdc83a.png" alt="Image from Gyazo" width="507"/></a>
+      </div>
+      <div class="col text-color-blue">
+        <div class="w-600 mx-auto">
+          <h2>編集</h2>
+          <div class="container">
+            <p class="m-0 mb-2">
+              編集ボタンから日付、課題を更新できます。
+            </p>
+          </div>
+          <h2>達成</h2>
+          <div class="container">
+            <p class="m-0 mb-2">
+            課題を達成したら、達成ボタンで完了できます。<br>
+              ※完了をすると関連している課題とタスクは削除されます。
+            </p>
+          </div>
+          <h2>削除</h2>
+          <div class="container">
+            <p class="m-0 mb-2">
+            削除ボタンから削除できます。<br>
+              ※削除すると関連している課題とタスクも削除されます。
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="p-1 mt-1 border-yellow">
+  <div class="container-fluid">
+    <h2 class="text-center text-color-yellow m-4">タスク</h2>
+    <div class="row mt-5">
+      <div class="col text-color-yellow">
+        <div class="mx-auto w-600">
+          <h2>作成</h2>
+          <div class="container">
+            <p class="m-0 mb-2">
+              タスクとは各課題に対して、課題を達成するための行動を登録します.<br>
+              先程の課題を例に作成していきます.
+              <ol>
+                <li>購入したいものをリスト化して、残り残高に応じて買うかどうか決める</li>
+                <p class="mt-2 m-0">タスク</p>
+                <ol>
+                  <li>ECサイトのクレジットカードの登録を解除する</li>
+                  <li>クレジットカードを財布ではなく、目に付きにくい箇所にしまう</li>
+                  <li>20時以降は電子機器の電源をOFFにし、朝になるまでONしない</li>
+                </ol>
+              </ol>
+              上記のようなタスクを実装してみました.それぞれ理由になります<br>
+                <ol>
+                  <li>ECサイトのクレジットカードの登録を解除する</li>
+                  <ul>
+                    <li>購入する前にクレジットカードを入力しなければいけないため、<br>衝動的に購入するのを防ぐ</li>
+                  </ul>
+                  <li>クレジットカードを財布ではなく、目に付きにくい箇所にしまう</li>
+                  <ul>
+                    <li>クレジットカードを物理的に離すことで、衝動的に購入するのを防ぐ</li>
+                  </ul>
+                  <li>20時以降は電子機器の電源をOFFにし、朝になるまでONしない</li>
+                  <ul>
+                    <li>これまでの経験から、衝動的に購入するするのは遅い時間が多いため</li>
+                  </ul>
+                </ol>
+                このようにタスクは課題をこなす方法を考え、行動、環境を変えていきます<br>
+                つまり現時点での仮設を立て行動に落とし込む作業です.<br>
+                もしうまくいかない場合はタスクを追加、編集をしうまくいく方法を探っていきましょう.
+            </p>
+          </div>
+        </div>
+      </div>
+      <!--図形-->
+      <div class="col d-flex align-items-center justify-content-center">
+        <div>
+          <a href="https://gyazo.com/7fbce14475f28ba5d34939427c3579a1"><img src="https://i.gyazo.com/7fbce14475f28ba5d34939427c3579a1.png" alt="Image from Gyazo" width="507"/></a>
+        </div>
+      </div>
+    </div>
+    <div class="row mt-5 mb-5">
+      <!--図形-->
+      <div class="col d-flex align-items-center justify-content-center">
+        <a href="https://gyazo.com/bfad6a4fd7489e10bb20890a9ba3c73d"><img src="https://i.gyazo.com/bfad6a4fd7489e10bb20890a9ba3c73d.png" alt="Image from Gyazo" width="507"/></a>
+      </div>
+      <div class="col text-color-yellow">
+        <div class="mx-auto w-600">
+          <h2>編集</h2>
+          <div class="container">
+            <p class="m-0 mb-2">
+              編集ボタンから日付、タスクを更新できます。
+            </p>
+          </div>
+          <h2>達成</h2>
+          <div class="container">
+            <p class="m-0 mb-2">
+            タスクは毎日チェックするものです.<br>
+            指定された時間内に完了するのを目指しましょう.<br>
+            チェックボックスにチェックをつけることで、完了です<br>.
+              ※完了をすると関連しているタスクは削除されます.
+            </p>
+          </div>
+          <h2>削除</h2>
+          <div class="container">
+            <p class="m-0 mb-2">
+            削除ボタンから削除できます。<br>
+              ※削除すると関連しているタスクは削除されます。
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

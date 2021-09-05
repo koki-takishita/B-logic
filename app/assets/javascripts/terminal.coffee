@@ -295,6 +295,7 @@ flug_check = ->
     return true
 
 input = ->
+  word = []
   document.addEventListener 'keydown', (e) =>
     target = document.getElementById 'js-input-cmd'
     # true時入力されたkeyをwordの末尾に追加
@@ -302,6 +303,6 @@ input = ->
     word.push e.key if key_control e, target
     # wordを画面に出力
     target.innerHTML = word.join '' if flug_check()
-
-onPageLoad ['home#top'], ->
+onPageLoad ['home#top', 'home#about'], ->
+  word = []
   input()

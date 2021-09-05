@@ -9,7 +9,7 @@ Rails.application.routes.draw do
   root :to => 'home#top'
   get 'p_p', to: 'home#play_policies'
   get 't_of_s', to: 'home#terms_of_service'
-  get 'explanation', to: 'home#explanation'
+  get 'about', to: 'home#about'
   resources :goals do
     member do
       put 'status_done'

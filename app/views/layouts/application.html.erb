@@ -11,9 +11,10 @@
   <body data-controller="<%= controller_name%>" data-action="<%= action_name%>">
     <div class="container-fluid h-100">
       <div class="h-9 container-fluid p-0">
-        <div class='row h-100 mb-2'>
-          <div class="border-green terminal-object-text-color d-flex align-items-center justify-content-between">
-            <%= link_to 'B-logic', root_path, class: 'terminal-object-text-color text-decoration-none user_hover_text'%>
+        <div class='h-100 mb-2'>
+          <div class="border-green terminal-object-text-color d-flex align-items-center justify-content-between h-100 p-1">
+            <%= link_to 'B-Logic', root_path, class: 'terminal-object-text-color text-decoration-none user_hover_text', data: {"turbolinks" => false}%>
+            <%= link_to 'B-Logicとは？', about_path, class: 'terminal-object-text-color text-decoration-none user_hover_text', data: {"turbolinks" => false}%>
             <%= link_to 'お問い合わせ', new_contact_path, class: 'terminal-object-text-color text-decoration-none user_hover_text'%>
             <%= link_to '利用規約', t_of_s_path, class: 'terminal-object-text-color text-decoration-none user_hover_text'%>
             <%= link_to 'プライバシーポリシー', p_p_path, class: 'terminal-object-text-color text-decoration-none user_hover_text'%>
