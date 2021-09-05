@@ -43,6 +43,14 @@
 .user-btn:hover{
   background-color: #33e971;
 }
+.white-btn{
+  border: 1.5px solid white;
+  color: white;
+}
+.white-btn:hover{
+  background-color: white;
+}
+
 .issue-btn{
   border: 1.5px solid #26b8f6;
   color: #26b8f6;
@@ -140,6 +148,11 @@
   background-color: black;
   border: 1.5px solid #33e971;
   color: #33e971;
+}
+.white-form-control{
+  background-color: black;
+  border: 1.5px solid white;
+  color: white;
 }
 .user-form-control:focus {
   background-color: black;

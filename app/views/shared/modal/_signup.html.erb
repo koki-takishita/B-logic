@@ -10,20 +10,20 @@
         <%= form_with model: User.new, html: { autocomplete: 'off' } do |f| %>
           <div class="field user-field">
             <%= f.label :email, class: 'form-label'%>
-            <%= f.text_field :email, class: 'form-control user-form-control'%>
+            <%= f.text_field :email, class: 'form-control white-form-control'%>
           </div>
           <div class="field user-field">
             <%= f.label :password, class: 'form-labl' %>
-            <%= f.password_field :password, class: 'form-control user-form-control' %>
+            <%= f.password_field :password, class: 'form-control white-form-control' %>
           </div>
           <div class="field user-field">
             <%= f.label :password_confirmation, class: 'form-label' %>
-            <%= f.password_field :password_confirmation, class: 'form-control user-form-control'%>
+            <%= f.password_field :password_confirmation, class: 'form-control white-form-control'%>
           </div>
       </div>
       <div class="modal-footer user-modal-footer">
-        <button type="button" class="user-btn btn" data-bs-dismiss="modal">閉じる</button>
-          <%= f.submit class: 'btn user-btn'%>
+        <button type="button" class="white-btn btn" data-bs-dismiss="modal">閉じる</button>
+          <%= f.submit class: 'btn white-btn'%>
         <%end%>
       </div>
     </div>

@@ -61,6 +61,10 @@
   border-radius: 1px;
 }
 .border-green{
+  border: 1.5px solid white;
+  border-radius: 1px;
+}
+.border-green{
   border: 1.5px solid #33e971;
   border-radius: 1px;
 }
@@ -184,6 +188,11 @@
   background-color: #33e971;
   color: black;
 }
+.white_hover_text:hover{
+  background-color: white;
+  color: black;
+}
+
 .task_hover_text:hover {
   background-color: yellow;
   color: black;
@@ -290,6 +299,9 @@ button:hover{
 }
 .text-color-orange{
   color: #ff8310;
+}
+.text-color-white{
+  color: white;
 }
 .w-40{
   width: 40%
