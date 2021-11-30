@@ -57,7 +57,6 @@ end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
-gem 'robocop', '~> 0.1.1'
 gem 'better_errors', '~> 2.9', '>= 2.9.1'
 gem 'binding_of_caller', '~> 1.0'
 gem 'bootstrap', '~> 5.0', '>= 5.0.1'
